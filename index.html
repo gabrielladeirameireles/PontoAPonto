@@ -557,6 +557,7 @@
       }
     }
 
+    // DIAGNÓSTICO COM REDUNDÂNCIA MULTI-API (FALLBACK)
     async function obterIPCliente() {
       const elIP = document.getElementById('ip-publico');
       const elISP = document.getElementById('ip-isp');
@@ -564,18 +565,56 @@
       const elASN = document.getElementById('ip-asn');
 
       elIP.innerText = "Consultando...";
+      elISP.innerText = "Consultando...";
+      elLocal.innerText = "Consultando...";
+      elASN.innerText = "Consultando...";
+
+      // TENTATIVA 1: ipwho.is (Livre de bloqueio de CORS / AdBlockers e sem limite rígido)
+      try {
+        const resp = await fetch('https://ipwho.is/');
+        const data = await resp.json();
+        if (data.success) {
+          elIP.innerText = data.ip || "N/A";
+          elISP.innerText = data.connection?.isp || data.connection?.org || "Desconhecido";
+          elLocal.innerText = `${data.city || ''}, ${data.region_code || data.country || ''}`.replace(/^, /, '');
+          elASN.innerText = data.connection?.asn ? `AS${data.connection.asn}` : "N/A";
+          return;
+        }
+      } catch (e) { console.warn("ipwho.is indisponível, acionando fallback..."); }
+
+      // TENTATIVA 2: ipapi.co
       try {
         const resp = await fetch('https://ipapi.co/json/');
         const data = await resp.json();
-        elIP.innerText = data.ip || "Não identificado";
-        elISP.innerText = data.org || data.asn || "Desconhecido";
-        elLocal.innerText = `${data.city || ''}, ${data.country_name || ''}`;
-        elASN.innerText = data.asn || "N/A";
-      } catch (e) {
-        elIP.innerText = "Indisponível";
-      }
+        if (data.ip) {
+          elIP.innerText = data.ip;
+          elISP.innerText = data.org || "Desconhecido";
+          elLocal.innerText = `${data.city || ''}, ${data.country_code || ''}`.replace(/^, /, '');
+          elASN.innerText = data.asn || "N/A";
+          return;
+        }
+      } catch (e) { console.warn("ipapi.co indisponível, acionando fallback final..."); }
+
+      // TENTATIVA 3: ipify (fallback apenas para o IP público)
+      try {
+        const resp = await fetch('https://api.ipify.org?format=json');
+        const data = await resp.json();
+        if (data.ip) {
+          elIP.innerText = data.ip;
+          elISP.innerText = "Serviço AdBlock ativo";
+          elLocal.innerText = "Serviço AdBlock ativo";
+          elASN.innerText = "N/A";
+          return;
+        }
+      } catch (e) {}
+
+      elIP.innerText = "Indisponível (AdBlock/Rede)";
+      elISP.innerText = "Bloqueado";
+      elLocal.innerText = "Bloqueado";
+      elASN.innerText = "N/A";
     }
 
+    // CONSULTA AVANÇADA COM RESPOSTA DE IP PRIVADO E FALLBACK
     async function consultarIPCustomizado() {
       const q = document.getElementById('input-lookup').value.trim();
       const res = document.getElementById('lookup-resultado');
@@ -594,19 +633,27 @@
         return;
       }
 
+      // TENTATIVA 1: ipwho.is
+      try {
+        const resp = await fetch(`https://ipwho.is/${q}`);
+        const data = await resp.json();
+        if (data.success) {
+          res.innerHTML = `<strong>IP:</strong> ${data.ip} | <strong>Provedor:</strong> ${data.connection?.isp || 'N/A'} | <strong>Local:</strong> ${data.city || ''}, ${data.country || ''}`;
+          return;
+        }
+      } catch (err) {}
+
+      // TENTATIVA 2: ipapi.co
       try {
         const resp = await fetch(`https://ipapi.co/${q}/json/`);
         const data = await resp.json();
-        
-        if (data.error) {
-          res.innerHTML = `<span class="text-rose-700 font-bold">Consulta não realizada:</span> ${data.reason || 'IP ou domínio inválido.'}`;
+        if (data.ip && !data.error) {
+          res.innerHTML = `<strong>IP:</strong> ${data.ip} | <strong>Provedor:</strong> ${data.org || 'N/A'} | <strong>Local:</strong> ${data.city || ''}, ${data.country_name || ''}`;
           return;
         }
+      } catch (err) {}
 
-        res.innerHTML = `<strong>IP:</strong> ${data.ip} | <strong>Provedor:</strong> ${data.org || 'N/A'} | <strong>Local:</strong> ${data.city || ''}, ${data.country_name || ''}`;
-      } catch (err) {
-        res.innerText = "Erro ao efetuar consulta.";
-      }
+      res.innerHTML = `<span class="text-rose-700 font-bold">Consulta não realizada:</span> O serviço pode estar bloqueado por extensão de privacidade/AdBlock ou o IP/Domínio informado é inválido.`;
     }
 
     function ipParaInt(ip) { return ip.split('.').reduce((acc, oct) => (acc << 8) + parseInt(oct, 10), 0) >>> 0; }
