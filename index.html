@@ -8,15 +8,15 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Fontes Humanizadas: DM Sans (Interface) e JetBrains Mono (Código) -->
+  <!-- Fontes Google: Lora (Títulos Acolhedores), Inter (Corpo Acessível) e JetBrains Mono (Código) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
   <!-- Pyodide (Python WebAssembly) -->
   <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
   
-  <!-- CSS Customizado -->
+  <!-- Estilos Customizados Externos -->
   <link rel="stylesheet" href="assets/css/style.css">
 
   <script>
@@ -24,175 +24,173 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"DM Sans"', 'sans-serif'],
+            sans: ['"Inter"', 'sans-serif'],
+            serif: ['"Lora"', 'serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            surface: {
-              base: '#090d16',
-              card: '#121826',
-              hover: '#1a2336',
-              border: '#1e293b'
-            },
-            accent: {
-              sky: '#38bdf8',
-              indigo: '#818cf8',
-              emerald: '#34d399',
-              rose: '#fb7185'
-            }
+            slateBg: '#F8FAFC',
+            slateCard: '#FFFFFF',
+            slateDark: '#1E293B',
+            tealAccent: '#0D9488',
+            tealHover: '#0F766E',
+            tealLight: '#F0FDFA',
+            tealBorder: '#CCFBF1'
           }
         }
       }
     }
   </script>
   <style>
-    body { background-color: #090d16; color: #f1f5f9; }
-    .bit-net { color: #38bdf8; font-weight: 600; }
-    .bit-host { color: #fb7185; font-weight: 600; }
+    body { background-color: #F8FAFC; color: #1E293B; }
+    .bit-net { color: #0D9488; font-weight: 700; }
+    .bit-host { color: #E11D48; font-weight: 700; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="font-sans antialiased flex flex-col min-h-screen text-slate-200 selection:bg-indigo-500 selection:text-white">
+<body class="font-sans antialiased flex flex-col min-h-screen selection:bg-teal-100 selection:text-teal-900">
 
-  <!-- NAVEGAÇÃO SUPERIOR -->
-  <header class="bg-[#0b101d]/90 backdrop-blur-md border-b border-slate-800/80 sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+  <!-- CABEÇALHO PRINCIPAL -->
+  <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3">
-        <div class="w-7 h-7 rounded-md bg-indigo-600 flex items-center justify-center text-white font-bold text-xs tracking-tight shadow-sm">
-          p2p
+        <div class="w-8 h-8 rounded-lg bg-teal-700 flex items-center justify-center text-white font-bold font-serif text-sm shadow-sm">
+          P2P
         </div>
-        <span class="text-sm font-bold tracking-tight text-slate-100">
-          ponto <span class="text-indigo-400">a</span> ponto
+        <span class="text-lg font-serif font-bold tracking-tight text-slate-800">
+          ponto <span class="text-teal-700 italic">a</span> ponto
         </span>
-        <span class="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-mono px-2 py-0.5 bg-slate-800/60 text-slate-400 border border-slate-700/50 rounded-md">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-          estudo & ferramentas
+        <span class="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-0.5 bg-teal-50 text-teal-800 border border-teal-200 rounded-full font-medium">
+          estudos de infra & concursos
         </span>
       </div>
 
-      <div class="flex items-center gap-3 text-xs">
-        <a href="#contato" onclick="trocarAba('contato')" class="text-slate-400 hover:text-slate-200 transition">Contato</a>
-        <a href="https://github.com/gabrielladeirameireles/PontoAPonto" target="_blank" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-mono text-[11px] rounded-md border border-slate-700 transition">GitHub</a>
+      <div class="flex items-center gap-4 text-xs font-medium">
+        <a href="#contato" onclick="trocarAba('contato')" class="text-slate-600 hover:text-teal-700 transition">Contato</a>
+        <a href="https://github.com/gabrielladeirameireles/PontoAPonto" target="_blank" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-mono text-[11px] rounded-md border border-slate-300 transition">GitHub</a>
       </div>
     </div>
   </header>
 
-  <!-- APRESENTAÇÃO SUTIL -->
-  <section class="border-b border-slate-800/60 py-8 bg-[#0b101d]/40">
+  <!-- SEÇÃO EDITORIAL (HERO) -->
+  <section class="bg-white border-b border-slate-200 py-10 sm:py-12">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-        Redes, Infraestrutura e Metodologias de TI
+      <div class="inline-flex items-center gap-2 px-3 py-1 mb-3 text-xs font-medium text-teal-800 bg-teal-50 border border-teal-200 rounded-full">
+        <span>Plataforma de Diagnóstico e Caderno de Estudos</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-serif font-bold text-slate-900 tracking-tight max-w-3xl leading-snug">
+        Infraestrutura de Redes, Diagnóstico e Metodologias de TI
       </h1>
-      <p class="mt-2 text-sm text-slate-400 max-w-2xl leading-relaxed">
-        Diagnóstico de conexão, calculadoras de rede, comandos de terminal e resumos fundamentados para estudos de concursos públicos.
+      <p class="mt-3 text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed">
+        Ferramentas práticas para análise de conexão, simulador de calculadora de sub-redes CIDR, comandos de terminal e fichamentos fundamentados para provas.
       </p>
     </div>
   </section>
 
-  <!-- BARRA DE ABAS FLUIDAS -->
-  <div class="border-b border-slate-800/80 bg-[#090d16] sticky top-14 z-40">
+  <!-- NAVEGAÇÃO FLUIDA POR ABAS -->
+  <div class="bg-slate-100/80 border-b border-slate-200 sticky top-16 z-40">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <nav class="flex space-x-1 overflow-x-auto py-2 text-xs font-medium no-scrollbar" id="nav-abas">
-        <button onclick="trocarAba('diagnostico')" id="btn-diagnostico" class="aba-btn px-3.5 py-1.5 rounded-lg transition bg-slate-800 text-white font-semibold border border-slate-700 whitespace-nowrap">Meu IP & Diagnóstico</button>
-        <button onclick="trocarAba('calculadora')" id="btn-calculadora" class="aba-btn px-3.5 py-1.5 rounded-lg transition text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 whitespace-nowrap">Calculadora CIDR</button>
-        <button onclick="trocarAba('redes-teoria')" id="btn-redes-teoria" class="aba-btn px-3.5 py-1.5 rounded-lg transition text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 whitespace-nowrap">Modelo OSI & Portas</button>
-        <button onclick="trocarAba('metodologias')" id="btn-metodologias" class="aba-btn px-3.5 py-1.5 rounded-lg transition text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 whitespace-nowrap">Metodologias de TI</button>
-        <button onclick="trocarAba('terminal-cli')" id="btn-terminal-cli" class="aba-btn px-3.5 py-1.5 rounded-lg transition text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 whitespace-nowrap">Terminal CLI</button>
-        <button onclick="trocarAba('lab-python')" id="btn-lab-python" class="aba-btn px-3.5 py-1.5 rounded-lg transition text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 whitespace-nowrap">Laboratório Python</button>
-        <button onclick="trocarAba('simulado')" id="btn-simulado" class="aba-btn px-3.5 py-1.5 rounded-lg transition text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 whitespace-nowrap">Questões & Simulado</button>
+      <nav class="flex space-x-1 overflow-x-auto py-2.5 text-xs sm:text-sm font-medium no-scrollbar" id="nav-abas">
+        <button onclick="trocarAba('diagnostico')" id="btn-diagnostico" class="aba-btn px-4 py-2 rounded-lg transition bg-white text-teal-800 font-semibold shadow-sm border border-slate-200 whitespace-nowrap">Diagnóstico IP</button>
+        <button onclick="trocarAba('calculadora')" id="btn-calculadora" class="aba-btn px-4 py-2 rounded-lg transition text-slate-600 hover:text-slate-900 hover:bg-white/60 whitespace-nowrap">Calculadora CIDR</button>
+        <button onclick="trocarAba('redes-teoria')" id="btn-redes-teoria" class="aba-btn px-4 py-2 rounded-lg transition text-slate-600 hover:text-slate-900 hover:bg-white/60 whitespace-nowrap">Redes & Portas</button>
+        <button onclick="trocarAba('metodologias')" id="btn-metodologias" class="aba-btn px-4 py-2 rounded-lg transition text-slate-600 hover:text-slate-900 hover:bg-white/60 whitespace-nowrap">Metodologias TI</button>
+        <button onclick="trocarAba('terminal-cli')" id="btn-terminal-cli" class="aba-btn px-4 py-2 rounded-lg transition text-slate-600 hover:text-slate-900 hover:bg-white/60 whitespace-nowrap">Terminal CLI</button>
+        <button onclick="trocarAba('lab-python')" id="btn-lab-python" class="aba-btn px-4 py-2 rounded-lg transition text-slate-600 hover:text-slate-900 hover:bg-white/60 whitespace-nowrap">Laboratório Python</button>
+        <button onclick="trocarAba('simulado')" id="btn-simulado" class="aba-btn px-4 py-2 rounded-lg transition text-slate-600 hover:text-slate-900 hover:bg-white/60 whitespace-nowrap">Simulado</button>
       </nav>
     </div>
   </div>
 
-  <!-- CONTEÚDO PRINCIPAL -->
+  <!-- CONTEÚDO DAS ABAS -->
   <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full space-y-8">
 
     <!-- 1. DIAGNÓSTICO IP -->
     <section id="aba-diagnostico" class="aba-conteudo space-y-6">
-      <div class="bg-surface-card rounded-xl p-5 sm:p-6 border border-surface-border">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-800">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
           <div>
-            <h2 class="text-lg font-bold text-white">Diagnóstico da Conexão Atual</h2>
-            <p class="text-xs text-slate-400">Informações detectadas a partir do seu endereço de rede.</p>
+            <h2 class="text-xl font-serif font-bold text-slate-900">Diagnóstico da Rede Local e Conexão</h2>
+            <p class="text-xs text-slate-500">Mapeamento em tempo real do seu endereço IP externo e parâmetros de rede.</p>
           </div>
-          <button onclick="obterIPCliente()" class="px-3 py-1.5 text-xs font-mono text-indigo-300 bg-indigo-950/50 border border-indigo-800/60 hover:bg-indigo-900/50 rounded-md transition self-start sm:self-auto">
-            Recarregar dados
+          <button onclick="obterIPCliente()" class="px-3.5 py-1.5 text-xs font-mono font-medium text-teal-800 bg-teal-50 border border-teal-200 hover:bg-teal-100 rounded-lg transition self-start sm:self-auto">
+            Atualizar Diagnóstico
           </button>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
-          <div class="p-4 rounded-lg bg-[#0d121f] border border-slate-800/80">
-            <span class="text-[11px] font-mono text-slate-500 block uppercase">IP Público</span>
-            <span id="ip-publico" class="text-base font-mono font-bold text-sky-400">Detectando...</span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-[11px] font-mono text-slate-500 block uppercase">Endereço IP Público</span>
+            <span id="ip-publico" class="text-lg font-mono font-bold text-teal-700">Detectando...</span>
           </div>
-          <div class="p-4 rounded-lg bg-[#0d121f] border border-slate-800/80">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
             <span class="text-[11px] font-mono text-slate-500 block uppercase">Provedor (ISP)</span>
-            <span id="ip-isp" class="text-sm font-medium text-slate-200">Detectando...</span>
+            <span id="ip-isp" class="text-sm font-semibold text-slate-800">Detectando...</span>
           </div>
-          <div class="p-4 rounded-lg bg-[#0d121f] border border-slate-800/80">
-            <span class="text-[11px] font-mono text-slate-500 block uppercase">Localização</span>
-            <span id="ip-local" class="text-sm font-medium text-slate-200">Detectando...</span>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-[11px] font-mono text-slate-500 block uppercase">Localização / Estado</span>
+            <span id="ip-local" class="text-sm font-semibold text-slate-800">Detectando...</span>
           </div>
-          <div class="p-4 rounded-lg bg-[#0d121f] border border-slate-800/80">
-            <span class="text-[11px] font-mono text-slate-500 block uppercase">Sistema Autônomo</span>
-            <span id="ip-asn" class="text-sm font-mono text-slate-300">Detectando...</span>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-[11px] font-mono text-slate-500 block uppercase">Sistema Autônomo (ASN)</span>
+            <span id="ip-asn" class="text-sm font-mono text-slate-800">Detectando...</span>
           </div>
         </div>
 
-        <div class="mt-6 pt-5 border-t border-slate-800/80">
-          <label class="block text-xs font-medium text-slate-300 mb-2">Consultar Outro IP ou Domínio:</label>
-          <div class="flex gap-2 max-w-md">
-            <input type="text" id="input-lookup" placeholder="Ex: 1.1.1.1 ou github.com" class="flex-1 bg-[#080c14] border border-slate-700/80 rounded-md px-3 py-1.5 text-xs font-mono text-white focus:outline-none focus:border-indigo-500">
-            <button onclick="consultarIPCustomizado()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-xs rounded-md transition">Buscar</button>
+        <div class="mt-6 pt-5 border-t border-slate-100">
+          <label class="block text-xs font-semibold text-slate-700 mb-2">Consulta Avançada de IP ou Domínio:</label>
+          <div class="flex gap-2 max-w-lg">
+            <input type="text" id="input-lookup" placeholder="Ex: 8.8.8.8 ou cloudflare.com" class="flex-1 bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2 text-xs font-mono text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500">
+            <button onclick="consultarIPCustomizado()" class="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition shadow-sm">Consultar</button>
           </div>
-          <div id="lookup-resultado" class="mt-3 text-xs font-mono text-slate-300 hidden p-3 bg-[#080c14] rounded-md border border-slate-800"></div>
+          <div id="lookup-resultado" class="mt-3 text-xs font-mono text-slate-700 hidden p-3 bg-slate-50 rounded-lg border border-slate-200"></div>
         </div>
       </div>
     </section>
 
     <!-- 2. CALCULADORA CIDR -->
     <section id="aba-calculadora" class="aba-conteudo hidden space-y-6">
-      <div class="bg-surface-card rounded-xl p-5 sm:p-6 border border-surface-border">
-        <div class="pb-4 border-b border-slate-800">
-          <h2 class="text-lg font-bold text-white">Calculadora de Sub-redes IPv4 / CIDR</h2>
-          <p class="text-xs text-slate-400">Cálculo dos parâmetros da sub-rede e visualização da máscara bit a bit.</p>
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div class="pb-4 border-b border-slate-100">
+          <h2 class="text-xl font-serif font-bold text-slate-900">Calculadora de Sub-redes IPv4 / CIDR</h2>
+          <p class="text-xs text-slate-500">Cálculo preciso dos blocos de IPs e inspeção detalhada de bits de rede e host.</p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-5">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
           <div class="space-y-4">
             <div>
-              <label class="block text-xs font-medium text-slate-300 mb-1.5">Endereço IP / CIDR:</label>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Endereço IP e Prefixo CIDR:</label>
               <div class="flex items-center gap-2">
-                <input type="text" id="cidr-ip" value="192.168.1.0" class="flex-1 bg-[#080c14] border border-slate-700/80 rounded-md px-3 py-1.5 text-xs font-mono text-white focus:outline-none focus:border-indigo-500">
-                <span class="text-slate-500 font-bold">/</span>
-                <input type="number" id="cidr-mask" value="26" min="1" max="32" class="w-16 bg-[#080c14] border border-slate-700/80 rounded-md px-2 py-1.5 text-xs font-mono text-white focus:outline-none focus:border-indigo-500">
+                <input type="text" id="cidr-ip" value="192.168.1.0" class="flex-1 bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2 text-xs font-mono text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                <span class="text-slate-400 font-bold">/</span>
+                <input type="number" id="cidr-mask" value="26" min="1" max="32" class="w-20 bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2 text-xs font-mono text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500">
               </div>
             </div>
-            <button onclick="executarCalculoCIDR()" class="w-full py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-xs rounded-md transition">Calcular Sub-rede</button>
+            <button onclick="executarCalculoCIDR()" class="w-full py-2.5 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition shadow-sm">Calcular Sub-rede</button>
 
-            <div class="p-3 bg-[#0d121f] rounded-lg border border-slate-800 text-xs text-slate-400 space-y-1">
-              <span class="font-medium text-slate-300 block">Identificação de Bits:</span>
-              <p><span class="bit-net">Bits Azuis</span>: Rede / Sub-rede (fixos)</p>
-              <p><span class="bit-host">Bits Vermelhos</span>: Hosts (variáveis)</p>
+            <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1">
+              <span class="font-bold text-slate-900 block mb-1">Legenda dos Bits:</span>
+              <p><span class="bit-net">Bits Verdes/Teal</span>: Sub-rede (fixados pela máscara)</p>
+              <p><span class="bit-host">Bits Vermelhos</span>: Hosts (endereçamento de nós)</p>
             </div>
           </div>
 
-          <div class="lg:col-span-2 bg-[#080c14] p-4 rounded-lg border border-slate-800/80 font-mono text-xs space-y-3">
+          <div class="lg:col-span-2 bg-slate-900 text-slate-100 p-5 rounded-xl space-y-4 font-mono text-xs shadow-inner">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div><span class="text-slate-500">Endereço de Rede:</span> <span id="res-rede" class="text-sky-400 font-bold">-</span></div>
-              <div><span class="text-slate-500">Máscara Decimal:</span> <span id="res-mascara" class="text-slate-200 font-bold">-</span></div>
-              <div><span class="text-slate-500">Broadcast:</span> <span id="res-broadcast" class="text-sky-400 font-bold">-</span></div>
-              <div><span class="text-slate-500">Total de IPs:</span> <span id="res-total-hosts" class="text-slate-200 font-bold">-</span></div>
-              <div><span class="text-slate-500">Primeiro Host:</span> <span id="res-primeiro-host" class="text-slate-300">-</span></div>
-              <div><span class="text-slate-500">Hosts Úteis:</span> <span id="res-hosts-uteis" class="text-emerald-400 font-bold">-</span></div>
-              <div><span class="text-slate-500">Último Host:</span> <span id="res-ultimo-host" class="text-slate-300">-</span></div>
-              <div><span class="text-slate-500">Classe IPv4:</span> <span id="res-classe" class="text-slate-300">-</span></div>
+              <div><span class="text-slate-400">Endereço de Rede:</span> <span id="res-rede" class="text-teal-400 font-bold">-</span></div>
+              <div><span class="text-slate-400">Máscara Decimal:</span> <span id="res-mascara" class="text-white font-bold">-</span></div>
+              <div><span class="text-slate-400">Broadcast:</span> <span id="res-broadcast" class="text-teal-400 font-bold">-</span></div>
+              <div><span class="text-slate-400">Total de IPs:</span> <span id="res-total-hosts" class="text-white font-bold">-</span></div>
+              <div><span class="text-slate-400">Primeiro Host:</span> <span id="res-primeiro-host" class="text-slate-200">-</span></div>
+              <div><span class="text-slate-400">Hosts Úteis:</span> <span id="res-hosts-uteis" class="text-emerald-400 font-bold">-</span></div>
+              <div><span class="text-slate-400">Último Host:</span> <span id="res-ultimo-host" class="text-slate-200">-</span></div>
+              <div><span class="text-slate-400">Classe IPv4:</span> <span id="res-classe" class="text-slate-200">-</span></div>
             </div>
 
-            <div class="pt-3 border-t border-slate-800/80">
-              <span class="text-slate-500 block mb-1.5">Estrutura de 32 Bits:</span>
-              <div id="res-binario" class="p-3 bg-[#0d121f] rounded border border-slate-800 tracking-widest break-all font-mono">
+            <div class="pt-3 border-t border-slate-800">
+              <span class="text-slate-400 block mb-2">Representação Binária (32 Bits):</span>
+              <div id="res-binario" class="p-3 bg-slate-950 rounded-lg border border-slate-800 tracking-widest break-all font-mono">
                 -
               </div>
             </div>
@@ -201,61 +199,61 @@
       </div>
     </section>
 
-    <!-- 3. MODELO OSI & PORTAS -->
+    <!-- 3. REDES & PORTAS -->
     <section id="aba-redes-teoria" class="aba-conteudo hidden space-y-6">
-      <div class="bg-surface-card rounded-xl p-5 sm:p-6 border border-surface-border">
-        <div class="pb-4 border-b border-slate-800">
-          <h2 class="text-lg font-bold text-white">Camadas e Protocolos de Rede</h2>
-          <p class="text-xs text-slate-400">Referência do modelo OSI/TCP-IP e tabela de portas frequentes em provas.</p>
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div class="pb-4 border-b border-slate-100">
+          <h2 class="text-xl font-serif font-bold text-slate-900">Camadas da Arquitetura e Tabela de Portas</h2>
+          <p class="text-xs text-slate-500">Estrutura OSI vs. TCP/IP e busca interativa de protocolos para concursos.</p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-5">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
           <div class="space-y-3">
-            <h3 class="text-xs font-mono text-slate-400 uppercase tracking-wider">Unidades de Dados (PDUs) por Camada</h3>
+            <h3 class="text-xs font-mono font-bold text-slate-700 uppercase tracking-wider">Unidades de Dados (PDUs) por Camada</h3>
             <div class="space-y-2 text-xs font-mono">
-              <div class="p-3 bg-[#0d121f] border border-slate-800 rounded-md flex justify-between items-center">
-                <span class="text-slate-300">L7 / L6 / L5 — Aplicação / Apresentação / Sessão</span>
-                <span class="text-sky-400 font-bold">Dados</span>
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg flex justify-between items-center">
+                <span class="text-slate-700">L7/L6/L5 — Aplicação, Apresentação, Sessão</span>
+                <span class="text-teal-700 font-bold">Dados</span>
               </div>
-              <div class="p-3 bg-[#0d121f] border border-slate-800 rounded-md flex justify-between items-center">
-                <span class="text-slate-300">L4 — Transporte (TCP / UDP)</span>
-                <span class="text-sky-400 font-bold">Segmento / Datagrama</span>
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg flex justify-between items-center">
+                <span class="text-slate-700">L4 — Transporte (TCP / UDP)</span>
+                <span class="text-teal-700 font-bold">Segmento / Datagrama</span>
               </div>
-              <div class="p-3 bg-[#0d121f] border border-slate-800 rounded-md flex justify-between items-center">
-                <span class="text-slate-300">L3 — Rede (IP, ICMP)</span>
-                <span class="text-sky-400 font-bold">Pacote</span>
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg flex justify-between items-center">
+                <span class="text-slate-700">L3 — Rede (IP, ICMP, Roteador)</span>
+                <span class="text-teal-700 font-bold">Pacote</span>
               </div>
-              <div class="p-3 bg-[#0d121f] border border-slate-800 rounded-md flex justify-between items-center">
-                <span class="text-slate-300">L2 — Enlace (Ethernet, Switch)</span>
-                <span class="text-sky-400 font-bold">Quadro (Frame)</span>
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg flex justify-between items-center">
+                <span class="text-slate-700">L2 — Enlace de Dados (Ethernet, Switch)</span>
+                <span class="text-teal-700 font-bold">Quadro (Frame)</span>
               </div>
-              <div class="p-3 bg-[#0d121f] border border-slate-800 rounded-md flex justify-between items-center">
-                <span class="text-slate-300">L1 — Física (Cabos, Sinais)</span>
-                <span class="text-sky-400 font-bold">Bits</span>
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg flex justify-between items-center">
+                <span class="text-slate-700">L1 — Física (Cabos, Fibra, Sinais)</span>
+                <span class="text-teal-700 font-bold">Bits</span>
               </div>
             </div>
           </div>
 
           <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <h3 class="text-xs font-mono text-slate-400 uppercase tracking-wider">Tabela de Portas</h3>
-              <input type="text" id="filtro-portas" onkeyup="filtrarTabelaPortas()" placeholder="Buscar porta/serviço..." class="px-2.5 py-1 text-xs bg-[#080c14] border border-slate-700/80 rounded-md text-white focus:outline-none focus:border-indigo-500">
+              <h3 class="text-xs font-mono font-bold text-slate-700 uppercase tracking-wider">Mapeamento de Portas</h3>
+              <input type="text" id="filtro-portas" onkeyup="filtrarTabelaPortas()" placeholder="Buscar porta, protocolo ou uso..." class="px-3 py-1 text-xs bg-slate-50 border border-slate-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500">
             </div>
             
-            <div class="overflow-x-auto border border-slate-800 rounded-md">
-              <table class="w-full text-left text-xs font-mono bg-[#0d121f]" id="tabela-portas">
-                <thead class="bg-[#080c14] text-slate-400 border-b border-slate-800">
-                  <tr><th class="p-2.5">Porta</th><th class="p-2.5">Protocolo</th><th class="p-2.5">Transporte</th><th class="p-2.5">Uso</th></tr>
+            <div class="overflow-x-auto border border-slate-200 rounded-lg">
+              <table class="w-full text-left text-xs font-mono" id="tabela-portas">
+                <thead class="bg-slate-50 border-b border-slate-200 text-slate-700 font-semibold">
+                  <tr><th class="p-2.5">Porta</th><th class="p-2.5">Protocolo</th><th class="p-2.5">Transporte</th><th class="p-2.5">Descrição / Aplicação</th></tr>
                 </thead>
-                <tbody class="divide-y divide-slate-800/80 text-slate-300">
-                  <tr><td class="p-2.5 font-bold text-sky-400">20 / 21</td><td class="p-2.5">FTP</td><td class="p-2.5">TCP</td><td class="p-2.5">Transferência de arquivos</td></tr>
-                  <tr><td class="p-2.5 font-bold text-sky-400">22</td><td class="p-2.5">SSH</td><td class="p-2.5">TCP</td><td class="p-2.5">Acesso remoto seguro</td></tr>
-                  <tr><td class="p-2.5 font-bold text-sky-400">23</td><td class="p-2.5">Telnet</td><td class="p-2.5">TCP</td><td class="p-2.5">Acesso remoto sem criptografia</td></tr>
-                  <tr><td class="p-2.5 font-bold text-sky-400">25</td><td class="p-2.5">SMTP</td><td class="p-2.5">TCP</td><td class="p-2.5">Envio de e-mail</td></tr>
-                  <tr><td class="p-2.5 font-bold text-sky-400">53</td><td class="p-2.5">DNS</td><td class="p-2.5">UDP / TCP</td><td class="p-2.5">Resolução de nomes</td></tr>
-                  <tr><td class="p-2.5 font-bold text-sky-400">80</td><td class="p-2.5">HTTP</td><td class="p-2.5">TCP</td><td class="p-2.5">Web sem criptografia</td></tr>
-                  <tr><td class="p-2.5 font-bold text-sky-400">443</td><td class="p-2.5">HTTPS</td><td class="p-2.5">TCP</td><td class="p-2.5">Web segura (TLS/SSL)</td></tr>
-                  <tr><td class="p-2.5 font-bold text-sky-400">3389</td><td class="p-2.5">RDP</td><td class="p-2.5">TCP/UDP</td><td class="p-2.5">Área de Trabalho Remota Windows</td></tr>
+                <tbody class="divide-y divide-slate-100 text-slate-700">
+                  <tr><td class="p-2.5 font-bold text-teal-700">20 / 21</td><td class="p-2.5">FTP</td><td class="p-2.5">TCP</td><td class="p-2.5">Transferência de arquivos</td></tr>
+                  <tr><td class="p-2.5 font-bold text-teal-700">22</td><td class="p-2.5">SSH</td><td class="p-2.5">TCP</td><td class="p-2.5">Acesso remoto seguro</td></tr>
+                  <tr><td class="p-2.5 font-bold text-teal-700">23</td><td class="p-2.5">Telnet</td><td class="p-2.5">TCP</td><td class="p-2.5">Acesso remoto sem criptografia</td></tr>
+                  <tr><td class="p-2.5 font-bold text-teal-700">25</td><td class="p-2.5">SMTP</td><td class="p-2.5">TCP</td><td class="p-2.5">Envio de correio eletrônico</td></tr>
+                  <tr><td class="p-2.5 font-bold text-teal-700">53</td><td class="p-2.5">DNS</td><td class="p-2.5">UDP / TCP</td><td class="p-2.5">Resolução de nomes de domínio</td></tr>
+                  <tr><td class="p-2.5 font-bold text-teal-700">80</td><td class="p-2.5">HTTP</td><td class="p-2.5">TCP</td><td class="p-2.5">Navegação web simples</td></tr>
+                  <tr><td class="p-2.5 font-bold text-teal-700">443</td><td class="p-2.5">HTTPS</td><td class="p-2.5">TCP</td><td class="p-2.5">Navegação web segura (TLS/SSL)</td></tr>
+                  <tr><td class="p-2.5 font-bold text-teal-700">3389</td><td class="p-2.5">RDP</td><td class="p-2.5">TCP/UDP</td><td class="p-2.5">Área de Trabalho Remota Windows</td></tr>
                 </tbody>
               </table>
             </div>
@@ -266,47 +264,47 @@
 
     <!-- 4. METODOLOGIAS DE TI -->
     <section id="aba-metodologias" class="aba-conteudo hidden space-y-6">
-      <div class="bg-surface-card rounded-xl p-5 sm:p-6 border border-surface-border">
-        <div class="pb-4 border-b border-slate-800">
-          <h2 class="text-lg font-bold text-white">Metodologias de TI para Concursos</h2>
-          <p class="text-xs text-slate-400">Pontos chave extraídos dos guias oficiais (Scrum 2020, PMBOK, XP, TDD, Lean).</p>
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div class="pb-4 border-b border-slate-100">
+          <h2 class="text-xl font-serif font-bold text-slate-900">Resumos de Metodologias para Concursos</h2>
+          <p class="text-xs text-slate-500">Síntese fundamentada nos guias oficiais mais cobrados pelas bancas.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
-          <div class="p-4 rounded-lg bg-[#0d121f] border border-slate-800/80 space-y-2">
-            <span class="px-2 py-0.5 bg-slate-800 text-slate-300 text-[10px] font-mono rounded">PREDITIVO</span>
-            <h3 class="font-bold text-sm text-white">Modelo em Cascata</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">Fases sequenciais (Requisitos, Projeto, Código, Testes). Alterar requisitos no final tem alto custo.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <span class="px-2.5 py-0.5 bg-blue-100 text-blue-800 text-[10px] font-mono font-bold rounded">PREDITIVO</span>
+            <h3 class="font-serif font-bold text-slate-900">Modelo em Cascata</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Desenvolvimento linear em etapas (Requisitos -> Projeto -> Código -> Testes). Mudanças de escopo no final têm alto custo.</p>
           </div>
 
-          <div class="p-4 rounded-lg bg-[#0d121f] border border-slate-800/80 space-y-2">
-            <span class="px-2 py-0.5 bg-indigo-950 text-indigo-300 border border-indigo-800/50 text-[10px] font-mono rounded">SCRUM GUIDE 2020</span>
-            <h3 class="font-bold text-sm text-white">Framework Scrum</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">Papéis: Product Owner, Scrum Master e Developers. Não existe Gerente de Projetos no Scrum.</p>
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <span class="px-2.5 py-0.5 bg-teal-100 text-teal-800 text-[10px] font-mono font-bold rounded">SCRUM GUIDE 2020</span>
+            <h3 class="font-serif font-bold text-slate-900">Framework Scrum</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Papéis: Product Owner, Scrum Master e Developers. Não existe Gerente de Projetos no Scrum. As Sprints possuem timebox fixo.</p>
           </div>
 
-          <div class="p-4 rounded-lg bg-[#0d121f] border border-slate-800/80 space-y-2">
-            <span class="px-2 py-0.5 bg-emerald-950 text-emerald-300 border border-emerald-800/50 text-[10px] font-mono rounded">KANBAN</span>
-            <h3 class="font-bold text-sm text-white">Metodologia Kanban</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">Gestão visual contínua. Aplicação de WIP Limit (Work in Progress) para otimizar fluxo e limitar gargalos.</p>
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold rounded">KANBAN</span>
+            <h3 class="font-serif font-bold text-slate-900">Metodologia Kanban</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Gestão de fluxo contínuo. Uso de WIP Limit (Work in Progress) para otimizar gargalos. Medição por Lead Time e Cycle Time.</p>
           </div>
 
-          <div class="p-4 rounded-lg bg-[#0d121f] border border-slate-800/80 space-y-2">
-            <span class="px-2 py-0.5 bg-amber-950 text-amber-300 border border-amber-800/50 text-[10px] font-mono rounded">LEAN</span>
-            <h3 class="font-bold text-sm text-white">Lean Development</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">Foco na eliminação de desperdícios (Muda) e entrega rápida de valor ao cliente.</p>
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-mono font-bold rounded">LEAN</span>
+            <h3 class="font-serif font-bold text-slate-900">Lean Software</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Focado na eliminação de desperdícios (Muda), no aprendizado contínuo e na entrega rápida de valor útil ao cliente.</p>
           </div>
 
-          <div class="p-4 rounded-lg bg-[#0d121f] border border-slate-800/80 space-y-2">
-            <span class="px-2 py-0.5 bg-purple-950 text-purple-300 border border-purple-800/50 text-[10px] font-mono rounded">ENGENHARIA</span>
-            <h3 class="font-bold text-sm text-white">TDD</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">Ciclo Red -> Green -> Refactor. Os testes automatizados são criados sempre antes do código final.</p>
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 text-[10px] font-mono font-bold rounded">ENGENHARIA</span>
+            <h3 class="font-serif font-bold text-slate-900">TDD</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Desenvolvimento Guiado por Testes no ciclo Red -> Green -> Refactor. Os testes automatizados são criados antes do código.</p>
           </div>
 
-          <div class="p-4 rounded-lg bg-[#0d121f] border border-slate-800/80 space-y-2">
-            <span class="px-2 py-0.5 bg-rose-950 text-rose-300 border border-rose-800/50 text-[10px] font-mono rounded">XP</span>
-            <h3 class="font-bold text-sm text-white">Extreme Programming</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">Pair Programming, Integração Contínua e Refatoração. Valores: Comunicação, Simplicidade, Feedback e Coragem.</p>
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <span class="px-2.5 py-0.5 bg-rose-100 text-rose-800 text-[10px] font-mono font-bold rounded">XP</span>
+            <h3 class="font-serif font-bold text-slate-900">Extreme Programming</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Pair Programming, Integração Contínua (CI) e Refatoração. Valores centrais: Comunicação, Simplicidade, Feedback e Coragem.</p>
           </div>
         </div>
       </div>
@@ -314,34 +312,34 @@
 
     <!-- 5. TERMINAL CLI -->
     <section id="aba-terminal-cli" class="aba-conteudo hidden space-y-6">
-      <div class="bg-surface-card rounded-xl p-5 sm:p-6 border border-surface-border">
-        <div class="pb-4 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div class="pb-4 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <h2 class="text-lg font-bold text-white">Simulador de Terminal CLI de Redes</h2>
-            <p class="text-xs text-slate-400">Teste de comandos de diagnóstico de rede no navegador.</p>
+            <h2 class="text-xl font-serif font-bold text-slate-900">Simulador de Terminal CLI de Redes</h2>
+            <p class="text-xs text-slate-500">Execução de comandos de diagnóstico no estilo terminal Linux e Windows.</p>
           </div>
-          <div class="flex gap-1.5 flex-wrap">
-            <button onclick="injetarComandoCLI('ping 8.8.8.8')" class="px-2.5 py-1 text-[11px] font-mono bg-slate-800 hover:bg-slate-700 text-slate-300 rounded transition">ping</button>
-            <button onclick="injetarComandoCLI('traceroute 8.8.8.8')" class="px-2.5 py-1 text-[11px] font-mono bg-slate-800 hover:bg-slate-700 text-slate-300 rounded transition">traceroute</button>
-            <button onclick="injetarComandoCLI('nslookup google.com')" class="px-2.5 py-1 text-[11px] font-mono bg-slate-800 hover:bg-slate-700 text-slate-300 rounded transition">nslookup</button>
-            <button onclick="injetarComandoCLI('ipconfig')" class="px-2.5 py-1 text-[11px] font-mono bg-slate-800 hover:bg-slate-700 text-slate-300 rounded transition">ipconfig</button>
+          <div class="flex gap-2">
+            <button onclick="injetarComandoCLI('ping 8.8.8.8')" class="px-2.5 py-1 text-[11px] font-mono bg-slate-100 hover:bg-slate-200 text-slate-700 rounded transition">ping</button>
+            <button onclick="injetarComandoCLI('traceroute 8.8.8.8')" class="px-2.5 py-1 text-[11px] font-mono bg-slate-100 hover:bg-slate-200 text-slate-700 rounded transition">traceroute</button>
+            <button onclick="injetarComandoCLI('nslookup google.com')" class="px-2.5 py-1 text-[11px] font-mono bg-slate-100 hover:bg-slate-200 text-slate-700 rounded transition">nslookup</button>
+            <button onclick="injetarComandoCLI('ipconfig')" class="px-2.5 py-1 text-[11px] font-mono bg-slate-100 hover:bg-slate-200 text-slate-700 rounded transition">ipconfig</button>
           </div>
         </div>
 
-        <div class="mt-5 bg-[#05080f] rounded-lg overflow-hidden border border-slate-800 font-mono text-xs">
-          <div class="bg-[#0b101d] px-4 py-2 border-b border-slate-800 flex items-center justify-between">
-            <span class="text-[11px] text-slate-400">bash — p2p-cli</span>
-            <span class="text-[10px] text-slate-500">Digite 'help' para ajuda</span>
+        <div class="mt-6 bg-slate-900 rounded-xl overflow-hidden shadow-md border border-slate-800 font-mono text-xs">
+          <div class="bg-slate-950 px-4 py-2.5 border-b border-slate-800 flex items-center justify-between">
+            <span class="text-[11px] text-slate-400">bash — p2p-cli-terminal</span>
+            <span class="text-[10px] text-slate-500">Digite 'help' para comandos</span>
           </div>
 
-          <div id="cli-output" class="p-4 h-60 overflow-y-auto space-y-2 text-slate-300">
-            <p class="text-sky-400">[TERMINAL CLI DE REDES PRONTO]</p>
-            <p class="text-slate-500">Digite um comando e pressione Enter para executar a simulação.</p>
+          <div id="cli-output" class="p-4 h-64 overflow-y-auto space-y-2 text-slate-300">
+            <p class="text-teal-400">[TERMINAL DE REDE SIMULADO - PONTO A PONTO]</p>
+            <p class="text-slate-500">Digite 'help' para visualizar a sintaxe dos comandos suportados.</p>
           </div>
 
-          <div class="p-3 bg-[#080c14] border-t border-slate-800 flex items-center gap-2">
+          <div class="p-3 bg-slate-950/90 border-t border-slate-800 flex items-center gap-2">
             <span class="text-emerald-400 font-bold">user@pontoaponto:~$</span>
-            <input type="text" id="cli-input" onkeydown="processarComandoCLI(event)" placeholder="Comando..." class="flex-1 bg-transparent border-none text-white focus:outline-none font-mono">
+            <input type="text" id="cli-input" onkeydown="processarComandoCLI(event)" placeholder="Digite um comando..." class="flex-1 bg-transparent border-none text-white focus:outline-none font-mono">
           </div>
         </div>
       </div>
@@ -349,29 +347,29 @@
 
     <!-- 6. PYTHON LAB -->
     <section id="aba-lab-python" class="aba-conteudo hidden space-y-6">
-      <div class="bg-surface-card rounded-xl p-5 sm:p-6 border border-surface-border">
-        <div class="pb-4 border-b border-slate-800">
-          <h2 class="text-lg font-bold text-white">Laboratório Python para Redes</h2>
-          <p class="text-xs text-slate-400">Execução de código com as bibliotecas nativas <code class="font-mono text-sky-400">socket</code> e <code class="font-mono text-sky-400">ipaddress</code> via WebAssembly.</p>
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div class="pb-4 border-b border-slate-100">
+          <h2 class="text-xl font-serif font-bold text-slate-900">Laboratório Python para Redes (Pyodide / WASM)</h2>
+          <p class="text-xs text-slate-500">Execução nativa de código Python direto no navegador via WebAssembly.</p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-5">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
           <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <label class="text-xs font-medium text-slate-300">Código Python:</label>
-              <select id="select-python-script" onchange="carregarScriptExemplo()" class="bg-[#080c14] border border-slate-700/80 rounded px-2 py-1 text-xs text-slate-300">
-                <option value="socket">Exemplo: Socket TCP</option>
-                <option value="ipaddress">Exemplo: Módulo ipaddress</option>
+              <label class="text-xs font-semibold text-slate-700">Script em Python:</label>
+              <select id="select-python-script" onchange="carregarScriptExemplo()" class="bg-slate-50 border border-slate-300 rounded-md px-2.5 py-1 text-xs text-slate-700">
+                <option value="socket">Exemplo 1: Teste Socket TCP</option>
+                <option value="ipaddress">Exemplo 2: Módulo ipaddress</option>
               </select>
             </div>
-            <textarea id="py-editor" class="w-full h-52 bg-[#05080f] text-emerald-400 font-mono text-xs p-3 rounded-lg border border-slate-800 focus:outline-none focus:border-indigo-500"></textarea>
-            <button onclick="executarPython()" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-600 text-white font-medium text-xs rounded-md transition">Executar Script</button>
+            <textarea id="py-editor" class="w-full h-56 bg-slate-900 text-emerald-400 font-mono text-xs p-3.5 rounded-xl border border-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500"></textarea>
+            <button onclick="executarPython()" class="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition shadow-sm">Executar Script Python</button>
           </div>
 
           <div class="space-y-3">
-            <label class="text-xs font-medium text-slate-300">Saída no Terminal (STDOUT):</label>
-            <div id="py-output" class="h-52 bg-[#05080f] text-slate-300 font-mono text-xs p-3 rounded-lg border border-slate-800 overflow-y-auto whitespace-pre-wrap">
-[STATUS: Pronto para execução...]
+            <label class="text-xs font-semibold text-slate-700">Console de Saída (STDOUT):</label>
+            <div id="py-output" class="h-56 bg-slate-900 text-slate-200 font-mono text-xs p-3.5 rounded-xl border border-slate-800 overflow-y-auto whitespace-pre-wrap">
+[STATUS: Aguardando execução do script...]
             </div>
           </div>
         </div>
@@ -380,44 +378,44 @@
 
     <!-- 7. SIMULADO -->
     <section id="aba-simulado" class="aba-conteudo hidden space-y-6">
-      <div class="bg-surface-card rounded-xl p-5 sm:p-6 border border-surface-border">
-        <div class="pb-4 border-b border-slate-800 flex items-center justify-between">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div class="pb-4 border-b border-slate-100 flex items-center justify-between">
           <div>
-            <h2 class="text-lg font-bold text-white">Questões de Concursos em TI</h2>
-            <p class="text-xs text-slate-400">Simulado com gabarito e justificativa técnica.</p>
+            <h2 class="text-xl font-serif font-bold text-slate-900">Simulado para Concursos de TI</h2>
+            <p class="text-xs text-slate-500">Questões comentadas com gabarito fundamentado.</p>
           </div>
-          <div id="quiz-placar" class="text-xs font-mono font-bold text-sky-400 bg-[#080c14] border border-slate-800 px-3 py-1.5 rounded-md">
+          <div id="quiz-placar" class="text-xs font-mono font-bold text-teal-800 bg-teal-50 border border-teal-200 px-3 py-1.5 rounded-lg">
             Pontuação: 0 / 0
           </div>
         </div>
 
-        <div id="quiz-container" class="space-y-4 mt-5">
+        <div id="quiz-container" class="space-y-5 mt-6">
           <!-- Injetado por JS -->
         </div>
       </div>
     </section>
 
-    <!-- CONTATO -->
+    <!-- CANAIS DE CONTATO -->
     <section id="contato" class="pt-4">
-      <div class="bg-surface-card rounded-xl p-5 sm:p-6 border border-surface-border">
-        <h2 class="text-base font-bold text-white mb-1">Canais de Comunicação</h2>
-        <p class="text-xs text-slate-400 mb-4">Envie dúvidas sobre questões ou sugestões de melhorias.</p>
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <h2 class="text-lg font-serif font-bold text-slate-900 mb-1">Canais de Atendimento</h2>
+        <p class="text-xs text-slate-500 mb-4">Dúvidas conceituais, correções de conteúdo ou sugestões de melhoria.</p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <a href="https://wa.me/5500000000000?text=Ola!%20Duvida%20sobre%20o%20Ponto%20a%20Ponto" target="_blank" class="p-3.5 rounded-lg bg-[#0d121f] hover:bg-slate-800/80 border border-slate-800 transition flex justify-between items-center group">
+          <a href="https://wa.me/5500000000000?text=Ola!%20Duvida%20sobre%20o%20Ponto%20a%20Ponto" target="_blank" class="p-4 rounded-xl bg-slate-50 hover:bg-teal-50/50 border border-slate-200 hover:border-teal-300 transition flex justify-between items-center group">
             <div>
-              <span class="text-[10px] font-mono text-sky-400 block uppercase">Mensagem Direta</span>
-              <span class="text-xs font-bold text-slate-200">Atendimento via WhatsApp</span>
+              <span class="text-[10px] font-mono font-bold text-teal-700 block uppercase">Mensagem Direta</span>
+              <span class="text-xs font-bold text-slate-800 group-hover:text-teal-900">Atendimento via WhatsApp</span>
             </div>
-            <span class="text-[11px] font-mono text-slate-400 border border-slate-700 bg-[#080c14] px-2 py-1 rounded">[Abrir]</span>
+            <span class="text-[11px] font-mono text-slate-500 border border-slate-200 bg-white px-2 py-1 rounded-md">[Abrir Chat]</span>
           </a>
 
-          <a href="mailto:contato.pontoaponto@exemplo.com" class="p-3.5 rounded-lg bg-[#0d121f] hover:bg-slate-800/80 border border-slate-800 transition flex justify-between items-center group">
+          <a href="mailto:contato.pontoaponto@exemplo.com" class="p-4 rounded-xl bg-slate-50 hover:bg-teal-50/50 border border-slate-200 hover:border-teal-300 transition flex justify-between items-center group">
             <div>
-              <span class="text-[10px] font-mono text-indigo-400 block uppercase">E-mail</span>
-              <span class="text-xs font-bold text-slate-200">Envio de Mensagem por E-mail</span>
+              <span class="text-[10px] font-mono font-bold text-teal-700 block uppercase">Correio Eletrônico</span>
+              <span class="text-xs font-bold text-slate-800 group-hover:text-teal-900">Enviar E-mail de Suporte</span>
             </div>
-            <span class="text-[11px] font-mono text-slate-400 border border-slate-700 bg-[#080c14] px-2 py-1 rounded">[Enviar]</span>
+            <span class="text-[11px] font-mono text-slate-500 border border-slate-200 bg-white px-2 py-1 rounded-md">[Enviar]</span>
           </a>
         </div>
       </div>
@@ -425,18 +423,20 @@
 
   </main>
 
-  <!-- RODAPÉ -->
-  <footer class="bg-[#0b101d] border-t border-slate-800/80 py-5 text-center text-xs text-slate-500 font-mono mt-auto">
-    <p>ponto a ponto — redes, infraestrutura e metodologias de ti</p>
+  <!-- RODAPÉ EDITORIAL -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 font-mono mt-auto">
+    <p>PONTO A PONTO — REDES, INFRAESTRUTURA E METODOLOGIAS DE TI</p>
+    <p class="mt-1 text-[11px] text-slate-400">Licença MIT — Código Aberto para Fins Educacionais</p>
   </footer>
 
-  <!-- LÓGICA JAVASCRIPT -->
+  <!-- LÓGICA JAVASCRIPT PRINCIPAL -->
   <script>
+    // TROCA DE ABAS
     function trocarAba(abaId) {
       document.querySelectorAll('.aba-conteudo').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.aba-btn').forEach(btn => {
-        btn.classList.remove('bg-slate-800', 'text-white', 'font-semibold', 'border', 'border-slate-700');
-        btn.classList.add('text-slate-400', 'hover:text-slate-200', 'hover:bg-slate-800/50');
+        btn.classList.remove('bg-white', 'text-teal-800', 'shadow-sm', 'border', 'border-slate-200');
+        btn.classList.add('text-slate-600', 'hover:text-slate-900', 'hover:bg-white/60');
       });
 
       const abaAlvo = document.getElementById(`aba-${abaId}`);
@@ -444,11 +444,12 @@
 
       if (abaAlvo) abaAlvo.classList.remove('hidden');
       if (btnAlvo) {
-        btnAlvo.classList.add('bg-slate-800', 'text-white', 'font-semibold', 'border', 'border-slate-700');
-        btnAlvo.classList.remove('text-slate-400', 'hover:text-slate-200', 'hover:bg-slate-800/50');
+        btnAlvo.classList.add('bg-white', 'text-teal-800', 'shadow-sm', 'border', 'border-slate-200');
+        btnAlvo.classList.remove('text-slate-600', 'hover:text-slate-900', 'hover:bg-white/60');
       }
     }
 
+    // DIAGNÓSTICO IP
     async function obterIPCliente() {
       const elIP = document.getElementById('ip-publico');
       const elISP = document.getElementById('ip-isp');
@@ -483,6 +484,7 @@
       }
     }
 
+    // CALCULADORA CIDR
     function ipParaInt(ip) { return ip.split('.').reduce((acc, oct) => (acc << 8) + parseInt(oct, 10), 0) >>> 0; }
     function intParaIP(int) { return [(int >>> 24) & 255, (int >>> 16) & 255, (int >>> 8) & 255, int & 255].join('.'); }
 
@@ -516,6 +518,7 @@
       document.getElementById('res-binario').innerHTML = binHTML;
     }
 
+    // FILTRO TABELA PORTAS
     function filtrarTabelaPortas() {
       const input = document.getElementById('filtro-portas').value.toLowerCase();
       const trs = document.querySelectorAll('#tabela-portas tbody tr');
@@ -524,6 +527,7 @@
       });
     }
 
+    // TERMINAL CLI
     function injetarComandoCLI(cmd) {
       document.getElementById('cli-input').value = cmd;
       processarComandoCLI({ key: 'Enter' });
@@ -546,7 +550,7 @@
 
       switch (cmd) {
         case 'help':
-          resp = "Comandos simulados: ping [host], traceroute [host], nslookup [dominio], ipconfig, clear";
+          resp = "Comandos: ping [host], traceroute [host], nslookup [dominio], ipconfig, clear";
           break;
         case 'ping':
           resp = `PING ${target}: 64 bytes icmp_seq=1 ttl=117 tempo=12.4 ms\n3 pacotes transmitidos, 0% de perda.`;
@@ -569,10 +573,11 @@
           resp = `Comando '${cmd}' não reconhecido. Digite 'help'.`;
       }
 
-      output.innerHTML += `<div class="p-2.5 bg-[#080c14] rounded border border-slate-800 text-slate-300 my-1">${resp}</div>`;
+      output.innerHTML += `<div class="p-2.5 bg-slate-950 rounded border border-slate-800 text-slate-300 my-1">${resp}</div>`;
       output.scrollTop = output.scrollHeight;
     }
 
+    // PYTHON LAB
     const scriptsExemplo = {
       socket: `import socket\n\ndef testar_conexao(host, porta):\n    print(f"Testando {host}:{porta}...")\n    s = socket.socket()\n    s.settimeout(2)\n    res = s.connect_ex((host, porta))\n    s.close()\n    print("Porta ABERTA" if res == 0 else "Porta FECHADA")\n\ntestar_conexao("8.8.8.8", 53)`,
       ipaddress: `import ipaddress\n\nrede = ipaddress.ip_network("192.168.1.0/26")\nprint(f"Rede: {rede.network_address}")\nprint(f"Broadcast: {rede.broadcast_address}")\nprint(f"Hosts Úteis: {rede.num_addresses - 2}")`
@@ -598,6 +603,7 @@
       }
     }
 
+    // SIMULADO
     const questoes = [
       {
         banca: "Cebraspe",
@@ -622,16 +628,16 @@
       c.innerHTML = '';
       questoes.forEach((q, i) => {
         c.innerHTML += `
-          <div class="p-4 rounded-lg bg-[#0d121f] border border-slate-800/80 space-y-3">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
             <div class="flex justify-between items-center text-xs font-mono">
-              <span class="px-2 py-0.5 bg-slate-800 text-sky-400 font-bold rounded">${q.banca}</span>
+              <span class="px-2 py-0.5 bg-teal-100 text-teal-800 font-bold rounded">${q.banca}</span>
               <span class="text-slate-500">${q.assunto}</span>
             </div>
-            <p class="text-xs font-medium text-slate-200">${q.enunciado}</p>
+            <p class="text-xs font-semibold text-slate-800">${q.enunciado}</p>
             <div class="space-y-1.5">${q.opcoes.map((o, idx) => `
-              <button onclick="responderQuiz(${i}, ${idx})" class="w-full text-left p-2 bg-[#080c14] hover:bg-slate-800 text-xs font-mono border border-slate-800 rounded transition">${o}</button>
+              <button onclick="responderQuiz(${i}, ${idx})" class="w-full text-left p-2.5 bg-white hover:bg-slate-100 text-xs font-mono border border-slate-200 rounded-lg transition">${o}</button>
             `).join('')}</div>
-            <div id="q-exp-${i}" class="hidden p-3 bg-[#080c14] rounded border border-slate-800 text-xs font-mono text-slate-300"></div>
+            <div id="q-exp-${i}" class="hidden p-3 bg-white rounded-lg border border-slate-200 text-xs font-mono text-slate-700"></div>
           </div>
         `;
       });
@@ -644,6 +650,7 @@
       exp.innerText = q.exp;
     }
 
+    // INICIALIZAÇÃO
     window.addEventListener('DOMContentLoaded', () => {
       obterIPCliente();
       executarCalculoCIDR();
