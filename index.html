@@ -196,6 +196,11 @@
             </div>
             <button onclick="executarCalculoCIDR()" class="w-full py-2.5 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition shadow-sm">Calcular Sub-rede</button>
 
+            <!-- BOTÃO COPIAR PARA NOTION / OBSIDIAN / ANKI -->
+            <button onclick="copiarCidrMarkdown()" id="btn-copiar-cidr" class="w-full py-2 bg-slate-900 hover:bg-slate-800 text-teal-300 font-mono text-xs rounded-lg transition flex items-center justify-center gap-2 border border-slate-700 shadow-sm">
+              📋 Copiar para Notion / Obsidian / Anki
+            </button>
+
             <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1">
               <span class="font-bold text-slate-900 block mb-1">Legenda dos Bits:</span>
               <p><span class="bit-net">Bits Verdes/Teal</span>: Sub-rede (fixados pela máscara)</p>
@@ -390,11 +395,12 @@
             <h2 class="text-xl font-serif font-bold text-slate-900">Simulador de Terminal CLI de Redes</h2>
             <p class="text-xs text-slate-500">Execução de comandos de diagnóstico no estilo terminal Linux e Windows.</p>
           </div>
-          <div class="flex gap-2">
+          <div class="flex flex-wrap gap-2 items-center">
             <button onclick="injetarComandoCLI('ping 8.8.8.8')" class="px-2.5 py-1 text-[11px] font-mono bg-slate-100 hover:bg-slate-200 text-slate-700 rounded transition">ping</button>
             <button onclick="injetarComandoCLI('traceroute 8.8.8.8')" class="px-2.5 py-1 text-[11px] font-mono bg-slate-100 hover:bg-slate-200 text-slate-700 rounded transition">traceroute</button>
             <button onclick="injetarComandoCLI('nslookup google.com')" class="px-2.5 py-1 text-[11px] font-mono bg-slate-100 hover:bg-slate-200 text-slate-700 rounded transition">nslookup</button>
             <button onclick="injetarComandoCLI('ipconfig')" class="px-2.5 py-1 text-[11px] font-mono bg-slate-100 hover:bg-slate-200 text-slate-700 rounded transition">ipconfig</button>
+            <button onclick="copiarCliMarkdown()" id="btn-copiar-cli" class="px-2.5 py-1 text-[11px] font-mono bg-slate-900 text-teal-300 hover:bg-slate-800 rounded transition font-bold">📋 Copiar Saída (Markdown)</button>
           </div>
         </div>
 
@@ -569,7 +575,7 @@
       elLocal.innerText = "Consultando...";
       elASN.innerText = "Consultando...";
 
-      // TENTATIVA 1: freeipapi.com (Livre de AdBlockers / CORS Liberado)
+      // TENTATIVA 1: freeipapi.com
       try {
         const resp = await fetch('https://freeipapi.com/api/json');
         if (resp.ok) {
@@ -643,7 +649,6 @@
       res.classList.remove('hidden');
       res.innerText = "Consultando...";
 
-      // Detecta se é um IP Privado/Local (RFC 1918) ou Loopback
       if (/^(192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[01])\.|127\.)/.test(q)) {
         res.innerHTML = `
           <div class="text-amber-800">
@@ -654,7 +659,6 @@
         return;
       }
 
-      // BANCO DE DADOS LOCAL DE EMERGÊNCIA (Bypass imediato de AdBlockers/Erros de Rede)
       const baseLocal = {
         "8.8.8.8": "<strong>IP:</strong> 8.8.8.8 | <strong>Provedor:</strong> Google LLC (DNS Público) | <strong>Local:</strong> Mountain View, Estados Unidos",
         "1.1.1.1": "<strong>IP:</strong> 1.1.1.1 | <strong>Provedor:</strong> Cloudflare, Inc. (DNS Público) | <strong>Local:</strong> San Francisco, Estados Unidos",
@@ -663,7 +667,6 @@
         "cloudflare.com": "<strong>IP:</strong> 104.16.132.229 | <strong>Provedor:</strong> Cloudflare, Inc. | <strong>Local:</strong> San Francisco, Estados Unidos"
       };
 
-      // TENTATIVA 1: freeipapi.com
       try {
         const resp = await fetch(`https://freeipapi.com/api/json/${q}`);
         if (resp.ok) {
@@ -675,7 +678,6 @@
         }
       } catch (err) {}
 
-      // TENTATIVA 2: ipinfo.io
       try {
         const resp = await fetch(`https://ipinfo.io/${q}/json`);
         if (resp.ok) {
@@ -687,7 +689,6 @@
         }
       } catch (err) {}
 
-      // TENTATIVA 3: ipwho.is
       try {
         const resp = await fetch(`https://ipwho.is/${q}`);
         if (resp.ok) {
@@ -699,7 +700,6 @@
         }
       } catch (err) {}
 
-      // SE TODAS AS APIS FOREM BLOQUEADAS PELO ADBLOCKER, USA A BASE LOCAL
       if (baseLocal[q]) {
         res.innerHTML = baseLocal[q];
         return;
@@ -739,6 +739,60 @@
         binHTML += `<span class="${i < maskLen ? 'bit-net' : 'bit-host'}">${binStr[i]}</span>`;
       }
       document.getElementById('res-binario').innerHTML = binHTML;
+    }
+
+    // EXPORTAÇÃO MARKDOWN PARA NOTION / OBSIDIAN / ANKI
+    function copiarCidrMarkdown() {
+      const ip = document.getElementById('cidr-ip').value.trim();
+      const mask = document.getElementById('cidr-mask').value;
+      const rede = document.getElementById('res-rede').innerText;
+      const mascara = document.getElementById('res-mascara').innerText;
+      const broadcast = document.getElementById('res-broadcast').innerText;
+      const totalHosts = document.getElementById('res-total-hosts').innerText;
+      const hostsUteis = document.getElementById('res-hosts-uteis').innerText;
+      const pHost = document.getElementById('res-primeiro-host').innerText;
+      const uHost = document.getElementById('res-ultimo-host').innerText;
+      const classe = document.getElementById('res-classe').innerText;
+      const binTemp = document.getElementById('res-binario').innerText;
+
+      const mdText = `### 📡 Cálculo CIDR: ${ip}/${mask}
+
+- **Endereço de Rede:** \`${rede}\`
+- **Máscara Decimal:** \`${mascara}\`
+- **Broadcast:** \`${broadcast}\`
+- **Hosts Úteis:** \`${hostsUteis}\` (Total de IPs: ${totalHosts})
+- **Intervalo Útil:** \`${pHost}\` até \`${uHost}\`
+- **Classe IPv4:** ${classe}
+- **Representação Binária:** \`${binTemp}\`
+
+*Fonte: [Ponto a Ponto](https://gabrielladeirameireles.github.io/PontoAPonto/)*`;
+
+      navigator.clipboard.writeText(mdText).then(() => {
+        const btn = document.getElementById('btn-copiar-cidr');
+        const txtOriginal = btn.innerText;
+        btn.innerText = "✅ Copiado em Markdown!";
+        btn.classList.add('text-emerald-400');
+        setTimeout(() => {
+          btn.innerText = txtOriginal;
+          btn.classList.remove('text-emerald-400');
+        }, 2000);
+      }).catch(() => alert('Erro ao copiar para a área de transferência.'));
+    }
+
+    function copiarCliMarkdown() {
+      const outputEl = document.getElementById('cli-output');
+      if (!outputEl) return;
+      const textoLimpo = outputEl.innerText;
+      const mdText = `\`\`\`bash\n# Saída do Terminal CLI - Ponto a Ponto\n${textoLimpo}\n\`\`\``;
+
+      navigator.clipboard.writeText(mdText).then(() => {
+        const btn = document.getElementById('btn-copiar-cli');
+        if (btn) {
+          const txtOriginal = btn.innerText;
+          btn.innerText = "✅ Copiado!";
+          setTimeout(() => { btn.innerText = txtOriginal; }, 2000);
+        }
+      }).catch(() => alert('Erro ao copiar terminal.'));
     }
 
     // TREINO DE SUB-REDES
