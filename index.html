@@ -4,19 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ponto a Ponto — Infraestrutura, Redes e Metodologias de TI</title>
-  
-  <!-- Tailwind CSS CDN -->
+
+  <!-- META TAGS DE SEO PADRÃO -->
+  <meta name="description" content="Plataforma interativa de estudos de infraestrutura de redes, diagnóstico de IP, calculadora CIDR, treino de sub-redes, terminal CLI, laboratório Python e simulado para concursos públicos.">
+  <meta name="keywords" content="redes de computadores, sub-redes, CIDR, modelo OSI, TCP/IP, concursos de TI, Cebraspe, FGV, Scrum, Kanban, Python socket, ipaddress">
+  <meta name="author" content="Gabriella Deira Meireles">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0D9488">
+  <link rel="canonical" href="https://gabrielladeirameireles.github.io/PontoAPonto/">
+
+  <!-- META TAGS OPEN GRAPH (LINKEDIN, WHATSAPP, FACEBOOK, SLACK) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gabrielladeirameireles.github.io/PontoAPonto/">
+  <meta property="og:title" content="Ponto a Ponto — Infraestrutura, Redes e Metodologias de TI">
+  <meta property="og:description" content="Ferramentas práticas de diagnóstico de conexão, calculadora CIDR, treino de sub-redes, terminal CLI e simulado com banco de questões comentadas.">
+  <meta property="og:image" content="https://gabrielladeirameireles.github.io/PontoAPonto/assets/images/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Ponto a Ponto">
+  <meta property="og:locale" content="pt_BR">
+
+  <!-- META TAGS TWITTER CARDS -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://gabrielladeirameireles.github.io/PontoAPonto/">
+  <meta name="twitter:title" content="Ponto a Ponto — Infraestrutura, Redes e Metodologias de TI">
+  <meta name="twitter:description" content="Ferramentas práticas de diagnóstico de conexão, calculadora CIDR, treino de sub-redes, terminal CLI e simulado com banco de questões comentadas.">
+  <meta name="twitter:image" content="https://gabrielladeirameireles.github.io/PontoAPonto/assets/images/og-preview.png">
+
+  <!-- TAILWIND CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Fontes Google: Lora (Títulos Acolhedores), Inter (Corpo Acessível) e JetBrains Mono (Código) -->
+  <!-- FONTES GOOGLE: LORA, INTER E JETBRAINS MONO -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
-  <!-- Pyodide (Python WebAssembly) -->
+  <!-- PYODIDE (PYTHON WEBASSEMBLY) -->
   <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
   
-  <!-- Estilos Customizados Externos -->
+  <!-- ESTILOS CUSTOMIZADOS -->
   <link rel="stylesheet" href="assets/css/style.css">
 
   <script>
@@ -785,7 +811,6 @@
       }
     }
 
-    // CARREGAMENTO DINÂMICO DE QUESTÕES VIA JSON
     let bancoQuestoes = [];
 
     async function carregarBancoQuestoes() {
@@ -924,7 +949,6 @@
       }
     }
 
-    // INICIALIZAÇÃO
     window.addEventListener('DOMContentLoaded', () => {
       obterIPCliente();
       executarCalculoCIDR();
