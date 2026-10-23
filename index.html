@@ -83,7 +83,7 @@
         Infraestrutura de Redes, Diagnóstico e Metodologias de TI
       </h1>
       <p class="mt-3 text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed">
-        Ferramentas práticas para análise de conexão, simulador de calculadora de sub-redes CIDR, comandos de terminal e fichamentos fundamentados para provas.
+        Ferramentas práticas para análise de conexão, calculadora CIDR, treino de cálculo de sub-redes, comandos de terminal e fichamentos de estudo.
       </p>
     </div>
   </section>
@@ -94,6 +94,7 @@
       <nav class="flex space-x-1 overflow-x-auto py-2.5 text-xs sm:text-sm font-medium no-scrollbar" id="nav-abas">
         <button onclick="trocarAba('diagnostico')" id="btn-diagnostico" class="aba-btn px-4 py-2 rounded-lg transition bg-white text-teal-800 font-semibold shadow-sm border border-slate-200 whitespace-nowrap">Diagnóstico IP</button>
         <button onclick="trocarAba('calculadora')" id="btn-calculadora" class="aba-btn px-4 py-2 rounded-lg transition text-slate-600 hover:text-slate-900 hover:bg-white/60 whitespace-nowrap">Calculadora CIDR</button>
+        <button onclick="trocarAba('treino-subrede')" id="btn-treino-subrede" class="aba-btn px-4 py-2 rounded-lg transition text-slate-600 hover:text-slate-900 hover:bg-white/60 whitespace-nowrap">Treino de Sub-redes</button>
         <button onclick="trocarAba('redes-teoria')" id="btn-redes-teoria" class="aba-btn px-4 py-2 rounded-lg transition text-slate-600 hover:text-slate-900 hover:bg-white/60 whitespace-nowrap">Redes & Portas</button>
         <button onclick="trocarAba('metodologias')" id="btn-metodologias" class="aba-btn px-4 py-2 rounded-lg transition text-slate-600 hover:text-slate-900 hover:bg-white/60 whitespace-nowrap">Metodologias TI</button>
         <button onclick="trocarAba('terminal-cli')" id="btn-terminal-cli" class="aba-btn px-4 py-2 rounded-lg transition text-slate-600 hover:text-slate-900 hover:bg-white/60 whitespace-nowrap">Terminal CLI</button>
@@ -199,7 +200,52 @@
       </div>
     </section>
 
-    <!-- 3. REDES & PORTAS -->
+    <!-- 3. MÓDULO NOVO: TREINO DE SUB-REDES -->
+    <section id="aba-treino-subrede" class="aba-conteudo hidden space-y-6">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+          <div>
+            <h2 class="text-xl font-serif font-bold text-slate-900">Modo Treino Interativo de Sub-redes</h2>
+            <p class="text-xs text-slate-500">Pratique cálculos rápidos de bloco, broadcast e hosts para provas de concursos.</p>
+          </div>
+          <div class="flex items-center gap-3 text-xs font-mono bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg">
+            <span>Acertos: <strong id="treino-placar-acertos" class="text-teal-700">0</strong>/<span id="treino-placar-total">0</span></span>
+            <span class="text-slate-300">|</span>
+            <span>Sequência: <strong id="treino-placar-sequencia" class="text-emerald-700">0</strong></span>
+          </div>
+        </div>
+
+        <div class="max-w-xl mx-auto py-4 space-y-6">
+          <div class="p-6 bg-slate-50 border border-slate-200 rounded-xl text-center space-y-3">
+            <span class="text-[11px] font-mono text-slate-500 uppercase tracking-wider block">Endereço IP / CIDR Gerado:</span>
+            <div id="treino-ip-cidr" class="text-2xl sm:text-3xl font-mono font-bold text-teal-800 tracking-wide">
+              Gerando...
+            </div>
+            <p id="treino-pergunta" class="text-sm font-semibold text-slate-800 pt-2 border-t border-slate-200/80">
+              Aguardando início do desafio...
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            <label class="block text-xs font-medium text-slate-700">Sua Resposta:</label>
+            <div class="flex gap-2">
+              <input type="text" id="treino-input" placeholder="Ex: 192.168.1.0 ou 255.255.255.192 ou 62" class="flex-1 bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2 text-xs font-mono text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500">
+              <button id="treino-btn-verificar" onclick="verificarRespostaTreino()" class="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition shadow-sm">Verificar</button>
+            </div>
+          </div>
+
+          <div id="treino-feedback" class="hidden"></div>
+
+          <div class="pt-2 text-center">
+            <button onclick="gerarDesafioSubrede()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-mono text-xs rounded-lg border border-slate-300 transition">
+              Próximo Desafio
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. REDES & PORTAS -->
     <section id="aba-redes-teoria" class="aba-conteudo hidden space-y-6">
       <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
         <div class="pb-4 border-b border-slate-100">
@@ -262,7 +308,7 @@
       </div>
     </section>
 
-    <!-- 4. METODOLOGIAS DE TI -->
+    <!-- 5. METODOLOGIAS DE TI -->
     <section id="aba-metodologias" class="aba-conteudo hidden space-y-6">
       <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
         <div class="pb-4 border-b border-slate-100">
@@ -310,7 +356,7 @@
       </div>
     </section>
 
-    <!-- 5. TERMINAL CLI -->
+    <!-- 6. TERMINAL CLI -->
     <section id="aba-terminal-cli" class="aba-conteudo hidden space-y-6">
       <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
         <div class="pb-4 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -345,7 +391,7 @@
       </div>
     </section>
 
-    <!-- 6. PYTHON LAB -->
+    <!-- 7. PYTHON LAB -->
     <section id="aba-lab-python" class="aba-conteudo hidden space-y-6">
       <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
         <div class="pb-4 border-b border-slate-100">
@@ -376,7 +422,7 @@
       </div>
     </section>
 
-    <!-- 7. SIMULADO -->
+    <!-- 8. SIMULADO -->
     <section id="aba-simulado" class="aba-conteudo hidden space-y-6">
       <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
         <div class="pb-4 border-b border-slate-100 flex items-center justify-between">
@@ -518,6 +564,113 @@
       document.getElementById('res-binario').innerHTML = binHTML;
     }
 
+    // MÓDULO TREINO DE SUB-REDES
+    let desafioAtual = null;
+    let pontuacaoTreino = { acertos: 0, total: 0, sequencia: 0 };
+
+    function gerarIpAleatorio() {
+      const oct1 = [10, 172, 192, 100][Math.floor(Math.random() * 4)];
+      let oct2 = Math.floor(Math.random() * 256);
+      if (oct1 === 192) oct2 = 168;
+      if (oct1 === 172) oct2 = 16 + Math.floor(Math.random() * 16);
+      const oct3 = Math.floor(Math.random() * 256);
+      const oct4 = Math.floor(Math.random() * 250) + 1;
+      return `${oct1}.${oct2}.${oct3}.${oct4}`;
+    }
+
+    function gerarDesafioSubrede() {
+      const ipStr = gerarIpAleatorio();
+      const mascaras = [24, 25, 26, 27, 28, 29, 30];
+      const cidr = mascaras[Math.floor(Math.random() * mascaras.length)];
+
+      const ipInt = ipParaInt(ipStr);
+      const maskInt = (0xFFFFFFFF << (32 - cidr)) >>> 0;
+      const redeInt = (ipInt & maskInt) >>> 0;
+      const broadcastInt = (redeInt | (~maskInt >>> 0)) >>> 0;
+      const totalHosts = Math.pow(2, 32 - cidr);
+      const hostsUteis = cidr >= 31 ? 0 : totalHosts - 2;
+
+      const tiposPergunta = [
+        { id: 'rede', pergunta: 'Qual é o Endereço de Rede desta sub-rede?', respostaCorreta: intParaIP(redeInt) },
+        { id: 'broadcast', pergunta: 'Qual é o Endereço de Broadcast desta sub-rede?', respostaCorreta: intParaIP(broadcastInt) },
+        { id: 'hosts', pergunta: 'Quantos Hosts Úteis existem nesta sub-rede?', respostaCorreta: hostsUteis.toString() },
+        { id: 'mascara', pergunta: 'Qual é a Máscara Decimal equivalente a esse CIDR?', respostaCorreta: intParaIP(maskInt) }
+      ];
+
+      const perguntaSelecionada = tiposPergunta[Math.floor(Math.random() * tiposPergunta.length)];
+
+      desafioAtual = {
+        ip: ipStr,
+        cidr: cidr,
+        perguntaObj: perguntaSelecionada,
+        redeStr: intParaIP(redeInt),
+        broadcastStr: intParaIP(broadcastInt),
+        mascaraStr: intParaIP(maskInt),
+        hostsUteis: hostsUteis,
+        respondido: false
+      };
+
+      document.getElementById('treino-ip-cidr').innerText = `${desafioAtual.ip} /${desafioAtual.cidr}`;
+      document.getElementById('treino-pergunta').innerText = desafioAtual.perguntaObj.pergunta;
+      const inputEl = document.getElementById('treino-input');
+      inputEl.value = '';
+      inputEl.disabled = false;
+      document.getElementById('treino-btn-verificar').disabled = false;
+
+      const feedbackEl = document.getElementById('treino-feedback');
+      feedbackEl.classList.add('hidden');
+      feedbackEl.innerHTML = '';
+    }
+
+    function verificarRespostaTreino() {
+      if (!desafioAtual || desafioAtual.respondido) return;
+
+      const inputEl = document.getElementById('treino-input');
+      const respUsuario = inputEl.value.trim().toLowerCase();
+      const respCorreta = desafioAtual.perguntaObj.respostaCorreta.toLowerCase();
+
+      if (!respUsuario) return;
+
+      desafioAtual.respondido = true;
+      pontuacaoTreino.total++;
+      inputEl.disabled = true;
+      document.getElementById('treino-btn-verificar').disabled = true;
+
+      const feedbackEl = document.getElementById('treino-feedback');
+      feedbackEl.classList.remove('hidden');
+
+      const acertou = (respUsuario === respCorreta);
+
+      if (acertou) {
+        pontuacaoTreino.acertos++;
+        pontuacaoTreino.sequencia++;
+        feedbackEl.innerHTML = `
+          <div class="p-4 rounded-xl bg-teal-50 border border-teal-200 text-teal-900 space-y-1">
+            <span class="font-bold text-xs uppercase tracking-wider text-teal-800">Resposta Correta!</span>
+            <p class="text-xs">Exatamente: <strong>${desafioAtual.perguntaObj.respostaCorreta}</strong>.</p>
+          </div>
+        `;
+      } else {
+        pontuacaoTreino.sequencia = 0;
+        feedbackEl.innerHTML = `
+          <div class="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-900 space-y-2">
+            <span class="font-bold text-xs uppercase tracking-wider text-rose-800">Resposta Incorreta</span>
+            <p class="text-xs">Sua resposta: <code>${respUsuario}</code>. Resposta correta: <strong>${desafioAtual.perguntaObj.respostaCorreta}</strong>.</p>
+            <div class="pt-2 border-t border-rose-200 text-[11px] font-mono text-slate-700 space-y-0.5">
+              <p>• Endereço de Rede: ${desafioAtual.redeStr}</p>
+              <p>• Máscara Decimal: ${desafioAtual.mascaraStr}</p>
+              <p>• Broadcast: ${desafioAtual.broadcastStr}</p>
+              <p>• Hosts Úteis: ${desafioAtual.hostsUteis}</p>
+            </div>
+          </div>
+        `;
+      }
+
+      document.getElementById('treino-placar-acertos').innerText = pontuacaoTreino.acertos;
+      document.getElementById('treino-placar-total').innerText = pontuacaoTreino.total;
+      document.getElementById('treino-placar-sequencia').innerText = pontuacaoTreino.sequencia;
+    }
+
     // FILTRO TABELA PORTAS
     function filtrarTabelaPortas() {
       const input = document.getElementById('filtro-portas').value.toLowerCase();
@@ -654,6 +807,7 @@
     window.addEventListener('DOMContentLoaded', () => {
       obterIPCliente();
       executarCalculoCIDR();
+      gerarDesafioSubrede();
       carregarScriptExemplo();
       renderizarQuiz();
     });
