@@ -422,13 +422,13 @@
       </div>
     </section>
 
-    <!-- 8. SIMULADO COM FILTROS E PERSISTÊNCIA -->
+    <!-- 8. SIMULADO VIA JSON -->
     <section id="aba-simulado" class="aba-conteudo hidden space-y-6">
       <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
         <div class="pb-4 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h2 class="text-xl font-serif font-bold text-slate-900">Simulado para Concursos de TI</h2>
-            <p class="text-xs text-slate-500">Questões filtráveis com gabarito e histórico salvo no navegador.</p>
+            <p class="text-xs text-slate-500">Questões carregadas via arquivo JSON com gabarito e histórico salvo.</p>
           </div>
           
           <div class="flex flex-wrap items-center gap-2">
@@ -441,10 +441,10 @@
           </div>
         </div>
 
-        <!-- FILTROS DE SIMULADO -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+        <!-- FILTROS E BUSCA -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
           <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Filtrar por Banca Organizadora:</label>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Filtrar por Banca:</label>
             <select id="filtro-banca" onchange="renderizarQuiz()" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-800 focus:outline-none focus:ring-1 focus:ring-teal-500">
               <option value="todas">Todas as Bancas</option>
               <option value="Cebraspe">Cebraspe</option>
@@ -455,7 +455,7 @@
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Filtrar por Assunto Técnico:</label>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Filtrar por Assunto:</label>
             <select id="filtro-assunto" onchange="renderizarQuiz()" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-800 focus:outline-none focus:ring-1 focus:ring-teal-500">
               <option value="todos">Todos os Assuntos</option>
               <option value="Redes">Redes de Computadores</option>
@@ -463,10 +463,15 @@
               <option value="Python">Python para Redes</option>
             </select>
           </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Buscar Palavra-chave:</label>
+            <input type="text" id="filtro-busca-texto" onkeyup="renderizarQuiz()" placeholder="Ex: TCP, Scrum, WIP..." class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-800 focus:outline-none focus:ring-1 focus:ring-teal-500">
+          </div>
         </div>
 
         <div id="quiz-container" class="space-y-5 mt-4">
-          <!-- Injetado por JS -->
+          <!-- Injetado dinamicamente do JSON -->
         </div>
       </div>
     </section>
@@ -507,7 +512,6 @@
 
   <!-- LÓGICA JAVASCRIPT PRINCIPAL -->
   <script>
-    // TROCA DE ABAS
     function trocarAba(abaId) {
       document.querySelectorAll('.aba-conteudo').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.aba-btn').forEach(btn => {
@@ -525,7 +529,6 @@
       }
     }
 
-    // DIAGNÓSTICO IP
     async function obterIPCliente() {
       const elIP = document.getElementById('ip-publico');
       const elISP = document.getElementById('ip-isp');
@@ -560,7 +563,6 @@
       }
     }
 
-    // CALCULADORA CIDR
     function ipParaInt(ip) { return ip.split('.').reduce((acc, oct) => (acc << 8) + parseInt(oct, 10), 0) >>> 0; }
     function intParaIP(int) { return [(int >>> 24) & 255, (int >>> 16) & 255, (int >>> 8) & 255, int & 255].join('.'); }
 
@@ -701,7 +703,6 @@
       document.getElementById('treino-placar-sequencia').innerText = pontuacaoTreino.sequencia;
     }
 
-    // FILTRO TABELA PORTAS
     function filtrarTabelaPortas() {
       const input = document.getElementById('filtro-portas').value.toLowerCase();
       const trs = document.querySelectorAll('#tabela-portas tbody tr');
@@ -710,7 +711,6 @@
       });
     }
 
-    // TERMINAL CLI
     function injetarComandoCLI(cmd) {
       document.getElementById('cli-input').value = cmd;
       processarComandoCLI({ key: 'Enter' });
@@ -760,7 +760,6 @@
       output.scrollTop = output.scrollHeight;
     }
 
-    // PYTHON LAB
     const scriptsExemplo = {
       socket: `import socket\n\ndef testar_conexao(host, porta):\n    print(f"Testando {host}:{porta}...")\n    s = socket.socket()\n    s.settimeout(2)\n    res = s.connect_ex((host, porta))\n    s.close()\n    print("Porta ABERTA" if res == 0 else "Porta FECHADA")\n\ntestar_conexao("8.8.8.8", 53)`,
       ipaddress: `import ipaddress\n\nrede = ipaddress.ip_network("192.168.1.0/26")\nprint(f"Rede: {rede.network_address}")\nprint(f"Broadcast: {rede.broadcast_address}")\nprint(f"Hosts Úteis: {rede.num_addresses - 2}")`
@@ -786,59 +785,39 @@
       }
     }
 
-    // SIMULADO COM BANCO EXPANDIDO, FILTROS E LOCALSTORAGE
-    const bancoQuestoes = [
-      {
-        id: 1,
-        banca: "Cebraspe",
-        assunto: "Metodologias",
-        enunciado: "No framework Scrum (Scrum Guide 2020), o Gerente de Projetos é o papel responsável por atribuir tarefas individualmente aos desenvolvedores na Sprint.",
-        opcoes: ["Certo", "Errado"],
-        correta: 1,
-        exp: "Gabarito: ERRADO. Não existe o papel de Gerente de Projetos no Scrum. A equipe é autogerenciada."
-      },
-      {
-        id: 2,
-        banca: "FGV",
-        assunto: "Redes",
-        enunciado: "Qual protocolo da camada de transporte garante a entrega confiável e ordenada de dados para conexões HTTPS (porta 443)?",
-        opcoes: ["UDP", "TCP", "ICMP", "IP"],
-        correta: 1,
-        exp: "Gabarito: TCP. O HTTPS exige o protocolo orientado a conexão TCP para handshake e confiabilidade."
-      },
-      {
-        id: 3,
-        banca: "Vunesp",
-        assunto: "Metodologias",
-        enunciado: "Qual é o objetivo principal de definir um Limite de Trabalho em Andamento (WIP Limit) em um quadro Kanban?",
-        opcoes: [
-          "Aumentar a quantidade de reuniões presenciais.",
-          "Evitar gargalos no fluxo de trabalho e diminuir a multitarefa.",
-          "Impor iterações de tempo fixo de 2 semanas.",
-          "Exigir a criação do papel de Scrum Master."
-        ],
-        correta: 1,
-        exp: "Gabarito: Evitar gargalos e diminuir a multitarefa. O WIP Limit otimiza o fluxo de entrega."
-      },
-      {
-        id: 4,
-        banca: "Cesgranrio",
-        assunto: "Python",
-        enunciado: "No módulo 'socket' do Python, qual método conecta a um endereço TCP retornando um código de erro numérico em vez de levantar uma exceção?",
-        opcoes: ["connect()", "connect_ex()", "bind()", "listen()"],
-        correta: 1,
-        exp: "Gabarito: connect_ex(). Ele retorna 0 no caso de sucesso e o código de erro em caso de falha, sendo ideal para scanners."
-      },
-      {
-        id: 5,
-        banca: "Cebraspe",
-        assunto: "Redes",
-        enunciado: "Em uma rede IPv4 com máscara /24, o endereço que possui todos os bits de host iguais a 1 (por exemplo, 192.168.1.255) corresponde ao endereço de broadcast.",
-        opcoes: ["Certo", "Errado"],
-        correta: 0,
-        exp: "Gabarito: CERTO. Todos os bits de host em 1 indicam o endereço de broadcast direcionado da sub-rede."
+    // CARREGAMENTO DINÂMICO DE QUESTÕES VIA JSON
+    let bancoQuestoes = [];
+
+    async function carregarBancoQuestoes() {
+      try {
+        const resp = await fetch('assets/data/questoes.json');
+        if (!resp.ok) throw new Error("Erro HTTP " + resp.status);
+        bancoQuestoes = await resp.json();
+      } catch (err) {
+        console.warn("Falha ao ler JSON local. Utilizando banco reserva embutido.");
+        bancoQuestoes = [
+          {
+            id: 1,
+            banca: "Cebraspe",
+            assunto: "Metodologias",
+            enunciado: "No framework Scrum, o Gerente de Projetos é o responsável por atribuir tarefas individualmente aos desenvolvedores na Sprint.",
+            opcoes: ["Certo", "Errado"],
+            correta: 1,
+            exp: "Gabarito: ERRADO. Não existe o papel de Gerente de Projetos no Scrum. A equipe é autogerenciada."
+          },
+          {
+            id: 2,
+            banca: "FGV",
+            assunto: "Redes",
+            enunciado: "Qual protocolo da camada de transporte garante a entrega confiável de dados para conexões HTTPS (porta 443)?",
+            opcoes: ["UDP", "TCP", "ICMP", "IP"],
+            correta: 1,
+            exp: "Gabarito: TCP. Garantia de entrega orientada à conexão."
+          }
+        ];
       }
-    ];
+      renderizarQuiz();
+    }
 
     function carregarHistoricoSimulado() {
       const salvo = localStorage.getItem('p2p_simulado_historico');
@@ -852,6 +831,7 @@
     function renderizarQuiz() {
       const bancaSel = document.getElementById('filtro-banca').value;
       const assuntoSel = document.getElementById('filtro-assunto').value;
+      const buscaTexto = document.getElementById('filtro-busca-texto').value.toLowerCase().trim();
       const container = document.getElementById('quiz-container');
       const historico = carregarHistoricoSimulado();
 
@@ -860,7 +840,8 @@
       const questoesFiltradas = bancoQuestoes.filter(q => {
         const passaBanca = (bancaSel === 'todas' || q.banca === bancaSel);
         const passaAssunto = (assuntoSel === 'todos' || q.assunto === assuntoSel);
-        return passaBanca && passaAssunto;
+        const passaTexto = !buscaTexto || q.enunciado.toLowerCase().includes(buscaTexto) || q.assunto.toLowerCase().includes(buscaTexto);
+        return passaBanca && passaAssunto && passaTexto;
       });
 
       if (questoesFiltradas.length === 0) {
@@ -949,7 +930,7 @@
       executarCalculoCIDR();
       gerarDesafioSubrede();
       carregarScriptExemplo();
-      renderizarQuiz();
+      carregarBancoQuestoes();
     });
   </script>
 </body>

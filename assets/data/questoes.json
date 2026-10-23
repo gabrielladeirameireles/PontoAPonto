@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "banca": "Cebraspe",
+    "assunto": "Metodologias",
+    "enunciado": "No framework Scrum (Scrum Guide 2020), o Gerente de Projetos é o papel responsável por atribuir tarefas individualmente aos desenvolvedores na Sprint.",
+    "opcoes": ["Certo", "Errado"],
+    "correta": 1,
+    "exp": "Gabarito: ERRADO. Não existe o papel de Gerente de Projetos no Scrum. Os papéis são Product Owner, Scrum Master e Developers. A equipe é autogerenciada."
+  },
+  {
+    "id": 2,
+    "banca": "FGV",
+    "assunto": "Redes",
+    "enunciado": "Qual protocolo da camada de transporte garante a entrega confiável e ordenada de dados para conexões HTTPS na porta padrão 443?",
+    "opcoes": ["UDP", "TCP", "ICMP", "IP"],
+    "correta": 1,
+    "exp": "Gabarito: TCP. O HTTPS utiliza a porta 443 e exige o protocolo orientado a conexão TCP para handshake e confiabilidade."
+  },
+  {
+    "id": 3,
+    "banca": "Vunesp",
+    "assunto": "Metodologias",
+    "enunciado": "Qual é o objetivo principal de definir um Limite de Trabalho em Andamento (WIP Limit) em um quadro Kanban?",
+    "opcoes": [
+      "Aumentar a quantidade de reuniões presenciais diárias.",
+      "Evitar gargalos no fluxo de trabalho e diminuir a multitarefa.",
+      "Impor iterações de tempo fixo obrigatórias de 2 semanas.",
+      "Exigir a contratação do papel de Scrum Master na equipe."
+    ],
+    "correta": 1,
+    "exp": "Gabarito: Evitar gargalos e diminuir a multitarefa. O WIP Limit limita a quantidade de itens por coluna otimizando o Lead Time."
+  },
+  {
+    "id": 4,
+    "banca": "Cesgranrio",
+    "assunto": "Python",
+    "enunciado": "No módulo 'socket' nativo do Python, qual método conecta a um endereço TCP retornando um código de erro numérico em vez de levantar uma exceção?",
+    "opcoes": ["connect()", "connect_ex()", "bind()", "listen()"],
+    "correta": 1,
+    "exp": "Gabarito: connect_ex(). Ele retorna 0 no caso de sucesso e o código de erro numérico em caso de falha, sendo muito utilizado em port scanners."
+  },
+  {
+    "id": 5,
+    "banca": "Cebraspe",
+    "assunto": "Redes",
+    "enunciado": "Em uma rede IPv4 com máscara /24, o endereço que possui todos os bits de host iguais a 1 (por exemplo, 192.168.1.255) corresponde ao endereço de broadcast.",
+    "opcoes": ["Certo", "Errado"],
+    "correta": 0,
+    "exp": "Gabarito: CERTO. Quando todos os bits de host estão em 1, o endereço representa o broadcast daquela sub-rede."
+  },
+  {
+    "id": 6,
+    "banca": "FGV",
+    "assunto": "Metodologias",
+    "enunciado": "No desenvolvimento ágil de software com TDD (Test-Driven Development), qual é a sequência correta das fases do ciclo de desenvolvimento?",
+    "opcoes": [
+      "Green -> Red -> Refactor",
+      "Red -> Green -> Refactor",
+      "Refactor -> Red -> Green",
+      "Code -> Test -> Deploy"
+    ],
+    "correta": 1,
+    "exp": "Gabarito: Red -> Green -> Refactor. 1º Escreve um teste que falha (Red); 2º Escreve código mínimo para o teste passar (Green); 3º Melhora a estrutura do código (Refactor)."
+  },
+  {
+    "id": 7,
+    "banca": "Cebraspe",
+    "assunto": "Redes",
+    "enunciado": "O protocolo UDP é um protocolo da camada de rede do modelo OSI que fornece controle de fluxo e retransmissão de pacotes perdidos.",
+    "opcoes": ["Certo", "Errado"],
+    "correta": 1,
+    "exp": "Gabarito: ERRADO. O UDP atua na camada de Transporte (não de Rede) e não fornece controle de fluxo nem retransmissão de pacotes."
+  },
+  {
+    "id": 8,
+    "banca": "Vunesp",
+    "assunto": "Python",
+    "enunciado": "Em Python, utilizando o módulo nativo 'ipaddress', qual classe é utilizada para instanciar e manipular uma rede IPv4 inteira com sua máscara?",
+    "opcoes": ["ipaddress.IPv4Address()", "ipaddress.ip_network()", "ipaddress.NetMask()", "ipaddress.CIDR()"],
+    "correta": 1,
+    "exp": "Gabarito: ipaddress.ip_network(). Função/classe responsável por parsear notações CIDR e representar o bloco de rede completo."
+  },
+  {
+    "id": 9,
+    "banca": "Cesgranrio",
+    "assunto": "Metodologias",
+    "enunciado": "A prática do Extreme Programming (XP) em que dois programadores trabalham juntos na mesma estação de trabalho, compartilhando teclado e monitor, é chamada de:",
+    "opcoes": ["Code Review", "Pair Programming", "Refactoring", "Continuous Integration"],
+    "correta": 1,
+    "exp": "Gabarito: Pair Programming (Programação em Par). Prática ágil central do XP para melhoria de qualidade e disseminação de conhecimento."
+  },
+  {
+    "id": 10,
+    "banca": "Cebraspe",
+    "assunto": "Redes",
+    "enunciado": "O protocolo SSH opera por padrão na porta TCP 22 e fornece comunicação criptografada para acesso remoto e transferência de arquivos.",
+    "opcoes": ["Certo", "Errado"],
+    "correta": 0,
+    "exp": "Gabarito: CERTO. SSH utiliza a porta TCP 22 e substitui protocolos não seguros como Telnet (porta 23)."
+  }
+]
