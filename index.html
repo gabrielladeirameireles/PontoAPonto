@@ -6,8 +6,8 @@
   <title>Ponto a Ponto — Infraestrutura, Redes e Metodologias de TI</title>
 
   <!-- META TAGS DE SEO PADRÃO -->
-  <meta name="description" content="Plataforma interativa de estudos de infraestrutura de redes, diagnóstico de IP, calculadora CIDR, treino de sub-redes, terminal CLI, laboratório Python e simulado para concursos públicos.">
-  <meta name="keywords" content="redes de computadores, sub-redes, CIDR, modelo OSI, TCP/IP, concursos de TI, Cebraspe, FGV, Scrum, Kanban, Python socket, ipaddress">
+  <meta name="description" content="Plataforma interativa de estudos de infraestrutura de redes, diagnóstico de IP, calculadora CIDR, treino de sub-redes, terminal CLI e simulado para concursos públicos.">
+  <meta name="keywords" content="redes de computadores, sub-redes, CIDR, modelo OSI, TCP/IP, concursos de TI, Cebraspe, FGV, Scrum, Kanban">
   <meta name="author" content="Gabriella Deira Meireles">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0D9488">
@@ -38,9 +38,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
-  <!-- PYODIDE (PYTHON WEBASSEMBLY) -->
-  <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
   
   <!-- ESTILOS CUSTOMIZADOS -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -124,7 +121,6 @@
         <button onclick="trocarAba('redes-teoria')" id="btn-redes-teoria" class="aba-btn px-4 py-2 rounded-lg transition text-slate-600 hover:text-slate-900 hover:bg-white/60 whitespace-nowrap">Redes & Portas</button>
         <button onclick="trocarAba('metodologias')" id="btn-metodologias" class="aba-btn px-4 py-2 rounded-lg transition text-slate-600 hover:text-slate-900 hover:bg-white/60 whitespace-nowrap">Metodologias TI</button>
         <button onclick="trocarAba('terminal-cli')" id="btn-terminal-cli" class="aba-btn px-4 py-2 rounded-lg transition text-slate-600 hover:text-slate-900 hover:bg-white/60 whitespace-nowrap">Terminal CLI</button>
-        <button onclick="trocarAba('lab-python')" id="btn-lab-python" class="aba-btn px-4 py-2 rounded-lg transition text-slate-600 hover:text-slate-900 hover:bg-white/60 whitespace-nowrap">Laboratório Python</button>
         <button onclick="trocarAba('simulado')" id="btn-simulado" class="aba-btn px-4 py-2 rounded-lg transition text-slate-600 hover:text-slate-900 hover:bg-white/60 whitespace-nowrap">Simulado</button>
       </nav>
     </div>
@@ -423,38 +419,7 @@
       </div>
     </section>
 
-    <!-- 7. PYTHON LAB -->
-    <section id="aba-lab-python" class="aba-conteudo hidden space-y-6">
-      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
-        <div class="pb-4 border-b border-slate-100">
-          <h2 class="text-xl font-serif font-bold text-slate-900">Laboratório Python para Redes (Pyodide / WASM)</h2>
-          <p class="text-xs text-slate-500">Execução nativa de código Python direto no navegador via WebAssembly.</p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <label class="text-xs font-semibold text-slate-700">Script em Python:</label>
-              <select id="select-python-script" onchange="carregarScriptExemplo()" class="bg-slate-50 border border-slate-300 rounded-md px-2.5 py-1 text-xs text-slate-700">
-                <option value="socket">Exemplo 1: Teste Socket TCP</option>
-                <option value="ipaddress">Exemplo 2: Módulo ipaddress</option>
-              </select>
-            </div>
-            <textarea id="py-editor" class="w-full h-56 bg-slate-900 text-emerald-400 font-mono text-xs p-3.5 rounded-xl border border-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500"></textarea>
-            <button onclick="executarPython()" class="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition shadow-sm">Executar Script Python</button>
-          </div>
-
-          <div class="space-y-3">
-            <label class="text-xs font-semibold text-slate-700">Console de Saída (STDOUT):</label>
-            <div id="py-output" class="h-56 bg-slate-900 text-slate-200 font-mono text-xs p-3.5 rounded-xl border border-slate-800 overflow-y-auto whitespace-pre-wrap">
-[STATUS: Aguardando execução do script...]
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 8. SIMULADO VIA JSON -->
+    <!-- 7. SIMULADO VIA JSON -->
     <section id="aba-simulado" class="aba-conteudo hidden space-y-6">
       <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
         <div class="pb-4 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -575,7 +540,6 @@
       elLocal.innerText = "Consultando...";
       elASN.innerText = "Consultando...";
 
-      // TENTATIVA 1: freeipapi.com
       try {
         const resp = await fetch('https://freeipapi.com/api/json');
         if (resp.ok) {
@@ -590,7 +554,6 @@
         }
       } catch (e) { console.warn("freeipapi indisponível, tentando ipinfo..."); }
 
-      // TENTATIVA 2: ipinfo.io
       try {
         const resp = await fetch('https://ipinfo.io/json');
         if (resp.ok) {
@@ -605,7 +568,6 @@
         }
       } catch (e) { console.warn("ipinfo indisponível, tentando ipwho..."); }
 
-      // TENTATIVA 3: ipwho.is
       try {
         const resp = await fetch('https://ipwho.is/');
         if (resp.ok) {
@@ -620,7 +582,6 @@
         }
       } catch (e) { console.warn("ipwho indisponível, tentando ipify..."); }
 
-      // TENTATIVA 4: ipify
       try {
         const resp = await fetch('https://api.ipify.org?format=json');
         if (resp.ok) {
@@ -959,31 +920,6 @@
       output.scrollTop = output.scrollHeight;
     }
 
-    const scriptsExemplo = {
-      socket: `import socket\n\ndef testar_conexao(host, porta):\n    print(f"Testando {host}:{porta}...")\n    s = socket.socket()\n    s.settimeout(2)\n    res = s.connect_ex((host, porta))\n    s.close()\n    print("Porta ABERTA" if res == 0 else "Porta FECHADA")\n\ntestar_conexao("8.8.8.8", 53)`,
-      ipaddress: `import ipaddress\n\nrede = ipaddress.ip_network("192.168.1.0/26")\nprint(f"Rede: {rede.network_address}")\nprint(f"Broadcast: {rede.broadcast_address}")\nprint(f"Hosts Úteis: {rede.num_addresses - 2}")`
-    };
-
-    function carregarScriptExemplo() {
-      const val = document.getElementById('select-python-script').value;
-      document.getElementById('py-editor').value = scriptsExemplo[val] || '';
-    }
-
-    let pyInstance = null;
-    async function executarPython() {
-      const out = document.getElementById('py-output');
-      const code = document.getElementById('py-editor').value;
-      out.innerText = "[Executando script Python...]\n";
-
-      try {
-        if (!pyInstance) pyInstance = await loadPyodide();
-        pyInstance.setStdout({ write: (s) => out.innerText += s });
-        await pyInstance.runPythonAsync(code);
-      } catch (e) {
-        out.innerText += `\n[Erro]: ${e}`;
-      }
-    }
-
     let bancoQuestoes = [];
 
     async function carregarBancoQuestoes() {
@@ -1126,7 +1062,6 @@
       obterIPCliente();
       executarCalculoCIDR();
       gerarDesafioSubrede();
-      carregarScriptExemplo();
       carregarBancoQuestoes();
     });
   </script>
