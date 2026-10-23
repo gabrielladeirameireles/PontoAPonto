@@ -200,7 +200,7 @@
       </div>
     </section>
 
-    <!-- 3. MÓDULO NOVO: TREINO DE SUB-REDES -->
+    <!-- 3. TREINO DE SUB-REDES -->
     <section id="aba-treino-subrede" class="aba-conteudo hidden space-y-6">
       <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
@@ -422,20 +422,50 @@
       </div>
     </section>
 
-    <!-- 8. SIMULADO -->
+    <!-- 8. SIMULADO COM FILTROS E PERSISTÊNCIA -->
     <section id="aba-simulado" class="aba-conteudo hidden space-y-6">
       <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
-        <div class="pb-4 border-b border-slate-100 flex items-center justify-between">
+        <div class="pb-4 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h2 class="text-xl font-serif font-bold text-slate-900">Simulado para Concursos de TI</h2>
-            <p class="text-xs text-slate-500">Questões comentadas com gabarito fundamentado.</p>
+            <p class="text-xs text-slate-500">Questões filtráveis com gabarito e histórico salvo no navegador.</p>
           </div>
-          <div id="quiz-placar" class="text-xs font-mono font-bold text-teal-800 bg-teal-50 border border-teal-200 px-3 py-1.5 rounded-lg">
-            Pontuação: 0 / 0
+          
+          <div class="flex flex-wrap items-center gap-2">
+            <div id="quiz-placar" class="text-xs font-mono font-bold text-teal-800 bg-teal-50 border border-teal-200 px-3 py-1.5 rounded-lg">
+              Pontuação: 0 / 0 (0%)
+            </div>
+            <button onclick="reiniciarSimulado()" class="px-2.5 py-1.5 text-xs font-mono text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg transition">
+              Resetar Histórico
+            </button>
           </div>
         </div>
 
-        <div id="quiz-container" class="space-y-5 mt-6">
+        <!-- FILTROS DE SIMULADO -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Filtrar por Banca Organizadora:</label>
+            <select id="filtro-banca" onchange="renderizarQuiz()" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-800 focus:outline-none focus:ring-1 focus:ring-teal-500">
+              <option value="todas">Todas as Bancas</option>
+              <option value="Cebraspe">Cebraspe</option>
+              <option value="FGV">FGV</option>
+              <option value="Vunesp">Vunesp</option>
+              <option value="Cesgranrio">Cesgranrio</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Filtrar por Assunto Técnico:</label>
+            <select id="filtro-assunto" onchange="renderizarQuiz()" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-800 focus:outline-none focus:ring-1 focus:ring-teal-500">
+              <option value="todos">Todos os Assuntos</option>
+              <option value="Redes">Redes de Computadores</option>
+              <option value="Metodologias">Metodologias de TI</option>
+              <option value="Python">Python para Redes</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="quiz-container" class="space-y-5 mt-4">
           <!-- Injetado por JS -->
         </div>
       </div>
@@ -564,7 +594,7 @@
       document.getElementById('res-binario').innerHTML = binHTML;
     }
 
-    // MÓDULO TREINO DE SUB-REDES
+    // TREINO DE SUB-REDES
     let desafioAtual = null;
     let pontuacaoTreino = { acertos: 0, total: 0, sequencia: 0 };
 
@@ -756,51 +786,161 @@
       }
     }
 
-    // SIMULADO
-    const questoes = [
+    // SIMULADO COM BANCO EXPANDIDO, FILTROS E LOCALSTORAGE
+    const bancoQuestoes = [
       {
+        id: 1,
         banca: "Cebraspe",
-        assunto: "Scrum",
-        enunciado: "No framework Scrum, o Gerente de Projetos é o responsável por atribuir tarefas individualmente aos desenvolvedores na Sprint.",
+        assunto: "Metodologias",
+        enunciado: "No framework Scrum (Scrum Guide 2020), o Gerente de Projetos é o papel responsável por atribuir tarefas individualmente aos desenvolvedores na Sprint.",
         opcoes: ["Certo", "Errado"],
         correta: 1,
         exp: "Gabarito: ERRADO. Não existe o papel de Gerente de Projetos no Scrum. A equipe é autogerenciada."
       },
       {
+        id: 2,
         banca: "FGV",
         assunto: "Redes",
-        enunciado: "Qual protocolo da camada de transporte garante a entrega confiável de dados para conexões HTTPS (porta 443)?",
+        enunciado: "Qual protocolo da camada de transporte garante a entrega confiável e ordenada de dados para conexões HTTPS (porta 443)?",
         opcoes: ["UDP", "TCP", "ICMP", "IP"],
         correta: 1,
-        exp: "Gabarito: TCP. Garantia de entrega orientada à conexão."
+        exp: "Gabarito: TCP. O HTTPS exige o protocolo orientado a conexão TCP para handshake e confiabilidade."
+      },
+      {
+        id: 3,
+        banca: "Vunesp",
+        assunto: "Metodologias",
+        enunciado: "Qual é o objetivo principal de definir um Limite de Trabalho em Andamento (WIP Limit) em um quadro Kanban?",
+        opcoes: [
+          "Aumentar a quantidade de reuniões presenciais.",
+          "Evitar gargalos no fluxo de trabalho e diminuir a multitarefa.",
+          "Impor iterações de tempo fixo de 2 semanas.",
+          "Exigir a criação do papel de Scrum Master."
+        ],
+        correta: 1,
+        exp: "Gabarito: Evitar gargalos e diminuir a multitarefa. O WIP Limit otimiza o fluxo de entrega."
+      },
+      {
+        id: 4,
+        banca: "Cesgranrio",
+        assunto: "Python",
+        enunciado: "No módulo 'socket' do Python, qual método conecta a um endereço TCP retornando um código de erro numérico em vez de levantar uma exceção?",
+        opcoes: ["connect()", "connect_ex()", "bind()", "listen()"],
+        correta: 1,
+        exp: "Gabarito: connect_ex(). Ele retorna 0 no caso de sucesso e o código de erro em caso de falha, sendo ideal para scanners."
+      },
+      {
+        id: 5,
+        banca: "Cebraspe",
+        assunto: "Redes",
+        enunciado: "Em uma rede IPv4 com máscara /24, o endereço que possui todos os bits de host iguais a 1 (por exemplo, 192.168.1.255) corresponde ao endereço de broadcast.",
+        opcoes: ["Certo", "Errado"],
+        correta: 0,
+        exp: "Gabarito: CERTO. Todos os bits de host em 1 indicam o endereço de broadcast direcionado da sub-rede."
       }
     ];
 
-    function renderizarQuiz() {
-      const c = document.getElementById('quiz-container');
-      c.innerHTML = '';
-      questoes.forEach((q, i) => {
-        c.innerHTML += `
-          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
-            <div class="flex justify-between items-center text-xs font-mono">
-              <span class="px-2 py-0.5 bg-teal-100 text-teal-800 font-bold rounded">${q.banca}</span>
-              <span class="text-slate-500">${q.assunto}</span>
-            </div>
-            <p class="text-xs font-semibold text-slate-800">${q.enunciado}</p>
-            <div class="space-y-1.5">${q.opcoes.map((o, idx) => `
-              <button onclick="responderQuiz(${i}, ${idx})" class="w-full text-left p-2.5 bg-white hover:bg-slate-100 text-xs font-mono border border-slate-200 rounded-lg transition">${o}</button>
-            `).join('')}</div>
-            <div id="q-exp-${i}" class="hidden p-3 bg-white rounded-lg border border-slate-200 text-xs font-mono text-slate-700"></div>
-          </div>
-        `;
-      });
+    function carregarHistoricoSimulado() {
+      const salvo = localStorage.getItem('p2p_simulado_historico');
+      return salvo ? JSON.parse(salvo) : {};
     }
 
-    function responderQuiz(qIdx, optIdx) {
-      const q = questoes[qIdx];
-      const exp = document.getElementById(`q-exp-${qIdx}`);
-      exp.classList.remove('hidden');
-      exp.innerText = q.exp;
+    function salvarHistoricoSimulado(historico) {
+      localStorage.setItem('p2p_simulado_historico', JSON.stringify(historico));
+    }
+
+    function renderizarQuiz() {
+      const bancaSel = document.getElementById('filtro-banca').value;
+      const assuntoSel = document.getElementById('filtro-assunto').value;
+      const container = document.getElementById('quiz-container');
+      const historico = carregarHistoricoSimulado();
+
+      container.innerHTML = '';
+
+      const questoesFiltradas = bancoQuestoes.filter(q => {
+        const passaBanca = (bancaSel === 'todas' || q.banca === bancaSel);
+        const passaAssunto = (assuntoSel === 'todos' || q.assunto === assuntoSel);
+        return passaBanca && passaAssunto;
+      });
+
+      if (questoesFiltradas.length === 0) {
+        container.innerHTML = `<div class="p-6 bg-slate-50 border border-slate-200 rounded-xl text-center text-xs text-slate-500 font-mono">Nenhuma questão encontrada com os filtros selecionados.</div>`;
+        atualizarPlacarSimulado(historico);
+        return;
+      }
+
+      questoesFiltradas.forEach(q => {
+        const respSalva = historico[q.id];
+        const respondida = (respSalva !== undefined);
+
+        const card = document.createElement('div');
+        card.className = "p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3";
+
+        let opcoesHTML = "";
+        q.opcoes.forEach((opt, idx) => {
+          let estiloBtn = "bg-white hover:bg-slate-100 text-slate-700 border-slate-200";
+          if (respondida) {
+            if (idx === q.correta) {
+              estiloBtn = "bg-teal-50 text-teal-800 border-teal-300 font-bold";
+            } else if (idx === respSalva) {
+              estiloBtn = "bg-rose-50 text-rose-800 border-rose-300 font-bold";
+            }
+          }
+
+          opcoesHTML += `
+            <button onclick="responderSimulado(${q.id}, ${idx})" ${respondida ? 'disabled' : ''} class="w-full text-left p-2.5 text-xs font-mono border rounded-lg transition ${estiloBtn}">
+              ${opt}
+            </button>
+          `;
+        });
+
+        card.innerHTML = `
+          <div class="flex justify-between items-center text-xs font-mono">
+            <span class="px-2 py-0.5 bg-teal-100 text-teal-800 font-bold rounded">${q.banca}</span>
+            <span class="text-slate-500">${q.assunto}</span>
+          </div>
+          <p class="text-xs font-semibold text-slate-800">${q.enunciado}</p>
+          <div class="space-y-1.5">${opcoesHTML}</div>
+          <div id="q-exp-${q.id}" class="${respondida ? '' : 'hidden'} p-3 bg-white rounded-lg border border-slate-200 text-xs font-mono text-slate-700">
+            ${q.exp}
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+
+      atualizarPlacarSimulado(historico);
+    }
+
+    function responderSimulado(qId, optIdx) {
+      const historico = carregarHistoricoSimulado();
+      if (historico[qId] !== undefined) return;
+
+      historico[qId] = optIdx;
+      salvarHistoricoSimulado(historico);
+      renderizarQuiz();
+    }
+
+    function atualizarPlacarSimulado(historico) {
+      let acertos = 0;
+      let totalRespondidas = 0;
+
+      bancoQuestoes.forEach(q => {
+        if (historico[q.id] !== undefined) {
+          totalRespondidas++;
+          if (historico[q.id] === q.correta) acertos++;
+        }
+      });
+
+      const pct = totalRespondidas > 0 ? Math.round((acertos / totalRespondidas) * 100) : 0;
+      document.getElementById('quiz-placar').innerText = `Pontuação: ${acertos} / ${totalRespondidas} (${pct}%)`;
+    }
+
+    function reiniciarSimulado() {
+      if (confirm("Deseja realmente apagar o histórico de respostas do simulado?")) {
+        localStorage.removeItem('p2p_simulado_historico');
+        renderizarQuiz();
+      }
     }
 
     // INICIALIZAÇÃO
