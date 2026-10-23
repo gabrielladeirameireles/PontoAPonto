@@ -582,9 +582,27 @@
       if (!q) return;
       res.classList.remove('hidden');
       res.innerText = "Consultando...";
+
+      // Detecta se é um IP Privado/Local (RFC 1918) ou Loopback
+      if (/^(192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[01])\.|127\.)/.test(q)) {
+        res.innerHTML = `
+          <div class="text-amber-800">
+            <strong class="uppercase font-bold block mb-0.5">Endereço IP Privado / Local (RFC 1918)</strong>
+            <span>Este IP pertence à sua rede interna (roteador/Wi-Fi) e não possui registro geográfico público na Internet.</span>
+          </div>
+        `;
+        return;
+      }
+
       try {
         const resp = await fetch(`https://ipapi.co/${q}/json/`);
         const data = await resp.json();
+        
+        if (data.error) {
+          res.innerHTML = `<span class="text-rose-700 font-bold">Consulta não realizada:</span> ${data.reason || 'IP ou domínio inválido.'}`;
+          return;
+        }
+
         res.innerHTML = `<strong>IP:</strong> ${data.ip} | <strong>Provedor:</strong> ${data.org || 'N/A'} | <strong>Local:</strong> ${data.city || ''}, ${data.country_name || ''}`;
       } catch (err) {
         res.innerText = "Erro ao efetuar consulta.";
@@ -961,4 +979,3 @@
   </script>
 </body>
 </html>
-
