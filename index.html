@@ -10,7 +10,7 @@
 
   <!-- META TAGS DE SEO -->
   <meta name="description" content="Portal de Formação em TI: mercado de trabalho, notícias, networking no LinkedIn, projetos no GitHub, guia de cursos superiores, linguagens, infraestrutura e guia do Linux.">
-  <meta name="keywords" content="tecnologia da informacao, carreira ti, php mercado, linkedin networking, projetos github, sistema ponto, cog ndvi, shield gateway, ciencia da computacao, ads, linux instalacao, aws certificacao, redes ip, cidr">
+  <meta name="keywords" content="tecnologia da informacao, carreira ti, php mercado, c# dotnet, linkedin networking, projetos github, sistema ponto, cog ndvi, shield gateway, ciencia da computacao, ads, linux instalacao, aws certificacao, redes ip, cidr">
   <meta name="author" content="Gabriella Deira Meireles">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0D9488">
@@ -28,7 +28,7 @@
   <!-- TAILWIND CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- SUPABASE JS SDK (AUTENTICAÇÃO SEGURA) -->
+  <!-- SUPABASE JS SDK (AUTENTICAÇÃO & BANCO DE DADOS) -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <!-- FONTES GOOGLE -->
@@ -160,7 +160,7 @@
   <!-- CONTEÚDO VERTICAL ORGANIZADO -->
   <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full space-y-12">
 
-    <!-- PARTE 1: NOTÍCIAS & MERCADO DE TI -->
+    <!-- PARTE 1: NOTÍCIAS & MERCADO DE TI (CARREGADAS DINAMICAMENTE VIA SUPABASE) -->
     <section id="noticias-mercado" class="space-y-6 pt-4">
       <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
         <div class="pb-4 border-b border-slate-100 flex justify-between items-center">
@@ -168,28 +168,40 @@
             <h2 class="text-xl font-serif font-bold text-slate-900">1. Notícias e Panorama do Mercado de TI</h2>
             <p class="text-xs text-slate-500">Tendências tecnológicas recentes, dados sobre empregabilidade e novidades do setor.</p>
           </div>
-          <span class="text-[11px] font-mono bg-teal-50 text-teal-800 border border-teal-200 px-2.5 py-1 rounded-full">Atualizado semanalmente</span>
+          <span class="text-[11px] font-mono bg-teal-50 text-teal-800 border border-teal-200 px-2.5 py-1 rounded-full">Banco Supabase Conectado</span>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6" id="container-noticias">
-          <!-- NOTÍCIA DESTAQUE: PHP -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6" id="container-noticias">
+          <!-- NOTÍCIA 1: C# -->
           <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
-            <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold rounded">TENDÊNCIA & DESTAQUE</span>
+            <span class="px-2 py-0.5 bg-purple-100 text-purple-800 text-[10px] font-mono font-bold rounded">TENDÊNCIA & MODERNIZAÇÃO</span>
+            <h3 class="font-serif font-bold text-slate-900 text-base">A Ascensão do C# e a Modernização do Ecossistema .NET</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Com a evolução contínua do .NET e o foco em alta performance e execução multiplataforma (Linux/macOS), o C# teve um crescimento expressivo no mercado. A linguagem superou a imagem antiga de ser restrita ao Windows e se consolidou como escolha de destaque para microsserviços, APIs corporativas de alta velocidade e arquiteturas em nuvem.
+            </p>
+            <div class="pt-2 text-[11px] font-mono text-slate-500 border-t border-slate-200">
+              • <strong>Principais impulsionadores:</strong> .NET multiplataforma, suporte nativo ao Linux, gRPC e APIs enterprise.
+            </div>
+          </div>
+
+          <!-- NOTÍCIA 2: PHP -->
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+            <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold rounded">DESTAQUE & MERCADO</span>
             <h3 class="font-serif font-bold text-slate-900 text-base">A Resiliência e Fortalecimento do PHP no Mercado Corporativo</h3>
             <p class="text-xs text-slate-600 leading-relaxed">
-              Recentemente, o ecossistema PHP voltou ao centro das discussões de arquitetura de software. Com as atualizações recentes da versão 8.x, melhorias significativas de desempenho com compilação JIT e a maturidade de frameworks como o Laravel, a linguagem reafirma sua posição dominante na web. Cerca de 75% dos sites da internet continuam utilizando PHP no backend, criando um mercado estável e com alta demanda por desenvolvedores qualificados.
+              Recentemente, o ecossistema PHP voltou ao centro das discussões de arquitetura. Com as atualizações da versão 8.x, melhorias significativas de desempenho com compilação JIT e a maturidade de frameworks como o Laravel, a linguagem reafirma sua posição dominante na web.
             </p>
             <div class="pt-2 text-[11px] font-mono text-slate-500 border-t border-slate-200">
               • <strong>Principais impulsionadores:</strong> Laravel 11, PHP 8.3, Swoole e migração de microsserviços.
             </div>
           </div>
 
-          <!-- NOTÍCIA 2: EMPREGABILIDADE E NUVEM -->
+          <!-- NOTÍCIA 3: NUVEM & CIBERSEGURANÇA -->
           <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
             <span class="px-2 py-0.5 bg-blue-100 text-blue-800 text-[10px] font-mono font-bold rounded">CARREIRA & DEMANDA</span>
-            <h3 class="font-serif font-bold text-slate-900 text-base">Crescimento das Vagas em Computação em Nuvem e Cibersegurança</h3>
+            <h3 class="font-serif font-bold text-slate-900 text-base">Crescimento das Vagas em Nuvem e Cibersegurança</h3>
             <p class="text-xs text-slate-600 leading-relaxed">
-              O mercado global continua demandando profissionais capazes de migrar, otimizar e proteger infraestruturas em nuvem (AWS, Azure e Google Cloud). A integração de inteligência artificial na automação de redes e na segurança da informação tornou o conhecimento técnico em Linux e Redes uma competência pré-requisito obrigatória.
+              O mercado global continua demandando profissionais capazes de migrar, otimizar e proteger infraestruturas em nuvem (AWS, Azure e Google Cloud). A integração de IA na automação de redes tornou o conhecimento técnico em Linux uma competência obrigatória.
             </p>
             <div class="pt-2 text-[11px] font-mono text-slate-500 border-t border-slate-200">
               • <strong>Habilidades mais cobradas:</strong> Linux, Docker, AWS SysOps e automação com Python.
@@ -449,7 +461,7 @@
           A infraestrutura de TI engloba o hardware, software, instalações de rede e recursos de armazenamento necessários para entregar serviços de tecnologia. Abaixo está o exemplo prático de identificação do seu endereço IP público e parâmetros de rede local:
         </p>
 
-        <!-- CARDS DE DIAGNÓSTICO IP COM QUEBRA DE LINHA CORRIGIDA -->
+        <!-- CARDS DE DIAGNÓSTICO IP -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
           <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
             <span class="text-[11px] font-mono text-slate-500 block uppercase mb-1">Endereço IP Público</span>
@@ -758,8 +770,8 @@
             <label class="text-[11px] font-semibold text-slate-700 block mb-1">Resumo da Notícia:</label>
             <textarea id="add-noticia-conteudo" rows="3" placeholder="Escreva o texto completo da notícia..." class="w-full bg-slate-50 border border-slate-300 rounded p-2 text-xs font-mono"></textarea>
           </div>
-          <button onclick="adicionarNovaNoticia()" class="w-full py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition">
-            Publicar Notícia na Página
+          <button onclick="adicionarNovaNoticia()" id="btn-pub-noticia" class="w-full py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition">
+            Publicar Notícia no Banco de Dados
           </button>
         </div>
 
@@ -809,12 +821,48 @@
     <p class="mt-1 text-[11px] text-slate-400">Licença MIT — Código Aberto para Fins Educacionais</p>
   </footer>
 
-  <!-- LÓGICA JAVASCRIPT PRINCIPAL E CONEXÃO SUPABASE -->
+  <!-- LÓGICA JAVASCRIPT PRINCIPAL E INTEGRADA AO SUPABASE DATABASE -->
   <script>
-    // CONFIGURAÇÃO OFICIAL DO CLIENTE SUPABASE (URL CORRIGIDA COM 3 "i"s)
+    // CONFIGURAÇÃO OFICIAL DO CLIENTE SUPABASE
     const SUPABASE_URL = 'https://hvkiiiysmnoyirnivdlg.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh2a2lpaXlzbW5veWlybml2ZGxnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMxMjA3NjcsImV4cCI6MjEwODY5Njc2N30.dzTlUMKQVP8ZM4j6gwIWbCg-ayDOpXmtRaDIWgzeTwg';
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // FUNÇÃO QUE CARREGA AS NOTÍCIAS DO BANCO SUPABASE AUTOMATICAMENTE
+    async function carregarNoticiasDoBanco() {
+      try {
+        const { data: noticias, error } = await _supabase
+          .from('noticias')
+          .select('*')
+          .order('created_at', { ascending: false });
+
+        if (error) {
+          console.error("Erro ao carregar notícias:", error.message);
+          return;
+        }
+
+        if (noticias && noticias.length > 0) {
+          const container = document.getElementById('container-noticias');
+          
+          // Adiciona as notícias salvas no banco no início do container
+          noticias.forEach(item => {
+            const card = document.createElement('div');
+            card.className = "p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3";
+            card.innerHTML = `
+              <span class="px-2 py-0.5 bg-teal-100 text-teal-800 text-[10px] font-mono font-bold rounded">${item.tag.toUpperCase()}</span>
+              <h3 class="font-serif font-bold text-slate-900 text-base">${item.titulo}</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">${item.conteudo}</p>
+              <div class="pt-2 text-[11px] font-mono text-slate-500 border-t border-slate-200">
+                • <strong>Publicado via Painel Admin:</strong> ${new Date(item.created_at).toLocaleDateString('pt-BR')}
+              </div>
+            `;
+            container.prepend(card);
+          });
+        }
+      } catch (e) {
+        console.error("Exceção ao buscar notícias:", e);
+      }
+    }
 
     // DIAGNÓSTICO IP
     async function obterIPCliente() {
@@ -970,29 +1018,57 @@
       }
     }
 
-    function adicionarNovaNoticia() {
+    // SALVA A NOTÍCIA DIRETO NO BANCO DE DADOS POSTGRESQL DO SUPABASE
+    async function adicionarNovaNoticia() {
       const titulo = document.getElementById('add-noticia-titulo').value.trim();
       const tag = document.getElementById('add-noticia-tag').value.trim() || 'NOTÍCIA';
       const conteudo = document.getElementById('add-noticia-conteudo').value.trim();
+      const btn = document.getElementById('btn-pub-noticia');
 
       if (!titulo || !conteudo) {
         alert("Preencha o título e o resumo da notícia!");
         return;
       }
 
-      const container = document.getElementById('container-noticias');
-      const card = document.createElement('div');
-      card.className = "p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3";
-      card.innerHTML = `
-        <span class="px-2 py-0.5 bg-teal-100 text-teal-800 text-[10px] font-mono font-bold rounded">${tag.toUpperCase()}</span>
-        <h3 class="font-serif font-bold text-slate-900 text-base">${titulo}</h3>
-        <p class="text-xs text-slate-600 leading-relaxed">${conteudo}</p>
-      `;
+      btn.innerText = "Salvando no Banco Supabase...";
+      btn.disabled = true;
 
-      container.prepend(card);
-      alert("Notícia publicada com sucesso na página!");
-      document.getElementById('add-noticia-titulo').value = '';
-      document.getElementById('add-noticia-conteudo').value = '';
+      try {
+        const { data, error } = await _supabase
+          .from('noticias')
+          .insert([
+            { titulo: titulo, tag: tag, conteudo: conteudo }
+          ]);
+
+        if (error) {
+          alert("Erro ao salvar notícia no banco: " + error.message);
+        } else {
+          alert("Notícia salva com sucesso no banco de dados do Supabase!");
+          
+          // Adiciona na página na hora
+          const container = document.getElementById('container-noticias');
+          const card = document.createElement('div');
+          card.className = "p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3";
+          card.innerHTML = `
+            <span class="px-2 py-0.5 bg-teal-100 text-teal-800 text-[10px] font-mono font-bold rounded">${tag.toUpperCase()}</span>
+            <h3 class="font-serif font-bold text-slate-900 text-base">${titulo}</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">${conteudo}</p>
+            <div class="pt-2 text-[11px] font-mono text-slate-500 border-t border-slate-200">
+              • <strong>Publicado via Painel Admin:</strong> Hoje
+            </div>
+          `;
+          container.prepend(card);
+
+          document.getElementById('add-noticia-titulo').value = '';
+          document.getElementById('add-noticia-conteudo').value = '';
+          document.getElementById('add-noticia-tag').value = '';
+        }
+      } catch (err) {
+        alert("Falha de conexão com o banco: " + err.message);
+      } finally {
+        btn.innerText = "Publicar Notícia no Banco de Dados";
+        btn.disabled = false;
+      }
     }
 
     function adicionarNovoTopico() {
@@ -1038,9 +1114,9 @@
     window.addEventListener('DOMContentLoaded', () => {
       obterIPCliente();
       executarCalculoCIDR();
+      carregarNoticiasDoBanco();
     });
   </script>
 </body>
 </html>
-
 
