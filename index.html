@@ -28,6 +28,9 @@
   <!-- TAILWIND CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
+  <!-- SUPABASE JS SDK (AUTENTICAÇÃO SEGURA) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <!-- FONTES GOOGLE -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -703,7 +706,7 @@
 
   </main>
 
-  <!-- MODAL GERENCIADOR DE CONTEÚDO (ÁREA ADMIN CMS) -->
+  <!-- MODAL GERENCIADOR DE CONTEÚDO (ÁREA ADMIN CMS SEGURA VIA SUPABASE) -->
   <div id="modal-admin" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[90vh] overflow-y-auto">
       <div class="flex justify-between items-center pb-3 border-b border-slate-100">
@@ -711,11 +714,23 @@
         <button onclick="fecharModalAdmin()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
       </div>
 
-      <!-- TELA 1: AUTENTICAÇÃO -->
+      <!-- TELA 1: AUTENTICAÇÃO COM E-MAIL E SENHA (SUPABASE) -->
       <div id="admin-auth" class="space-y-3">
-        <p class="text-xs text-slate-600">Digite a senha para desbloquear a edição do conteúdo da página:</p>
-        <input type="password" id="admin-pass" placeholder="Senha do administrador..." class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-teal-500">
-        <button onclick="autenticarAdmin()" class="w-full py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition">Acessar Edição</button>
+        <p class="text-xs text-slate-600">Autenticação segura via Supabase Auth. Digite suas credenciais de administradora:</p>
+        
+        <div>
+          <label class="text-[11px] font-semibold text-slate-700 block mb-1">E-mail do Administrador:</label>
+          <input type="email" id="admin-email" placeholder="seu-email@exemplo.com" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-teal-500">
+        </div>
+
+        <div>
+          <label class="text-[11px] font-semibold text-slate-700 block mb-1">Senha do Administrador:</label>
+          <input type="password" id="admin-pass" placeholder="Sua senha secreta..." class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-teal-500">
+        </div>
+
+        <button onclick="autenticarAdmin()" id="btn-login-admin" class="w-full py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition">
+          Acessar Edição Segura
+        </button>
       </div>
 
       <!-- TELA 2: PAINEL CMS COMPLETO -->
@@ -794,8 +809,13 @@
     <p class="mt-1 text-[11px] text-slate-400">Licença MIT — Código Aberto para Fins Educacionais</p>
   </footer>
 
-  <!-- LÓGICA JAVASCRIPT PRINCIPAL -->
+  <!-- LÓGICA JAVASCRIPT PRINCIPAL E CONEXÃO SUPABASE -->
   <script>
+    // CONFIGURAÇÃO OFICIAL DO CLIENTE SUPABASE
+    const SUPABASE_URL = 'https://hvkiiysmnoyirnivdlg.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh2a2lpaXlzbW5veWlybml2ZGxnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMxMjA3NjcsImV4cCI6MjEwODY5Njc2N30.dzTlUMKQVP8ZM4j6gwIWbCg-ayDOpXmtRaDIWgzeTwg';
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
     // DIAGNÓSTICO IP
     async function obterIPCliente() {
       const elIP = document.getElementById('ip-publico');
@@ -884,7 +904,7 @@
       document.getElementById('res-hosts-uteis').innerText = hostsUteis.toLocaleString();
     }
 
-    // LÓGICA DA ÁREA ADMIN CMS (EDIÇÃO DA PÁGINA)
+    // LÓGICA DA ÁREA ADMIN CMS (AUTENTICAÇÃO REAL VIA SUPABASE)
     function abrirModalAdmin() {
       document.getElementById('modal-admin').classList.remove('hidden');
     }
@@ -893,16 +913,39 @@
       document.getElementById('modal-admin').classList.add('hidden');
     }
 
-    function autenticarAdmin() {
+    async function autenticarAdmin() {
+      const email = document.getElementById('admin-email').value.trim();
       const pass = document.getElementById('admin-pass').value;
-      if (pass === 'p2p2026') {
-        document.getElementById('admin-auth').classList.add('hidden');
-        document.getElementById('admin-panel').classList.remove('hidden');
+      const btn = document.getElementById('btn-login-admin');
 
-        document.getElementById('edit-hero-titulo').value = document.getElementById('hero-titulo').innerText;
-        document.getElementById('edit-hero-desc').value = document.getElementById('hero-descricao').innerText;
-      } else {
-        alert("Senha incorreta!");
+      if (!email || !pass) {
+        alert("Preencha o e-mail e a senha do administrador!");
+        return;
+      }
+
+      btn.innerText = "Autenticando no Supabase...";
+      btn.disabled = true;
+
+      try {
+        const { data, error } = await _supabase.auth.signInWithPassword({
+          email: email,
+          password: pass
+        });
+
+        if (error) {
+          alert("Acesso negado: E-mail ou senha incorretos! (" + error.message + ")");
+        } else {
+          document.getElementById('admin-auth').classList.add('hidden');
+          document.getElementById('admin-panel').classList.remove('hidden');
+
+          document.getElementById('edit-hero-titulo').value = document.getElementById('hero-titulo').innerText;
+          document.getElementById('edit-hero-desc').value = document.getElementById('hero-descricao').innerText;
+        }
+      } catch (err) {
+        alert("Erro de conexão ao autenticar: " + err.message);
+      } finally {
+        btn.innerText = "Acessar Edição Segura";
+        btn.disabled = false;
       }
     }
 
@@ -999,3 +1042,4 @@
   </script>
 </body>
 </html>
+
