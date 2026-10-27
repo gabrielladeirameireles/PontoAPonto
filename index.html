@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ponto a Ponto — Guia Acadêmico de TI, Linux, Certificações e Redes</title>
+  <title>Ponto a Ponto — Portal de TI, Carreira, Infraestrutura e Redes</title>
 
-  <!-- META TAGS DE SEO PADRÃO -->
-  <meta name="description" content="Plataforma de estudos de TI: orientação acadêmica, linguagens de programação no mercado, certificações gratuitas, guia prático de Linux, ferramentas de redes e simulado.">
-  <meta name="keywords" content="redes de computadores, faculdade de ti, ciencia da computacao, analise e desenvolvimento de sistemas, linux pendrive bootavel, certificacoes ti, aws sysops, chmod, fhs, sub-redes, CIDR, modelo OSI, TCP/IP, concursos de TI">
+  <!-- META TAGS DE SEO -->
+  <meta name="description" content="Portal completo de Formação em TI: mercado de trabalho, notícias, networking no LinkedIn, guia de cursos superiores, linguagens de programação, certificações, infraestrutura, guia do Linux e simulado.">
+  <meta name="keywords" content="tecnologia da informacao, carreira ti, php mercado, linkedin networking, cursos ti, ciencia da computacao, ads, linux instalacao, aws certificacao, redes ip, cidr">
   <meta name="author" content="Gabriella Deira Meireles">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0D9488">
@@ -16,8 +16,8 @@
   <!-- META TAGS OPEN GRAPH -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://gabrielladeirameireles.github.io/PontoAPonto/">
-  <meta property="og:title" content="Ponto a Ponto — Guia Acadêmico de TI, Linux e Redes">
-  <meta property="og:description" content="Guia vertical interativo para ingressar na faculdade de TI, linguagens de mercado, certificações, fundamentos do Linux, ferramentas de rede e simulado.">
+  <meta property="og:title" content="Ponto a Ponto — Portal Acadêmico de TI & Infraestrutura">
+  <meta property="og:description" content="Guia estruturado: do ingresso na faculdade ao mercado de trabalho, networking, infraestrutura de redes e guia prático do Linux.">
   <meta property="og:image" content="https://gabrielladeirameireles.github.io/PontoAPonto/assets/images/og-preview.png">
   <meta property="og:site_name" content="Ponto a Ponto">
   <meta property="og:locale" content="pt_BR">
@@ -25,14 +25,11 @@
   <!-- TAILWIND CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- FONTES GOOGLE: LORA, INTER E JETBRAINS MONO -->
+  <!-- FONTES GOOGLE -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
-  <!-- ESTILOS CUSTOMIZADOS -->
-  <link rel="stylesheet" href="assets/css/style.css">
-
   <script>
     tailwind.config = {
       theme: {
@@ -62,7 +59,7 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* ESTEIRA CONTINUA / TIKKER DOS TÓPICOS */
+    /* ESTEIRA CONTÍNUA EM MOVIMENTO DE NAVEGAÇÃO */
     @keyframes esteiraAnima {
       0% { transform: translateX(0%); }
       100% { transform: translateX(-50%); }
@@ -70,7 +67,7 @@
     .esteira-wrapper {
       display: flex;
       width: max-content;
-      animation: esteiraAnima 35s linear infinite;
+      animation: esteiraAnima 40s linear infinite;
     }
     .esteira-container:hover .esteira-wrapper {
       animation-play-state: paused;
@@ -92,13 +89,13 @@
           </span>
         </a>
         <span class="hidden md:inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-0.5 bg-teal-50 text-teal-800 border border-teal-200 rounded-full font-medium">
-          Guia de TI, Linux e Redes
+          Portal de TI & Infraestrutura
         </span>
       </div>
 
       <div class="flex items-center gap-3 text-xs font-medium">
-        <button onclick="abrirModalAdmin()" class="px-2.5 py-1.5 bg-slate-900 text-teal-300 font-mono text-[11px] rounded-lg hover:bg-slate-800 transition flex items-center gap-1">
-          Área Admin
+        <button onclick="abrirModalAdmin()" class="px-3 py-1.5 bg-slate-900 text-teal-300 font-mono text-[11px] rounded-lg hover:bg-slate-800 transition flex items-center gap-1">
+          Painel de Edição da Página
         </button>
         <a href="#contato" class="text-slate-600 hover:text-teal-700 transition hidden sm:inline">Contato</a>
         <a href="https://github.com/gabrielladeirameireles/PontoAPonto" target="_blank" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-mono text-[11px] rounded-md border border-slate-300 transition">GitHub</a>
@@ -106,70 +103,347 @@
     </div>
   </header>
 
-  <!-- SEÇÃO EDITORIAL (HERO) -->
+  <!-- APRESENTAÇÃO / HERO -->
   <section class="bg-white border-b border-slate-200 py-10 sm:py-12">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="inline-flex items-center gap-2 px-3 py-1 mb-3 text-xs font-medium text-teal-800 bg-teal-50 border border-teal-200 rounded-full">
-        <span>Apostila Interativa e Guia de Carreira em TI</span>
+        <span>Guia Estruturado de Carreira e Aprendizado</span>
       </div>
-      <h1 class="text-3xl sm:text-4xl font-serif font-bold text-slate-900 tracking-tight max-w-3xl leading-snug">
-        Formação Acadêmica em TI, Linux, Certificações e Infraestrutura
+      <h1 id="hero-titulo" class="text-3xl sm:text-4xl font-serif font-bold text-slate-900 tracking-tight max-w-3xl leading-snug">
+        Tecnologia da Informação: Mercado, Formação e Infraestrutura
       </h1>
-      <p class="mt-3 text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed">
-        Explore a jornada para ingressar na faculdade, o panorama das linguagens de programação no mercado, certificações valorizadas, guia prático de Linux, ferramentas de rede e simulado de questões.
+      <p id="hero-descricao" class="mt-3 text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed">
+        Uma plataforma contínua para entender o cenário do mercado, construir presença profissional, escolher sua graduação, dominar o ecossistema do Linux e praticar conceitos essenciais de redes de computadores.
       </p>
     </div>
   </section>
 
-  <!-- NAVEGAÇÃO EM ESTEIRA CONTÍNUA (MENU DE TÓPICOS FLUTUANTE) -->
+  <!-- NAVEGAÇÃO EM ESTEIRA CONTÍNUA -->
   <div class="bg-slate-100/90 backdrop-blur-md border-b border-slate-200 sticky top-16 z-40 overflow-hidden esteira-container">
     <div class="esteira-wrapper py-2.5 text-xs sm:text-sm font-medium">
       <!-- BLOCO 1 DA ESTEIRA -->
       <div class="flex space-x-2 px-2">
-        <a href="#diagnostico" class="px-3.5 py-1.5 rounded-lg bg-white text-teal-800 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Diagnóstico IP</a>
-        <a href="#academico-ti" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Guia TI & Cursos</a>
-        <a href="#linguagens-mercado" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Linguagens de Mercado</a>
-        <a href="#certificacoes" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Certificações de TI</a>
-        <a href="#linux-conceitos" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Guia do Linux</a>
-        <a href="#calculadora" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Calculadora CIDR</a>
-        <a href="#treino-subrede" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Treino Sub-redes</a>
-        <a href="#redes-teoria" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Redes & Portas</a>
-        <a href="#metodologias" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Metodologias TI</a>
-        <a href="#simulado" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Simulado</a>
+        <a href="#noticias-mercado" class="px-3.5 py-1.5 rounded-lg bg-white text-teal-800 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">1. Notícias & Mercado</a>
+        <a href="#networking" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">2. Networking Profissional</a>
+        <a href="#o-que-e-ti" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">3. O que é TI & Ingresso</a>
+        <a href="#cursos-ti" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">4. Cursos Superiores</a>
+        <a href="#linguagens" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">5. Linguagens no Mercado</a>
+        <a href="#certificacoes" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">6. Certificações</a>
+        <a href="#infraestrutura" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">7. Infraestrutura & IP</a>
+        <a href="#linux-guia" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">8. Guia do Linux</a>
+        <a href="#calculadora-redes" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">9. Ferramentas de Rede</a>
+        <a href="#simulado" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">10. Simulado</a>
       </div>
 
-      <!-- BLOCO 2 DUPLICADO PARA EFEITO LOOP INFINITO -->
+      <!-- BLOCO 2 DUPLICADO PARA LOOP INFINITO -->
       <div class="flex space-x-2 px-2">
-        <a href="#diagnostico" class="px-3.5 py-1.5 rounded-lg bg-white text-teal-800 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Diagnóstico IP</a>
-        <a href="#academico-ti" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Guia TI & Cursos</a>
-        <a href="#linguagens-mercado" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Linguagens de Mercado</a>
-        <a href="#certificacoes" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Certificações de TI</a>
-        <a href="#linux-conceitos" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Guia do Linux</a>
-        <a href="#calculadora" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Calculadora CIDR</a>
-        <a href="#treino-subrede" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Treino Sub-redes</a>
-        <a href="#redes-teoria" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Redes & Portas</a>
-        <a href="#metodologias" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Metodologias TI</a>
-        <a href="#simulado" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">Simulado</a>
+        <a href="#noticias-mercado" class="px-3.5 py-1.5 rounded-lg bg-white text-teal-800 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">1. Notícias & Mercado</a>
+        <a href="#networking" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">2. Networking Profissional</a>
+        <a href="#o-que-e-ti" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">3. O que é TI & Ingresso</a>
+        <a href="#cursos-ti" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">4. Cursos Superiores</a>
+        <a href="#linguagens" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">5. Linguagens no Mercado</a>
+        <a href="#certificacoes" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">6. Certificações</a>
+        <a href="#infraestrutura" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">7. Infraestrutura & IP</a>
+        <a href="#linux-guia" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">8. Guia do Linux</a>
+        <a href="#calculadora-redes" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">9. Ferramentas de Rede</a>
+        <a href="#simulado" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-700 font-semibold shadow-sm border border-slate-200 hover:bg-teal-50 transition whitespace-nowrap">10. Simulado</a>
       </div>
     </div>
   </div>
 
-  <!-- CONTEÚDO VERTICAL FLUIDO -->
+  <!-- CONTEÚDO VERTICAL ORGANIZADO -->
   <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full space-y-12">
 
-    <!-- 1. DIAGNÓSTICO IP -->
-    <section id="diagnostico" class="space-y-6 pt-4">
+    <!-- PARTE 1: NOTÍCIAS & MERCADO DE TI -->
+    <section id="noticias-mercado" class="space-y-6 pt-4">
       <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+        <div class="pb-4 border-b border-slate-100 flex justify-between items-center">
           <div>
-            <h2 class="text-xl font-serif font-bold text-slate-900">1. Diagnóstico da Rede Local e Conexão</h2>
-            <p class="text-xs text-slate-500">Mapeamento em tempo real do seu endereço IP externo e parâmetros de rede.</p>
+            <h2 class="text-xl font-serif font-bold text-slate-900">1. Notícias e Panorama do Mercado de TI</h2>
+            <p class="text-xs text-slate-500">Tendências tecnológicas recentes, dados sobre empregabilidade e novidades do setor.</p>
           </div>
-          <button onclick="obterIPCliente()" class="px-3.5 py-1.5 text-xs font-mono font-medium text-teal-800 bg-teal-50 border border-teal-200 hover:bg-teal-100 rounded-lg transition self-start sm:self-auto">
-            Atualizar Diagnóstico
-          </button>
+          <span class="text-[11px] font-mono bg-teal-50 text-teal-800 border border-teal-200 px-2.5 py-1 rounded-full">Atualizado semanalmente</span>
         </div>
 
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6" id="container-noticias">
+          <!-- NOTÍCIA DESTAQUE: PHP -->
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+            <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold rounded">TENDÊNCIA & DESTAQUE</span>
+            <h3 class="font-serif font-bold text-slate-900 text-base">A Resiliência e Fortalecimento do PHP no Mercado Corporativo</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Recentemente, o ecossistema PHP voltou ao centro das discussões de arquitetura de software. Com as atualizações recentes da versão 8.x, melhorias significativas de desempenho com compilação JIT e a maturidade de frameworks como o Laravel, a linguagem reafirma sua posição dominante na web. Cerca de 75% dos sites da internet continuam utilizando PHP no backend, criando um mercado estável e com alta demanda por desenvolvedores qualificados.
+            </p>
+            <div class="pt-2 text-[11px] font-mono text-slate-500 border-t border-slate-200">
+              • <strong>Principais impulsionadores:</strong> Laravel 11, PHP 8.3, Swoole e migração de microsserviços.
+            </div>
+          </div>
+
+          <!-- NOTÍCIA 2: EMPREGABILIDADE E NUVEM -->
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+            <span class="px-2 py-0.5 bg-blue-100 text-blue-800 text-[10px] font-mono font-bold rounded">CARREIRA & DEMANDA</span>
+            <h3 class="font-serif font-bold text-slate-900 text-base">Crescimento das Vagas em Computação em Nuvem e Cibersegurança</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              O mercado global continua demandando profissionais capazes de migrar, otimizar e proteger infraestruturas em nuvem (AWS, Azure e Google Cloud). A integração de inteligência artificial na automação de redes e na segurança da informação tornou o conhecimento técnico em Linux e Redes uma competência pré-requisito obrigatória.
+            </p>
+            <div class="pt-2 text-[11px] font-mono text-slate-500 border-t border-slate-200">
+              • <strong>Habilidades mais cobradas:</strong> Linux, Docker, AWS SysOps e automação com Python.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTE 2: NETWORKING E PRESENÇA PROFISSIONAL -->
+    <section id="networking" class="space-y-6 pt-4">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div class="pb-4 border-b border-slate-100">
+          <h2 class="text-xl font-serif font-bold text-slate-900">2. Estratégia de Networking e Presença Profissional</h2>
+          <p class="text-xs text-slate-500">Como construir relevância no mercado e criar conexões estratégicas para conseguir oportunidades.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6">
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <h3 class="font-serif font-bold text-slate-900 text-sm">Otimização do Perfil no LinkedIn</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Mantenha o título objetivo (ex: "Estudante de Análise e Desenvolvimento de Sistemas | Foco em Backend PHP e Redes"). Detalhe seus projetos práticos na seção 'Sobre' e documente seu aprendizado contínuo através de publicações técnicas.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <h3 class="font-serif font-bold text-slate-900 text-sm">GitHub como Portfólio Ativo</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Seu histórico de commits é a prova real das suas habilidades. Publique códigos limpos, escreva arquivos README detalhados explicando a arquitetura dos seus projetos e contribua em repositórios open-source.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <h3 class="font-serif font-bold text-slate-900 text-sm">Participação em Comunidades</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Conecte-se em grupos de estudo, fóruns técnicos (Discord, Telegram, Stack Overflow) e eventos/meetups da sua região. A indicação direta de profissionais é uma das maiores portas de entrada no mercado.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTE 3: O QUE É TI & COMO INGRESSAR -->
+    <section id="o-que-e-ti" class="space-y-6 pt-4">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div class="pb-4 border-b border-slate-100">
+          <h2 class="text-xl font-serif font-bold text-slate-900">3. O que é Tecnologia da Informação e Como Ingressar</h2>
+          <p class="text-xs text-slate-500">Entenda a abrangência da área e o passo a passo inicial para novos estudantes.</p>
+        </div>
+
+        <div class="mt-6 space-y-4 text-xs text-slate-700 leading-relaxed">
+          <p>
+            A Tecnologia da Informação (TI) é o conjunto de todas as atividades, soluções e infraestruturas providas por recursos de computação que visam a produção, armazenamento, transmissão, acesso, segurança e uso das informações. Ela engloba desde a programação de softwares até a manutenção de servidores em nuvem e segurança de dados.
+          </p>
+
+          <div class="p-5 bg-teal-50/60 border border-teal-200 rounded-2xl space-y-3">
+            <h3 class="text-sm font-bold text-teal-900 font-serif">Trilha de Ingresso para Iniciantes</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+              <div class="p-3.5 bg-white rounded-xl border border-teal-100 shadow-sm space-y-1">
+                <strong class="text-teal-800 block">Passo 1: Lógica de Programação</strong>
+                <p>Aprenda raciocínio lógico, variáveis, funções e estruturas de controle utilizando linguagens amigáveis como Python ou Portugol.</p>
+              </div>
+              <div class="p-3.5 bg-white rounded-xl border border-teal-100 shadow-sm space-y-1">
+                <strong class="text-teal-800 block">Passo 2: Fundamentos de Sistemas & Redes</strong>
+                <p>Compreenda como os sistemas operacionais funcionam (especialmente o Linux) e como os computadores conversam entre si pela rede.</p>
+              </div>
+              <div class="p-3.5 bg-white rounded-xl border border-teal-100 shadow-sm space-y-1">
+                <strong class="text-teal-800 block">Passo 3: Inglês Técnico</strong>
+                <p>Desenvolva leitura técnica em inglês para consultar documentações oficiais de linguagens e ferramentas sem barreiras.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTE 4: CURSOS SUPERIORES DE TI -->
+    <section id="cursos-ti" class="space-y-6 pt-4">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div class="pb-4 border-b border-slate-100">
+          <h2 class="text-xl font-serif font-bold text-slate-900">4. Guia de Cursos Superiores de TI</h2>
+          <p class="text-xs text-slate-500">Conheça as particularidades de cada graduação para escolher o curso alinhado ao seu perfil.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3 flex flex-col justify-between">
+            <div>
+              <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold rounded block w-max mb-2">TECNÓLOGO (2,5 anos)</span>
+              <h3 class="font-serif font-bold text-slate-900 text-base">Análise e Des. de Sistemas (ADS)</h3>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Prático e focado no mercado de trabalho imediato. Aborda desenvolvimento web, banco de dados, aplicativos e engenharia de requisitos.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-200 text-[11px] font-mono text-slate-500">
+              • <strong>Atuação:</strong> Desenvolvedor Fullstack, Frontend, Backend.
+            </div>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3 flex flex-col justify-between">
+            <div>
+              <span class="px-2 py-0.5 bg-blue-100 text-blue-800 text-[10px] font-mono font-bold rounded block w-max mb-2">BACHARELADO (4 a 5 anos)</span>
+              <h3 class="font-serif font-bold text-slate-900 text-base">Ciência da Computação</h3>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Base científica e matemática rigorosa. Estuda teoria da computação, algoritmos complexos, arquitetura de computadores e inteligência artificial.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-200 text-[11px] font-mono text-slate-500">
+              • <strong>Atuação:</strong> Cientista de Dados, Pesquisador, Dev de Sistemas.
+            </div>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3 flex flex-col justify-between">
+            <div>
+              <span class="px-2 py-0.5 bg-indigo-100 text-indigo-800 text-[10px] font-mono font-bold rounded block w-max mb-2">BACHARELADO (4 a 5 anos)</span>
+              <h3 class="font-serif font-bold text-slate-900 text-base">Engenharia de Software</h3>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Foco na gestão do ciclo de vida do software, padrões de projeto (Design Patterns), testes automatizados, arquitetura corporativa e qualidade.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-200 text-[11px] font-mono text-slate-500">
+              • <strong>Atuação:</strong> Arquiteto de Software, Tech Lead, Engenheiro.
+            </div>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3 flex flex-col justify-between">
+            <div>
+              <span class="px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-mono font-bold rounded block w-max mb-2">BACHARELADO (4 anos)</span>
+              <h3 class="font-serif font-bold text-slate-900 text-base">Sistemas de Informação</h3>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Integração entre tecnologia e gestão de negócios. Ensina como utilizar a tecnologia para otimizar processos empresariais e governança.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-200 text-[11px] font-mono text-slate-500">
+              • <strong>Atuação:</strong> Gerente de Projetos, Analista de Negócios.
+            </div>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3 flex flex-col justify-between">
+            <div>
+              <span class="px-2 py-0.5 bg-rose-100 text-rose-800 text-[10px] font-mono font-bold rounded block w-max mb-2">TECNÓLOGO (2,5 a 3 anos)</span>
+              <h3 class="font-serif font-bold text-slate-900 text-base">Redes & Cibersegurança</h3>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Focado na infraestrutura física e lógica de redes, computação em nuvem, roteadores, servidores Linux e segurança defensiva.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-200 text-[11px] font-mono text-slate-500">
+              • <strong>Atuação:</strong> Administrador de Redes, Analista de Segurança.
+            </div>
+          </div>
+        </div>
+
+        <!-- VÍDEO CURSOS CENTRALIZADO -->
+        <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col items-center justify-center text-center">
+          <h3 class="text-sm font-bold font-serif text-slate-900 mb-2">Vídeo Recomendado: Comparativo Completo dos Cursos de TI</h3>
+          <p class="text-xs text-slate-600 mb-4 max-w-xl">Entenda com mais detalhes o mercado e o foco de cada graduação:</p>
+          
+          <div class="w-full max-w-2xl aspect-video rounded-2xl overflow-hidden shadow-md border border-slate-200 bg-slate-900">
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/nwhtk6g_kjo" title="Guia de Cursos de TI no YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+
+          <a href="https://www.youtube.com/watch?v=nwhtk6g_kjo" target="_blank" class="mt-3 inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-teal-800 bg-teal-50 border border-teal-200 px-4 py-2 rounded-lg hover:bg-teal-100 transition">
+            Abrir vídeo diretamente no YouTube
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTE 5: LINGUAGENS DE PROGRAMAÇÃO NO MERCADO -->
+    <section id="linguagens" class="space-y-6 pt-4">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div class="pb-4 border-b border-slate-100">
+          <h2 class="text-xl font-serif font-bold text-slate-900">5. Linguagens de Programação e Aplicação de Mercado</h2>
+          <p class="text-xs text-slate-500">Onde cada linguagem é aplicada no ecossistema de tecnologia atual.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <span class="text-xs font-mono font-bold text-teal-800 uppercase">PHP (Laravel / Symfony)</span>
+            <p class="text-xs text-slate-700 leading-relaxed">
+              Linguagem madura e amplamente utilizada para desenvolvimento web de alta produtividade. Essencial em e-commerce, sistemas de gestão corporativa e APIs REST rápidas.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <span class="text-xs font-mono font-bold text-teal-800 uppercase">Python</span>
+            <p class="text-xs text-slate-700 leading-relaxed">
+              Líder em Inteligência Artificial, Ciência de Dados, Aprendizado de Máquina, Automação de Scripts e redes de computadores.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <span class="text-xs font-mono font-bold text-teal-800 uppercase">JavaScript / TypeScript</span>
+            <p class="text-xs text-slate-700 leading-relaxed">
+              Padrão universal para a web. Frontend dinâmico com React/Vue e Backend assíncrono com Node.js.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <span class="text-xs font-mono font-bold text-teal-800 uppercase">Java & C# (.NET)</span>
+            <p class="text-xs text-slate-700 leading-relaxed">
+              Pilares de grandes corporações, instituições financeiras e sistemas bancários críticos devido à sua robustez e segurança.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTE 6: CERTIFICAÇÕES DE TI -->
+    <section id="certificacoes" class="space-y-6 pt-4">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div class="pb-4 border-b border-slate-100">
+          <h2 class="text-xl font-serif font-bold text-slate-900">6. Principais Certificações da Indústria</h2>
+          <p class="text-xs text-slate-500">Qualificações de mercado valorizadas por recrutadores em nuvem e infraestrutura.</p>
+        </div>
+
+        <div class="space-y-4 mt-6">
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <h3 class="font-serif font-bold text-slate-900 text-base">AWS Certified SysOps Administrator – Associate</h3>
+              <a href="https://aws.amazon.com/pt/certification/certified-sysops-admin-associate/" target="_blank" class="text-xs font-mono font-semibold text-teal-800 bg-teal-50 border border-teal-200 px-3 py-1.5 rounded-lg hover:bg-teal-100 transition self-start">
+                Página Oficial AWS
+              </a>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Valida a capacidade técnica de operar, gerenciar e automatizar sistemas escaláveis e seguros na nuvem AWS.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <h4 class="font-serif font-bold text-slate-900 text-sm">Cisco CCNA & Badges Gratuitos</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Referência global para profissionais de redes de computadores. A plataforma Cisco Networking Academy oferece capacitações gratuitas em fundamentos de rede.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <h4 class="font-serif font-bold text-slate-900 text-sm">Linux Professional Institute (LPI Essentials)</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Atesta o domínio prático no sistema operacional Linux, essencial para administradores de redes e desenvolvedores backend.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTE 7: INFRAESTRUTURA & DIAGNÓSTICO DE REDE -->
+    <section id="infraestrutura" class="space-y-6 pt-4">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div class="pb-4 border-b border-slate-100">
+          <h2 class="text-xl font-serif font-bold text-slate-900">7. O que é Infraestrutura de TI e Diagnóstico Prático</h2>
+          <p class="text-xs text-slate-500">A base física e lógica que sustenta os sistemas e diagnóstico em tempo real da sua conexão.</p>
+        </div>
+
+        <p class="text-xs text-slate-700 leading-relaxed mt-4">
+          A infraestrutura de TI engloba o hardware, software, instalações de rede e recursos de armazenamento necessários para entregar serviços de tecnologia. Abaixo está o exemplo prático de identificação do seu endereço IP público e parâmetros de rede local:
+        </p>
+
+        <!-- CARDS DE DIAGNÓSTICO IP COM QUEBRA DE LINHA CORRIGIDA -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
           <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
             <span class="text-[11px] font-mono text-slate-500 block uppercase mb-1">Endereço IP Público</span>
@@ -184,7 +458,7 @@
             <span id="ip-local" class="text-sm font-semibold text-slate-800 block">Detectando...</span>
           </div>
           <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-            <span class="text-[11px] font-mono text-slate-500 block uppercase mb-1">Sistema Autônomo (ASN)</span>
+            <span class="text-[11px] font-mono text-slate-500 block uppercase mb-1">Versão Protocolo</span>
             <span id="ip-asn" class="text-sm font-mono text-slate-800 block">Detectando...</span>
           </div>
         </div>
@@ -193,311 +467,65 @@
           <label class="block text-xs font-semibold text-slate-700 mb-2">Consulta Avançada de IP ou Domínio:</label>
           <div class="flex gap-2 max-w-lg">
             <input type="text" id="input-lookup" placeholder="Ex: 8.8.8.8 ou cloudflare.com" class="flex-1 bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2 text-xs font-mono text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500">
-            <button onclick="consultarIPCustomizado()" class="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition shadow-sm">Consultar</button>
+            <button onclick="consultarIPCustomizado()" class="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition shadow-sm">Consultar IP</button>
           </div>
           <div id="lookup-resultado" class="mt-3 text-xs font-mono text-slate-700 hidden p-3 bg-slate-50 rounded-lg border border-slate-200"></div>
         </div>
       </div>
     </section>
 
-    <!-- 2. GUIA ACADÊMICO DE TI -->
-    <section id="academico-ti" class="space-y-6 pt-4">
+    <!-- PARTE 8: GUIA PRÁTICO DO LINUX -->
+    <section id="linux-guia" class="space-y-6 pt-4">
       <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
         <div class="pb-4 border-b border-slate-100">
-          <h2 class="text-xl font-serif font-bold text-slate-900">2. Guia de Ingresso na Faculdade e Cursos de TI</h2>
-          <p class="text-xs text-slate-500">Orientações fundamentais para iniciar a graduação e entender as diferenças de cada formação.</p>
+          <h2 class="text-xl font-serif font-bold text-slate-900">8. Guia Prático do Sistema Operacional Linux</h2>
+          <p class="text-xs text-slate-500">Como criar pendrives bootáveis, preparar instalações, estrutura de pastas e permissões.</p>
         </div>
 
-        <!-- PRIMEIROS PASSOS -->
-        <div class="mt-6 p-5 bg-teal-50/60 border border-teal-200 rounded-2xl space-y-3">
-          <h3 class="text-sm font-bold text-teal-900 font-serif">
-            Primeiros Passos Recomendados Antes do Início das Aulas
-          </h3>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            Muitos estudantes ingressam no ensino superior sem contato prévio com a rotina da tecnologia. Construir uma base prévia diminui drasticamente a curva de aprendizado nos primeiros semestres:
-          </p>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-700">
-            <div class="p-3.5 bg-white rounded-xl border border-teal-100 shadow-sm space-y-1">
-              <strong class="text-teal-800 block">1. Lógica e Algoritmos</strong>
-              <p>Compreenda estruturas condicionais (if/else), laços de repetição (for/while) e manipulação de variáveis usando Python ou Portugol.</p>
-            </div>
-            <div class="p-3.5 bg-white rounded-xl border border-teal-100 shadow-sm space-y-1">
-              <strong class="text-teal-800 block">2. Inglês Técnico para TI</strong>
-              <p>As melhores documentações oficiais, linguagens de programação, mensagens de erro e fóruns internacionais utilizam o inglês como padrão.</p>
-            </div>
-            <div class="p-3.5 bg-white rounded-xl border border-teal-100 shadow-sm space-y-1">
-              <strong class="text-teal-800 block">3. Definição do Perfil Profissional</strong>
-              <p>Avalie se você possui maior afinidade com código (desenvolvimento), infraestrutura (redes/nuvem), gestão (projetos/negócios) ou análise de dados.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- COMPARATIVO DOS CURSOS -->
-        <div class="mt-6 space-y-4">
-          <h3 class="text-sm font-bold font-serif text-slate-900">Análise Comparativa dos Cursos Superiores de TI</h3>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <!-- ADS -->
-            <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3 flex flex-col justify-between">
-              <div>
-                <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold rounded block w-max mb-2">TECNÓLOGO (2,5 anos)</span>
-                <h4 class="font-serif font-bold text-slate-900 text-base">Análise e Desenvol. de Sistemas</h4>
-                <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                  Totalmente voltado para a prática de criação de software, banco de dados, desenvolvimento web e sistemas móveis. É a formação ideal para quem busca inserção rápida no mercado de trabalho.
-                </p>
-              </div>
-              <div class="pt-3 border-t border-slate-200 text-[11px] font-mono text-slate-500">
-                • <strong>Foco:</strong> Programação e desenvolvimento.<br>
-                • <strong>Atuação:</strong> Desenvolvedor Fullstack, Frontend, Backend.
-              </div>
-            </div>
-
-            <!-- CIÊNCIA DA COMPUTAÇÃO -->
-            <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3 flex flex-col justify-between">
-              <div>
-                <span class="px-2 py-0.5 bg-blue-100 text-blue-800 text-[10px] font-mono font-bold rounded block w-max mb-2">BACHARELADO (4 a 5 anos)</span>
-                <h4 class="font-serif font-bold text-slate-900 text-base">Ciência da Computação</h4>
-                <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                  Formação científica e matemática profunda. Estuda como os computadores funcionam em baixo nível, algoritmos avançados, inteligência artificial, compiladores e teoria do processamento.
-                </p>
-              </div>
-              <div class="pt-3 border-t border-slate-200 text-[11px] font-mono text-slate-500">
-                • <strong>Foco:</strong> Teoria científica e matemática.<br>
-                • <strong>Atuação:</strong> Cientista de Dados, Pesquisador, Dev de Elite.
-              </div>
-            </div>
-
-            <!-- ENGENHARIA DE SOFTWARE -->
-            <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3 flex flex-col justify-between">
-              <div>
-                <span class="px-2 py-0.5 bg-indigo-100 text-indigo-800 text-[10px] font-mono font-bold rounded block w-max mb-2">BACHARELADO (4 a 5 anos)</span>
-                <h4 class="font-serif font-bold text-slate-900 text-base">Engenharia de Software</h4>
-                <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                  Combina programação com processos e arquitetura de grande escala. Focado na qualidade do código, padrões de projeto (Design Patterns), testes automatizados e métodos ágeis.
-                </p>
-              </div>
-              <div class="pt-3 border-t border-slate-200 text-[11px] font-mono text-slate-500">
-                • <strong>Foco:</strong> Arquitetura e processos robustos.<br>
-                • <strong>Atuação:</strong> Arquiteto de Software, Tech Lead, Engenheiro.
-              </div>
-            </div>
-
-            <!-- SISTEMAS DE INFORMAÇÃO -->
-            <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3 flex flex-col justify-between">
-              <div>
-                <span class="px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-mono font-bold rounded block w-max mb-2">BACHARELADO (4 anos)</span>
-                <h4 class="font-serif font-bold text-slate-900 text-base">Sistemas de Informação</h4>
-                <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                  Ponte entre a tecnologia da informação e a gestão corporativa. Aborda desenvolvimento e banco de dados aliados à administração de empresas, governança e processos de negócios.
-                </p>
-              </div>
-              <div class="pt-3 border-t border-slate-200 text-[11px] font-mono text-slate-500">
-                • <strong>Foco:</strong> Negócios e tecnologia.<br>
-                • <strong>Atuação:</strong> Gerente de Projetos, Analista de Negócios.
-              </div>
-            </div>
-
-            <!-- REDES E DEFESA CIBERNÉTICA -->
-            <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3 flex flex-col justify-between">
-              <div>
-                <span class="px-2 py-0.5 bg-rose-100 text-rose-800 text-[10px] font-mono font-bold rounded block w-max mb-2">TECNÓLOGO (2,5 a 3 anos)</span>
-                <h4 class="font-serif font-bold text-slate-900 text-base">Redes & Defesa Cibernética</h4>
-                <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                  Focado na infraestrutura de comunicação de dados, roteadores, switches, servidores Linux/Windows, computação em nuvem, segurança defensiva e auditoria de sistemas.
-                </p>
-              </div>
-              <div class="pt-3 border-t border-slate-200 text-[11px] font-mono text-slate-500">
-                • <strong>Foco:</strong> Infraestrutura, Nuvem e Segurança.<br>
-                • <strong>Atuação:</strong> Administrador de Redes, Analista de Segurança.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- VÍDEO EXPLICATIVO DE CURSOS CENTRALIZADO -->
-        <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col items-center justify-center text-center">
-          <h3 class="text-sm font-bold font-serif text-slate-900 mb-2">Guia em Vídeo: Como Escolher o Melhor Curso de TI</h3>
-          <p class="text-xs text-slate-600 mb-4 max-w-xl">Assista à explicação detalhada sobre as perspectivas de mercado e perfil de cada graduação:</p>
-          
-          <div class="w-full max-w-2xl aspect-video rounded-2xl overflow-hidden shadow-md border border-slate-200 bg-slate-900">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/nwhtk6g_kjo" title="Guia de Cursos de TI no YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-
-          <a href="https://www.youtube.com/watch?v=nwhtk6g_kjo" target="_blank" class="mt-3 inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-teal-800 bg-teal-50 border border-teal-200 px-4 py-2 rounded-lg hover:bg-teal-100 transition">
-            Abrir vídeo diretamente no YouTube
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. LINGUAGENS DE PROGRAMAÇÃO NO MERCADO -->
-    <section id="linguagens-mercado" class="space-y-6 pt-4">
-      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
-        <div class="pb-4 border-b border-slate-100">
-          <h2 class="text-xl font-serif font-bold text-slate-900">3. Linguagens de Programação e Aplicação no Mercado</h2>
-          <p class="text-xs text-slate-500">Panorama atual do mercado profissional para cada ecossistema de desenvolvimento.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
-          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-            <span class="text-xs font-mono font-bold text-teal-800 uppercase">Python</span>
-            <p class="text-xs text-slate-700 leading-relaxed">
-              Líder absoluto em Inteligência Artificial, Ciência de Dados, Aprendizado de Máquina, Automação/Scripting de Redes e Backend web (Django/FastAPI). Possui sintaxe simples e alta demanda global.
-            </p>
-          </div>
-
-          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-            <span class="text-xs font-mono font-bold text-teal-800 uppercase">JavaScript / TypeScript</span>
-            <p class="text-xs text-slate-700 leading-relaxed">
-              A linguagem da web. Dominante no desenvolvimento Frontend (React, Vue, Angular) e amplamente utilizada no Backend (Node.js). O TypeScript adiciona tipagem estática e é o padrão corporativo atual.
-            </p>
-          </div>
-
-          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-            <span class="text-xs font-mono font-bold text-teal-800 uppercase">Java & C# (.NET)</span>
-            <p class="text-xs text-slate-700 leading-relaxed">
-              Pilares do desenvolvimento corporativo, grandes bancos, instituições governamentais e sistemas críticos. Oferecem altíssima estabilidade, escalabilidade e grande volume de vagas sênior.
-            </p>
-          </div>
-
-          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-            <span class="text-xs font-mono font-bold text-teal-800 uppercase">C / C++</span>
-            <p class="text-xs text-slate-700 leading-relaxed">
-              Essenciais para sistemas operacionais, drivers de hardware, sistemas embarcados, desenvolvimento de jogos e software de alto desempenho onde o controle direto de memória é indispensável.
-            </p>
-          </div>
-
-          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-            <span class="text-xs font-mono font-bold text-teal-800 uppercase">Go (Golang) & Rust</span>
-            <p class="text-xs text-slate-700 leading-relaxed">
-              Linguagens modernas foca em computação em nuvem, ferramentas de infraestrutura (Docker, Kubernetes) e microsserviços de alta concorrência. Rust destaca-se pela segurança de memória sem garbage collector.
-            </p>
-          </div>
-
-          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-            <span class="text-xs font-mono font-bold text-teal-800 uppercase">SQL (Bancos de Dados Relacionais)</span>
-            <p class="text-xs text-slate-700 leading-relaxed">
-              Conhecimento universal obrigatório para qualquer profissional de TI. Utilizado na estruturação, consulta e manipulação de dados em bancos PostgreSQL, MySQL, Oracle e SQL Server.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. CERTIFICAÇÕES DE TI -->
-    <section id="certificacoes" class="space-y-6 pt-4">
-      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
-        <div class="pb-4 border-b border-slate-100">
-          <h2 class="text-xl font-serif font-bold text-slate-900">4. Principais Certificações da Indústria de TI</h2>
-          <p class="text-xs text-slate-500">Qualificações reconhecidas globalmente no mercado corporativo e programas de capacitação gratuita.</p>
-        </div>
-
-        <div class="space-y-4 mt-6">
-          <!-- AWS SYSOPS & CLOUD -->
-          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <h3 class="font-serif font-bold text-slate-900 text-base">AWS Certified SysOps Administrator – Associate</h3>
-              <a href="https://aws.amazon.com/pt/certification/certified-sysops-admin-associate/" target="_blank" class="text-xs font-mono font-semibold text-teal-800 bg-teal-50 border border-teal-200 px-3 py-1.5 rounded-lg hover:bg-teal-100 transition self-start">
-                Página Oficial da AWS
-              </a>
-            </div>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Certificação de nível intermediário que valida a experiência técnica na implantação, gerenciamento, segurança e operação de sistemas escaláveis e tolerantes a falhas na infraestrutura AWS.
-            </p>
-            <div class="pt-2 text-[11px] font-mono text-slate-500">
-              • <strong>Outras AWS recomendadas:</strong> AWS Certified Cloud Practitioner (Iniciante) e AWS Certified Solutions Architect (Projetos de Nuvem).
-            </div>
-          </div>
-
-          <!-- CISCO & REDES -->
-          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <h3 class="font-serif font-bold text-slate-900 text-base">Cisco CCNA & Badges Gratuitos da Cisco Networking Academy</h3>
-              <a href="https://www.netacad.com/pt-br" target="_blank" class="text-xs font-mono font-semibold text-teal-800 bg-teal-50 border border-teal-200 px-3 py-1.5 rounded-lg hover:bg-teal-100 transition self-start">
-                Plataforma Cisco Skills
-              </a>
-            </div>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              O CCNA (Cisco Certified Network Associate) é o padrão ouro mundial para profissionais de redes. A plataforma Cisco Networking Academy disponibiliza cursos gratuitos com emissão de badges digitais em Redes, Segurança e Linux.
-            </p>
-          </div>
-
-          <!-- MICROSOFT & ORACLE -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-              <h4 class="font-serif font-bold text-slate-900 text-sm">Microsoft Certified: Azure Fundamentals (AZ-900)</h4>
-              <p class="text-xs text-slate-600 leading-relaxed">
-                Comprova conhecimentos fundamentais sobre serviços de nuvem Microsoft Azure, governança e segurança. O portal Microsoft Learn oferece o treinamento 100% gratuito.
-              </p>
-            </div>
-
-            <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-              <h4 class="font-serif font-bold text-slate-900 text-sm">Oracle Cloud Infrastructure (OCI) Foundations</h4>
-              <p class="text-xs text-slate-600 leading-relaxed">
-                A Oracle disponibiliza cursos gratuitos em vídeo e exames de certificação sem custo para capacitação em infraestrutura OCI e banco de dados em nuvem.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. GUIA PRÁTICO DE LINUX -->
-    <section id="linux-conceitos" class="space-y-6 pt-4">
-      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
-        <div class="pb-4 border-b border-slate-100">
-          <h2 class="text-xl font-serif font-bold text-slate-900">5. Guia Prático e Conceitos do Linux</h2>
-          <p class="text-xs text-slate-500">Passo a passo completo de instalação, estrutura de diretórios, permissões e processos.</p>
-        </div>
-
-        <!-- PASSO A PASSO DE INSTALAÇÃO -->
+        <!-- PASSO A PASSO INSTALAÇÃO -->
         <div class="mt-6 p-5 bg-slate-50 border border-slate-200 rounded-xl space-y-4">
-          <h3 class="text-sm font-bold font-serif text-slate-900">Como Instalar o Linux: Preparação e Instalação</h3>
+          <h3 class="text-sm font-bold font-serif text-slate-900">Passo a Passo: Como Instalar e Testar o Linux</h3>
           
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-700">
             <div class="p-4 bg-white rounded-lg border border-slate-200 space-y-1.5">
-              <strong class="text-teal-800 block">1. Criando o Pendrive Bootável</strong>
+              <strong class="text-teal-800 block">1. Criar Pendrive Bootável</strong>
               <p class="leading-relaxed">
-                Baixe a imagem ISO da distribuição (ex: Ubuntu ou Linux Mint). Use o software gratuito <strong>Ventoy</strong> ou <strong>Rufus</strong> no Windows para gravar a ISO em um pendrive de no mínimo 8GB.
+                Baixe a imagem ISO do Ubuntu ou Linux Mint. Grave no pendrive usando os softwares gratuitos <strong>Ventoy</strong> ou <strong>Rufus</strong>.
               </p>
             </div>
 
             <div class="p-4 bg-white rounded-lg border border-slate-200 space-y-1.5">
-              <strong class="text-teal-800 block">2. Configurando o Boot (BIOS/UEFI)</strong>
+              <strong class="text-teal-800 block">2. Acessar a BIOS/UEFI</strong>
               <p class="leading-relaxed">
-                Reinicie o computador pressionando as teclas F2, F12, Del ou Esc para acessar a BIOS. Altere a ordem de inicialização (Boot Priority) para iniciar primeiro pelo pendrive USB.
+                Ligue o computador pressionando F2, F12 ou Del e defina a ordem de boot para iniciar primeiro pela porta USB.
               </p>
             </div>
 
             <div class="p-4 bg-white rounded-lg border border-slate-200 space-y-1.5">
-              <strong class="text-teal-800 block">3. Opções de Instalação</strong>
+              <strong class="text-teal-800 block">3. Instalação ou Máquina Virtual</strong>
               <p class="leading-relaxed">
-                Você pode instalar em <strong>Dual Boot</strong> (lado a lado com o Windows), substituir totalmente o sistema, usar uma <strong>Máquina Virtual (VirtualBox)</strong> ou ativar o <strong>WSL2</strong> no próprio Windows.
+                Você pode instalar em Dual Boot junto ao Windows, usar em Máquina Virtual no VirtualBox ou ativar o WSL2.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- ESTRUTURA FHS & PERMISSÕES -->
+        <!-- CONCEITOS FHS E PERMISSÕES -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
           <div class="space-y-3">
             <h3 class="text-xs font-mono font-bold text-slate-700 uppercase tracking-wider">Estrutura de Diretórios (FHS)</h3>
             <div class="space-y-2 text-xs font-mono">
               <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
                 <span class="text-teal-700 font-bold block">/ (Raiz - Root)</span>
-                <span class="text-slate-600">Diretório principal do sistema do qual derivam todas as pastas.</span>
+                <span class="text-slate-600">Diretório base de onde deriva toda a estrutura de pastas.</span>
               </div>
               <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
                 <span class="text-teal-700 font-bold block">/etc</span>
-                <span class="text-slate-600">Arquivos de configuração do sistema e de serviços (ex: network, ssh).</span>
+                <span class="text-slate-600">Arquivos de configuração do sistema e de redes.</span>
               </div>
               <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
                 <span class="text-teal-700 font-bold block">/var</span>
-                <span class="text-slate-600">Dados variáveis: logs do sistema (`/var/log`), filas e sites (`/var/www`).</span>
-              </div>
-              <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                <span class="text-teal-700 font-bold block">/home & /root</span>
-                <span class="text-slate-600">Diretórios pessoais dos usuários comuns e do superusuário root.</span>
+                <span class="text-slate-600">Arquivos de dados variáveis: logs do sistema e filas de impressão.</span>
               </div>
             </div>
           </div>
@@ -511,18 +539,17 @@
                 <span>x (Execute) = 1</span>
               </div>
               <div class="space-y-1 text-[11px] text-slate-300">
-                <p>• <code>chmod 755 script.sh</code>: Dono lê/escreve/executa (7), Grupo e Outros leem/executam (5).</p>
-                <p>• <code>chmod 644 texto.txt</code>: Dono lê/escreve (6), Grupo e Outros apenas leem (4).</p>
-                <p>• <code>chown usuario:grupo pasta/</code>: Altera o proprietário e o grupo da pasta.</p>
+                <p>• <code>chmod 755 script.sh</code>: Dono lê/escreve/executa (7), Outros leem/executam (5).</p>
+                <p>• <code>chown usuario:grupo pasta/</code>: Altera a propriedade da pasta.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- VÍDEO EXPLICATIVO DE LINUX CENTRALIZADO -->
+        <!-- VÍDEO LINUX CENTRALIZADO -->
         <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col items-center justify-center text-center">
-          <h3 class="text-sm font-bold font-serif text-slate-900 mb-2">Guia em Vídeo: Como Instalar o Linux na Prática</h3>
-          <p class="text-xs text-slate-600 mb-4 max-w-xl">Acompanhe o passo a passo em vídeo para criação do pendrive bootável e instalação do sistema:</p>
+          <h3 class="text-sm font-bold font-serif text-slate-900 mb-2">Vídeo Recomendado: Instalação do Linux Passo a Passo</h3>
+          <p class="text-xs text-slate-600 mb-4 max-w-xl">Veja em detalhes a gravação da ISO e a instalação no computador:</p>
           
           <div class="w-full max-w-2xl aspect-video rounded-2xl overflow-hidden shadow-md border border-slate-200 bg-slate-900">
             <iframe class="w-full h-full" src="https://www.youtube.com/embed/C4RKbNlrW4I" title="Como Instalar o Linux no YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -535,12 +562,12 @@
       </div>
     </section>
 
-    <!-- 6. CALCULADORA CIDR -->
-    <section id="calculadora" class="space-y-6 pt-4">
+    <!-- PARTE 9: FERRAMENTAS DE REDE (CALCULADORA E TREINO) -->
+    <section id="calculadora-redes" class="space-y-6 pt-4">
       <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
         <div class="pb-4 border-b border-slate-100">
-          <h2 class="text-xl font-serif font-bold text-slate-900">6. Calculadora de Sub-redes IPv4 / CIDR</h2>
-          <p class="text-xs text-slate-500">Cálculo preciso dos blocos de IPs e inspeção detalhada de bits de rede e host.</p>
+          <h2 class="text-xl font-serif font-bold text-slate-900">9. Ferramentas Práticas de Calculadora CIDR e Treino</h2>
+          <p class="text-xs text-slate-500">Cálculo de blocos IPv4 e simulador de fixação de sub-redes.</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
@@ -554,16 +581,6 @@
               </div>
             </div>
             <button onclick="executarCalculoCIDR()" class="w-full py-2.5 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition shadow-sm">Calcular Sub-rede</button>
-
-            <button onclick="copiarCidrMarkdown()" id="btn-copiar-cidr" class="w-full py-2 bg-slate-900 hover:bg-slate-800 text-teal-300 font-mono text-xs rounded-lg transition flex items-center justify-center gap-2 border border-slate-700 shadow-sm">
-              Copiar para Notion / Obsidian / Anki
-            </button>
-
-            <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1">
-              <span class="font-bold text-slate-900 block mb-1">Legenda dos Bits:</span>
-              <p><span class="bit-net">Bits Verdes/Teal</span>: Sub-rede (fixados pela máscara)</p>
-              <p><span class="bit-host">Bits Vermelhos</span>: Hosts (endereçamento de nós)</p>
-            </div>
           </div>
 
           <div class="lg:col-span-2 bg-slate-900 text-slate-100 p-5 rounded-xl space-y-4 font-mono text-xs shadow-inner">
@@ -571,230 +588,34 @@
               <div><span class="text-slate-400">Endereço de Rede:</span> <span id="res-rede" class="text-teal-400 font-bold">-</span></div>
               <div><span class="text-slate-400">Máscara Decimal:</span> <span id="res-mascara" class="text-white font-bold">-</span></div>
               <div><span class="text-slate-400">Broadcast:</span> <span id="res-broadcast" class="text-teal-400 font-bold">-</span></div>
-              <div><span class="text-slate-400">Total de IPs:</span> <span id="res-total-hosts" class="text-white font-bold">-</span></div>
-              <div><span class="text-slate-400">Primeiro Host:</span> <span id="res-primeiro-host" class="text-slate-200">-</span></div>
               <div><span class="text-slate-400">Hosts Úteis:</span> <span id="res-hosts-uteis" class="text-emerald-400 font-bold">-</span></div>
-              <div><span class="text-slate-400">Último Host:</span> <span id="res-ultimo-host" class="text-slate-200">-</span></div>
-              <div><span class="text-slate-400">Classe IPv4:</span> <span id="res-classe" class="text-slate-200">-</span></div>
-            </div>
-
-            <div class="pt-3 border-t border-slate-800">
-              <span class="text-slate-400 block mb-2">Representação Binária (32 Bits):</span>
-              <div id="res-binario" class="p-3 bg-slate-950 rounded-lg border border-slate-800 tracking-widest break-all font-mono">
-                -
-              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 7. TREINO DE SUB-REDES -->
-    <section id="treino-subrede" class="space-y-6 pt-4">
-      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
-          <div>
-            <h2 class="text-xl font-serif font-bold text-slate-900">7. Modo Treino Interativo de Sub-redes</h2>
-            <p class="text-xs text-slate-500">Pratique cálculos rápidos de bloco, broadcast e hosts para provas de concursos.</p>
-          </div>
-          <div class="flex items-center gap-3 text-xs font-mono bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg">
-            <span>Acertos: <strong id="treino-placar-acertos" class="text-teal-700">0</strong>/<span id="treino-placar-total">0</span></span>
-            <span class="text-slate-300">|</span>
-            <span>Sequência: <strong id="treino-placar-sequencia" class="text-emerald-700">0</strong></span>
-          </div>
-        </div>
-
-        <div class="max-w-xl mx-auto py-4 space-y-6">
-          <div class="p-6 bg-slate-50 border border-slate-200 rounded-xl text-center space-y-3">
-            <span class="text-[11px] font-mono text-slate-500 uppercase tracking-wider block">Endereço IP / CIDR Gerado:</span>
-            <div id="treino-ip-cidr" class="text-2xl sm:text-3xl font-mono font-bold text-teal-800 tracking-wide">
-              Gerando...
-            </div>
-            <p id="treino-pergunta" class="text-sm font-semibold text-slate-800 pt-2 border-t border-slate-200/80">
-              Aguardando início do desafio...
-            </p>
-          </div>
-
-          <div class="space-y-3">
-            <label class="block text-xs font-medium text-slate-700">Sua Resposta:</label>
-            <div class="flex gap-2">
-              <input type="text" id="treino-input" placeholder="Ex: 192.168.1.0 ou 255.255.255.192 ou 62" class="flex-1 bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2 text-xs font-mono text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500">
-              <button id="treino-btn-verificar" onclick="verificarRespostaTreino()" class="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition shadow-sm">Verificar</button>
-            </div>
-          </div>
-
-          <div id="treino-feedback" class="hidden"></div>
-
-          <div class="pt-2 text-center">
-            <button onclick="gerarDesafioSubrede()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-mono text-xs rounded-lg border border-slate-300 transition">
-              Próximo Desafio
-            </button>
-          </div>
-        </div>
-      </div>
+    <!-- SEÇÃO DINÂMICA PARA NOVOS TÓPICOS ADD PELO ADMIN -->
+    <section id="secao-topicos-custom" class="space-y-6 hidden">
+      <!-- Injetado via JavaScript quando o administrador cria novos tópicos -->
     </section>
 
-    <!-- 8. REDES & PORTAS -->
-    <section id="redes-teoria" class="space-y-6 pt-4">
-      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
-        <div class="pb-4 border-b border-slate-100">
-          <h2 class="text-xl font-serif font-bold text-slate-900">8. Camadas da Arquitetura e Tabela de Portas</h2>
-          <p class="text-xs text-slate-500">Estrutura OSI vs. TCP/IP e busca interativa de protocolos para concursos.</p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
-          <div class="space-y-3">
-            <h3 class="text-xs font-mono font-bold text-slate-700 uppercase tracking-wider">Unidades de Dados (PDUs) por Camada</h3>
-            <div class="space-y-2 text-xs font-mono">
-              <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg flex justify-between items-center">
-                <span class="text-slate-700">L7/L6/L5 — Aplicação, Apresentação, Sessão</span>
-                <span class="text-teal-700 font-bold">Dados</span>
-              </div>
-              <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg flex justify-between items-center">
-                <span class="text-slate-700">L4 — Transporte (TCP / UDP)</span>
-                <span class="text-teal-700 font-bold">Segmento / Datagrama</span>
-              </div>
-              <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg flex justify-between items-center">
-                <span class="text-slate-700">L3 — Rede (IP, ICMP, Roteador)</span>
-                <span class="text-teal-700 font-bold">Pacote</span>
-              </div>
-              <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg flex justify-between items-center">
-                <span class="text-slate-700">L2 — Enlace de Dados (Ethernet, Switch)</span>
-                <span class="text-teal-700 font-bold">Quadro (Frame)</span>
-              </div>
-              <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg flex justify-between items-center">
-                <span class="text-slate-700">L1 — Física (Cabos, Fibra, Sinais)</span>
-                <span class="text-teal-700 font-bold">Bits</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <h3 class="text-xs font-mono font-bold text-slate-700 uppercase tracking-wider">Mapeamento de Portas</h3>
-              <input type="text" id="filtro-portas" onkeyup="filtrarTabelaPortas()" placeholder="Buscar porta, protocolo ou uso..." class="px-3 py-1 text-xs bg-slate-50 border border-slate-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500">
-            </div>
-            
-            <div class="overflow-x-auto border border-slate-200 rounded-lg">
-              <table class="w-full text-left text-xs font-mono" id="tabela-portas">
-                <thead class="bg-slate-50 border-b border-slate-200 text-slate-700 font-semibold">
-                  <tr><th class="p-2.5">Porta</th><th class="p-2.5">Protocolo</th><th class="p-2.5">Transporte</th><th class="p-2.5">Descrição / Aplicação</th></tr>
-                </thead>
-                <tbody class="divide-y divide-slate-100 text-slate-700">
-                  <tr><td class="p-2.5 font-bold text-teal-700">20 / 21</td><td class="p-2.5">FTP</td><td class="p-2.5">TCP</td><td class="p-2.5">Transferência de arquivos</td></tr>
-                  <tr><td class="p-2.5 font-bold text-teal-700">22</td><td class="p-2.5">SSH</td><td class="p-2.5">TCP</td><td class="p-2.5">Acesso remoto seguro</td></tr>
-                  <tr><td class="p-2.5 font-bold text-teal-700">23</td><td class="p-2.5">Telnet</td><td class="p-2.5">TCP</td><td class="p-2.5">Acesso remoto sem criptografia</td></tr>
-                  <tr><td class="p-2.5 font-bold text-teal-700">25</td><td class="p-2.5">SMTP</td><td class="p-2.5">TCP</td><td class="p-2.5">Envio de correio eletrônico</td></tr>
-                  <tr><td class="p-2.5 font-bold text-teal-700">53</td><td class="p-2.5">DNS</td><td class="p-2.5">UDP / TCP</td><td class="p-2.5">Resolução de nomes de domínio</td></tr>
-                  <tr><td class="p-2.5 font-bold text-teal-700">80</td><td class="p-2.5">HTTP</td><td class="p-2.5">TCP</td><td class="p-2.5">Navegação web simples</td></tr>
-                  <tr><td class="p-2.5 font-bold text-teal-700">443</td><td class="p-2.5">HTTPS</td><td class="p-2.5">TCP</td><td class="p-2.5">Navegação web segura (TLS/SSL)</td></tr>
-                  <tr><td class="p-2.5 font-bold text-teal-700">3389</td><td class="p-2.5">RDP</td><td class="p-2.5">TCP/UDP</td><td class="p-2.5">Área de Trabalho Remota Windows</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. METODOLOGIAS DE TI -->
-    <section id="metodologias" class="space-y-6 pt-4">
-      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
-        <div class="pb-4 border-b border-slate-100">
-          <h2 class="text-xl font-serif font-bold text-slate-900">9. Resumos de Metodologias para Concursos</h2>
-          <p class="text-xs text-slate-500">Síntese fundamentada nos guias oficiais mais cobrados pelas bancas.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
-          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
-            <span class="px-2.5 py-0.5 bg-blue-100 text-blue-800 text-[10px] font-mono font-bold rounded">PREDITIVO</span>
-            <h3 class="font-serif font-bold text-slate-900">Modelo em Cascata</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">Desenvolvimento linear em etapas (Requisitos -> Projeto -> Código -> Testes). Mudanças de escopo no final têm alto custo.</p>
-          </div>
-
-          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
-            <span class="px-2.5 py-0.5 bg-teal-100 text-teal-800 text-[10px] font-mono font-bold rounded">SCRUM GUIDE 2020</span>
-            <h3 class="font-serif font-bold text-slate-900">Framework Scrum</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">Papéis: Product Owner, Scrum Master e Developers. Não existe Gerente de Projetos no Scrum. As Sprints possuem timebox fixo.</p>
-          </div>
-
-          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
-            <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold rounded">KANBAN</span>
-            <h3 class="font-serif font-bold text-slate-900">Metodologia Kanban</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">Gestão de fluxo contínuo. Uso de WIP Limit (Work in Progress) para otimizar gargalos. Medição por Lead Time e Cycle Time.</p>
-          </div>
-
-          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
-            <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-mono font-bold rounded">LEAN</span>
-            <h3 class="font-serif font-bold text-slate-900">Lean Software</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">Focado na eliminação de desperdícios (Muda), no aprendizado contínuo e na entrega rápida de valor útil ao cliente.</p>
-          </div>
-
-          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
-            <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 text-[10px] font-mono font-bold rounded">ENGENHARIA</span>
-            <h3 class="font-serif font-bold text-slate-900">TDD</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">Desenvolvimento Guiado por Testes no ciclo Red -> Green -> Refactor. Os testes automatizados são criados antes do código.</p>
-          </div>
-
-          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
-            <span class="px-2.5 py-0.5 bg-rose-100 text-rose-800 text-[10px] font-mono font-bold rounded">XP</span>
-            <h3 class="font-serif font-bold text-slate-900">Extreme Programming</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">Pair Programming, Integração Contínua (CI) e Refatoração. Valores centrais: Comunicação, Simplicidade, Feedback e Coragem.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 10. SIMULADO VIA JSON -->
+    <!-- PARTE 10: SIMULADO DE QUESTÕES -->
     <section id="simulado" class="space-y-6 pt-4">
       <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
         <div class="pb-4 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h2 class="text-xl font-serif font-bold text-slate-900">10. Simulado para Concursos de TI</h2>
-            <p class="text-xs text-slate-500">Questões carregadas via arquivo JSON com gabarito e histórico salvo.</p>
+            <h2 class="text-xl font-serif font-bold text-slate-900">10. Simulado para Fixação de Conteúdo</h2>
+            <p class="text-xs text-slate-500">Questões de concursos anteriores e exercícios práticos.</p>
           </div>
           
-          <div class="flex flex-wrap items-center gap-2">
-            <div id="quiz-placar" class="text-xs font-mono font-bold text-teal-800 bg-teal-50 border border-teal-200 px-3 py-1.5 rounded-lg">
-              Pontuação: 0 / 0 (0%)
-            </div>
-            <button onclick="reiniciarSimulado()" class="px-2.5 py-1.5 text-xs font-mono text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg transition">
-              Resetar Histórico
-            </button>
-          </div>
-        </div>
-
-        <!-- FILTROS E BUSCA -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Filtrar por Banca:</label>
-            <select id="filtro-banca" onchange="renderizarQuiz()" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-800 focus:outline-none focus:ring-1 focus:ring-teal-500">
-              <option value="todas">Todas as Bancas</option>
-              <option value="Cebraspe">Cebraspe</option>
-              <option value="FGV">FGV</option>
-              <option value="Vunesp">Vunesp</option>
-              <option value="Cesgranrio">Cesgranrio</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Filtrar por Assunto:</label>
-            <select id="filtro-assunto" onchange="renderizarQuiz()" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-800 focus:outline-none focus:ring-1 focus:ring-teal-500">
-              <option value="todos">Todos os Assuntos</option>
-              <option value="Redes">Redes de Computadores</option>
-              <option value="Linux">Linux & Sistemas</option>
-              <option value="Metodologias">Metodologias de TI</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Buscar Palavra-chave:</label>
-            <input type="text" id="filtro-busca-texto" onkeyup="renderizarQuiz()" placeholder="Ex: TCP, chmod, Scrum..." class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-800 focus:outline-none focus:ring-1 focus:ring-teal-500">
-          </div>
+          <button onclick="reiniciarSimulado()" class="px-2.5 py-1.5 text-xs font-mono text-slate-600 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg transition">
+            Resetar Histórico
+          </button>
         </div>
 
         <div id="quiz-container" class="space-y-5 mt-4">
-          <!-- Injetado dinamicamente do JSON -->
+          <!-- Injetado dinamicamente -->
         </div>
       </div>
     </section>
@@ -806,19 +627,19 @@
         <p class="text-xs text-slate-500 mb-4">Dúvidas conceituais, correções de conteúdo ou sugestões de melhoria.</p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <a href="https://wa.me/5561991737548?text=Ola!%20Duvida%20sobre%20o%20Ponto%20a%20Ponto" target="_blank" class="p-4 rounded-xl bg-slate-50 hover:bg-teal-50/50 border border-slate-200 hover:border-teal-300 transition flex justify-between items-center group">
+          <a href="https://wa.me/5561991737548?text=Ola!%20Duvida%20sobre%20o%20Ponto%20a%20Ponto" target="_blank" class="p-4 rounded-xl bg-slate-50 hover:bg-teal-50/50 border border-slate-200 transition flex justify-between items-center group">
             <div>
               <span class="text-[10px] font-mono font-bold text-teal-700 block uppercase">Mensagem Direta</span>
-              <span class="text-xs font-bold text-slate-800 group-hover:text-teal-900">Atendimento via WhatsApp</span>
+              <span class="text-xs font-bold text-slate-800">Atendimento via WhatsApp</span>
               <span class="text-[11px] font-mono text-slate-500 block mt-0.5">(61) 99173-7548</span>
             </div>
             <span class="text-[11px] font-mono text-slate-500 border border-slate-200 bg-white px-2 py-1 rounded-md">[Abrir Chat]</span>
           </a>
 
-          <a href="mailto:gmeireles2000@gmail.com" class="p-4 rounded-xl bg-slate-50 hover:bg-teal-50/50 border border-slate-200 hover:border-teal-300 transition flex justify-between items-center group">
+          <a href="mailto:gmeireles2000@gmail.com" class="p-4 rounded-xl bg-slate-50 hover:bg-teal-50/50 border border-slate-200 transition flex justify-between items-center group">
             <div>
               <span class="text-[10px] font-mono font-bold text-teal-700 block uppercase">Correio Eletrônico</span>
-              <span class="text-xs font-bold text-slate-800 group-hover:text-teal-900">Enviar E-mail de Suporte</span>
+              <span class="text-xs font-bold text-slate-800">Enviar E-mail de Suporte</span>
               <span class="text-[11px] font-mono text-slate-500 block mt-0.5">gmeireles2000@gmail.com</span>
             </div>
             <span class="text-[11px] font-mono text-slate-500 border border-slate-200 bg-white px-2 py-1 rounded-md">[Enviar]</span>
@@ -829,75 +650,92 @@
 
   </main>
 
-  <!-- MODAL ÁREA ADMINISTRATIVA -->
+  <!-- MODAL GERENCIADOR DE CONTEÚDO (ÁREA ADMIN CMS) -->
   <div id="modal-admin" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[90vh] overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[90vh] overflow-y-auto">
       <div class="flex justify-between items-center pb-3 border-b border-slate-100">
-        <h3 class="text-lg font-serif font-bold text-slate-900">Área do Administrador</h3>
+        <h3 class="text-lg font-serif font-bold text-slate-900">Painel de Edição do Site (CMS)</h3>
         <button onclick="fecharModalAdmin()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
       </div>
 
       <!-- TELA 1: AUTENTICAÇÃO -->
       <div id="admin-auth" class="space-y-3">
-        <p class="text-xs text-slate-600">Digite a senha para desbloquear o cadastro de novas questões:</p>
+        <p class="text-xs text-slate-600">Digite a senha para desbloquear a edição do conteúdo da página:</p>
         <input type="password" id="admin-pass" placeholder="Senha do administrador..." class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-teal-500">
-        <button onclick="autenticarAdmin()" class="w-full py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition">Acessar Painel</button>
+        <button onclick="autenticarAdmin()" class="w-full py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition">Acessar Edição</button>
       </div>
 
-      <!-- TELA 2: FORMULÁRIO DE CADASTRO -->
-      <div id="admin-panel" class="hidden space-y-3">
-        <span class="text-[11px] font-mono text-emerald-700 font-bold block">Autenticado com sucesso! Adicione questões abaixo:</span>
+      <!-- TELA 2: PAINEL CMS COMPLETO -->
+      <div id="admin-panel" class="hidden space-y-5">
         
-        <div class="grid grid-cols-2 gap-2">
+        <!-- NAVEGAÇÃO DE ABAS DO ADMIN -->
+        <div class="flex border-b border-slate-200 text-xs font-mono">
+          <button onclick="mudarAbaAdmin('noticias')" id="tab-btn-noticias" class="px-4 py-2 border-b-2 border-teal-700 font-bold text-teal-800">Publicar Notícias</button>
+          <button onclick="mudarAbaAdmin('topicos')" id="tab-btn-topicos" class="px-4 py-2 text-slate-500 hover:text-slate-800">Adicionar Novo Tópico</button>
+          <button onclick="mudarAbaAdmin('hero')" id="tab-btn-hero" class="px-4 py-2 text-slate-500 hover:text-slate-800">Editar Apresentação</button>
+        </div>
+
+        <!-- ABA 1: GERENCIAR NOTÍCIAS -->
+        <div id="admin-aba-noticias" class="space-y-3">
+          <h4 class="text-xs font-bold text-slate-800 uppercase font-mono">Adicionar Nova Notícia de Mercado</h4>
           <div>
-            <label class="text-[11px] font-semibold text-slate-700 block mb-1">Banca:</label>
-            <input type="text" id="add-banca" placeholder="Ex: Cebraspe, FGV..." class="w-full bg-slate-50 border border-slate-300 rounded p-2 text-xs font-mono">
+            <label class="text-[11px] font-semibold text-slate-700 block mb-1">Título da Notícia:</label>
+            <input type="text" id="add-noticia-titulo" placeholder="Ex: Lançamento do PHP 8.4 ou Tendências de Redes..." class="w-full bg-slate-50 border border-slate-300 rounded p-2 text-xs font-mono">
           </div>
           <div>
-            <label class="text-[11px] font-semibold text-slate-700 block mb-1">Assunto:</label>
-            <select id="add-assunto" class="w-full bg-slate-50 border border-slate-300 rounded p-2 text-xs font-mono">
-              <option value="Redes">Redes</option>
-              <option value="Linux">Linux</option>
-              <option value="Metodologias">Metodologias</option>
-            </select>
+            <label class="text-[11px] font-semibold text-slate-700 block mb-1">Categoria / Tag:</label>
+            <input type="text" id="add-noticia-tag" placeholder="Ex: DESTAQUE, TENDÊNCIA, MERCADO" class="w-full bg-slate-50 border border-slate-300 rounded p-2 text-xs font-mono">
           </div>
-        </div>
-
-        <div>
-          <label class="text-[11px] font-semibold text-slate-700 block mb-1">Enunciado da Questão:</label>
-          <textarea id="add-enunciado" rows="2" placeholder="Digite o enunciado completo..." class="w-full bg-slate-50 border border-slate-300 rounded p-2 text-xs font-mono"></textarea>
-        </div>
-
-        <div>
-          <label class="text-[11px] font-semibold text-slate-700 block mb-1">Opções (Separadas por vírgula):</label>
-          <input type="text" id="add-opcoes" placeholder="Ex: Certo, Errado OR Opção A, Opção B, Opção C, Opção D" class="w-full bg-slate-50 border border-slate-300 rounded p-2 text-xs font-mono">
-        </div>
-
-        <div class="grid grid-cols-2 gap-2">
           <div>
-            <label class="text-[11px] font-semibold text-slate-700 block mb-1">Índice Correto (0, 1...):</label>
-            <input type="number" id="add-correta" min="0" max="4" value="0" class="w-full bg-slate-50 border border-slate-300 rounded p-2 text-xs font-mono">
+            <label class="text-[11px] font-semibold text-slate-700 block mb-1">Resumo da Notícia:</label>
+            <textarea id="add-noticia-conteudo" rows="3" placeholder="Escreva o texto completo da notícia..." class="w-full bg-slate-50 border border-slate-300 rounded p-2 text-xs font-mono"></textarea>
           </div>
-        </div>
-
-        <div>
-          <label class="text-[11px] font-semibold text-slate-700 block mb-1">Explicação / Gabarito Comentado:</label>
-          <textarea id="add-exp" rows="2" placeholder="Explicação detalhada..." class="w-full bg-slate-50 border border-slate-300 rounded p-2 text-xs font-mono"></textarea>
-        </div>
-
-        <div class="pt-2 flex flex-col gap-2">
-          <button onclick="adicionarNovaQuestao()" class="w-full py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition">
-            Adicionar Questão ao Simulado
-          </button>
-          <button onclick="baixarJsonAtualizado()" class="w-full py-2 bg-slate-900 hover:bg-slate-800 text-teal-300 font-mono text-xs rounded-lg transition flex items-center justify-center gap-1">
-            Baixar 'questoes.json' Atualizado
+          <button onclick="adicionarNovaNoticia()" class="w-full py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition">
+            Publicar Notícia na Página
           </button>
         </div>
+
+        <!-- ABA 2: GERENCIAR NOVOS TÓPICOS -->
+        <div id="admin-aba-topicos" class="hidden space-y-3">
+          <h4 class="text-xs font-bold text-slate-800 uppercase font-mono">Criar Novo Tópico / Módulo Completo</h4>
+          <div>
+            <label class="text-[11px] font-semibold text-slate-700 block mb-1">Título da Seção:</label>
+            <input type="text" id="add-topico-titulo" placeholder="Ex: Guia Prático de Docker e Conteinerização" class="w-full bg-slate-50 border border-slate-300 rounded p-2 text-xs font-mono">
+          </div>
+          <div>
+            <label class="text-[11px] font-semibold text-slate-700 block mb-1">Subtítulo Explicativo:</label>
+            <input type="text" id="add-topico-subtitulo" placeholder="Conceitos essenciais de isolamento de aplicações..." class="w-full bg-slate-50 border border-slate-300 rounded p-2 text-xs font-mono">
+          </div>
+          <div>
+            <label class="text-[11px] font-semibold text-slate-700 block mb-1">Conteúdo do Tópico (Texto/HTML):</label>
+            <textarea id="add-topico-conteudo" rows="4" placeholder="Escreva o texto do novo artigo ou explicação..." class="w-full bg-slate-50 border border-slate-300 rounded p-2 text-xs font-mono"></textarea>
+          </div>
+          <button onclick="adicionarNovoTopico()" class="w-full py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition">
+            Adicionar Seção ao Site
+          </button>
+        </div>
+
+        <!-- ABA 3: EDITAR APRESENTAÇÃO HERO -->
+        <div id="admin-aba-hero" class="hidden space-y-3">
+          <h4 class="text-xs font-bold text-slate-800 uppercase font-mono">Editar Título e Descrição da Introdução</h4>
+          <div>
+            <label class="text-[11px] font-semibold text-slate-700 block mb-1">Título Principal:</label>
+            <input type="text" id="edit-hero-titulo" class="w-full bg-slate-50 border border-slate-300 rounded p-2 text-xs font-mono">
+          </div>
+          <div>
+            <label class="text-[11px] font-semibold text-slate-700 block mb-1">Descrição de Apresentação:</label>
+            <textarea id="edit-hero-desc" rows="3" class="w-full bg-slate-50 border border-slate-300 rounded p-2 text-xs font-mono"></textarea>
+          </div>
+          <button onclick="salvarApresentacaoHero()" class="w-full py-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs rounded-lg transition">
+            Atualizar Apresentação
+          </button>
+        </div>
+
       </div>
     </div>
   </div>
 
-  <!-- RODAPÉ EDITORIAL -->
+  <!-- RODAPÉ -->
   <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 font-mono mt-auto">
     <p>PONTO A PONTO — REDES, LINUX, GUIA ACADÊMICO E METODOLOGIAS DE TI</p>
     <p class="mt-1 text-[11px] text-slate-400">Licença MIT — Código Aberto para Fins Educacionais</p>
@@ -958,11 +796,6 @@
       res.classList.remove('hidden');
       res.innerText = "Consultando...";
 
-      if (/^(192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[01])\.|127\.)/.test(q)) {
-        res.innerHTML = `<div class="text-amber-800"><strong>IP Privado / Local:</strong> Pertence à sua rede interna (RFC 1918).</div>`;
-        return;
-      }
-
       try {
         const resp = await fetch(`https://freeipapi.com/api/json/${q}`);
         if (resp.ok) {
@@ -995,155 +828,37 @@
       document.getElementById('res-rede').innerText = intParaIP(redeInt);
       document.getElementById('res-mascara').innerText = intParaIP(maskInt);
       document.getElementById('res-broadcast').innerText = intParaIP(broadcastInt);
-      document.getElementById('res-total-hosts').innerText = totalHosts.toLocaleString();
       document.getElementById('res-hosts-uteis').innerText = hostsUteis.toLocaleString();
-      document.getElementById('res-primeiro-host').innerText = maskLen <= 30 ? intParaIP(redeInt + 1) : "N/A";
-      document.getElementById('res-ultimo-host').innerText = maskLen <= 30 ? intParaIP(broadcastInt - 1) : "N/A";
-      document.getElementById('res-classe').innerText = `Classe ${ipStr.split('.')[0] <= 126 ? 'A' : ipStr.split('.')[0] <= 191 ? 'B' : 'C'}`;
-
-      const binStr = (ipInt >>> 0).toString(2).padStart(32, '0');
-      let binHTML = "";
-      for (let i = 0; i < 32; i++) {
-        if (i > 0 && i % 8 === 0) binHTML += ".";
-        binHTML += `<span class="${i < maskLen ? 'bit-net' : 'bit-host'}">${binStr[i]}</span>`;
-      }
-      document.getElementById('res-binario').innerHTML = binHTML;
     }
 
-    function copiarCidrMarkdown() {
-      const ip = document.getElementById('cidr-ip').value.trim();
-      const mask = document.getElementById('cidr-mask').value;
-      const rede = document.getElementById('res-rede').innerText;
-      const mascara = document.getElementById('res-mascara').innerText;
-      const broadcast = document.getElementById('res-broadcast').innerText;
-      const totalHosts = document.getElementById('res-total-hosts').innerText;
-      const hostsUteis = document.getElementById('res-hosts-uteis').innerText;
-
-      const mdText = `### Cálculo CIDR: ${ip}/${mask}\n- **Rede:** \`${rede}\`\n- **Máscara:** \`${mascara}\`\n- **Broadcast:** \`${broadcast}\`\n- **Hosts Úteis:** \`${hostsUteis}\` (Total: ${totalHosts})`;
-      navigator.clipboard.writeText(mdText).then(() => alert("Copiado em Markdown!"));
-    }
-
-    // TREINO SUB-REDES
-    let desafioAtual = null;
-    let pontuacaoTreino = { acertos: 0, total: 0, sequencia: 0 };
-
-    function gerarIpAleatorio() {
-      return `192.168.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 250) + 1}`;
-    }
-
-    function gerarDesafioSubrede() {
-      const ipStr = gerarIpAleatorio();
-      const cidr = [24, 25, 26, 27, 28, 29, 30][Math.floor(Math.random() * 7)];
-      const ipInt = ipParaInt(ipStr);
-      const maskInt = (0xFFFFFFFF << (32 - cidr)) >>> 0;
-      const redeInt = (ipInt & maskInt) >>> 0;
-
-      desafioAtual = {
-        ip: ipStr,
-        cidr: cidr,
-        resposta: intParaIP(redeInt),
-        respondido: false
-      };
-
-      document.getElementById('treino-ip-cidr').innerText = `${desafioAtual.ip} /${desafioAtual.cidr}`;
-      document.getElementById('treino-pergunta').innerText = "Qual é o Endereço de Rede desta sub-rede?";
-      document.getElementById('treino-input').value = '';
-      document.getElementById('treino-feedback').classList.add('hidden');
-    }
-
-    function verificarRespostaTreino() {
-      if (!desafioAtual || desafioAtual.respondido) return;
-      const resp = document.getElementById('treino-input').value.trim();
-      if (!resp) return;
-
-      desafioAtual.respondido = true;
-      pontuacaoTreino.total++;
-      const feedback = document.getElementById('treino-feedback');
-      feedback.classList.remove('hidden');
-
-      if (resp === desafioAtual.resposta) {
-        pontuacaoTreino.acertos++;
-        pontuacaoTreino.sequencia++;
-        feedback.innerHTML = `<div class="p-3 bg-teal-50 border border-teal-200 text-teal-900 rounded-lg text-xs font-bold">Resposta Correta! (${desafioAtual.resposta})</div>`;
-      } else {
-        pontuacaoTreino.sequencia = 0;
-        feedback.innerHTML = `<div class="p-3 bg-rose-50 border border-rose-200 text-rose-900 rounded-lg text-xs">Incorreto. O correto era: <strong>${desafioAtual.resposta}</strong></div>`;
-      }
-
-      document.getElementById('treino-placar-acertos').innerText = pontuacaoTreino.acertos;
-      document.getElementById('treino-placar-total').innerText = pontuacaoTreino.total;
-      document.getElementById('treino-placar-sequencia').innerText = pontuacaoTreino.sequencia;
-    }
-
-    function filtrarTabelaPortas() {
-      const input = document.getElementById('filtro-portas').value.toLowerCase();
-      document.querySelectorAll('#tabela-portas tbody tr').forEach(tr => {
-        tr.style.display = tr.innerText.toLowerCase().includes(input) ? '' : 'none';
-      });
-    }
-
-    // SIMULADO & BANCO DE QUESTÕES
+    // SIMULADO VIA JSON
     let bancoQuestoes = [];
 
     async function carregarBancoQuestoes() {
-      const adicionais = JSON.parse(localStorage.getItem('p2p_questoes_custom') || '[]');
       try {
         const resp = await fetch('assets/data/questoes.json');
-        if (resp.ok) {
-          bancoQuestoes = await resp.json();
-        }
+        if (resp.ok) bancoQuestoes = await resp.json();
       } catch (err) {
         bancoQuestoes = [
           { id: 1, banca: "Cebraspe", assunto: "Metodologias", enunciado: "No Scrum, o Gerente de Projetos é o responsável por atribuir tarefas.", opcoes: ["Certo", "Errado"], correta: 1, exp: "ERRADO. Não existe Gerente de Projetos no Scrum." },
           { id: 2, banca: "FGV", assunto: "Linux", enunciado: "Qual comando altera as permissões de acesso de um arquivo no Linux?", opcoes: ["chown", "chmod", "ps", "top"], correta: 1, exp: "Gabarito: chmod (change mode)." }
         ];
       }
-      bancoQuestoes = [...bancoQuestoes, ...adicionais];
       renderizarQuiz();
     }
 
-    function carregarHistoricoSimulado() {
-      return JSON.parse(localStorage.getItem('p2p_simulado_historico') || '{}');
-    }
-
     function renderizarQuiz() {
-      const bancaSel = document.getElementById('filtro-banca').value;
-      const assuntoSel = document.getElementById('filtro-assunto').value;
-      const buscaTexto = document.getElementById('filtro-busca-texto').value.toLowerCase().trim();
       const container = document.getElementById('quiz-container');
-      const historico = carregarHistoricoSimulado();
-
       container.innerHTML = '';
 
-      const filtradas = bancoQuestoes.filter(q => {
-        const passaBanca = (bancaSel === 'todas' || q.banca === bancaSel);
-        const passaAssunto = (assuntoSel === 'todos' || q.assunto === assuntoSel);
-        const passaTexto = !buscaTexto || q.enunciado.toLowerCase().includes(buscaTexto);
-        return passaBanca && passaAssunto && passaTexto;
-      });
-
-      if (filtradas.length === 0) {
-        container.innerHTML = `<div class="p-6 bg-slate-50 border border-slate-200 rounded-xl text-center text-xs text-slate-500 font-mono">Nenhuma questão encontrada.</div>`;
-        return;
-      }
-
-      filtradas.forEach(q => {
-        const respSalva = historico[q.id];
-        const respondida = (respSalva !== undefined);
-
+      bancoQuestoes.forEach(q => {
         const card = document.createElement('div');
         card.className = "p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3";
-
+        
         let opcoesHTML = "";
         q.opcoes.forEach((opt, idx) => {
-          let estiloBtn = "bg-white hover:bg-slate-100 text-slate-700 border-slate-200";
-          if (respondida) {
-            if (idx === q.correta) estiloBtn = "bg-teal-50 text-teal-800 border-teal-300 font-bold";
-            else if (idx === respSalva) estiloBtn = "bg-rose-50 text-rose-800 border-rose-300 font-bold";
-          }
-
           opcoesHTML += `
-            <button onclick="responderSimulado(${q.id}, ${idx})" ${respondida ? 'disabled' : ''} class="w-full text-left p-2.5 text-xs font-mono border rounded-lg transition ${estiloBtn}">
+            <button onclick="alert('Gabarito: ${q.exp}')" class="w-full text-left p-2.5 text-xs font-mono border border-slate-200 bg-white rounded-lg hover:bg-teal-50 transition">
               ${opt}
             </button>
           `;
@@ -1156,31 +871,16 @@
           </div>
           <p class="text-xs font-semibold text-slate-800">${q.enunciado}</p>
           <div class="space-y-1.5">${opcoesHTML}</div>
-          <div class="${respondida ? '' : 'hidden'} p-3 bg-white rounded-lg border border-slate-200 text-xs font-mono text-slate-700">
-            ${q.exp}
-          </div>
         `;
-
         container.appendChild(card);
       });
     }
 
-    function responderSimulado(qId, optIdx) {
-      const historico = carregarHistoricoSimulado();
-      if (historico[qId] !== undefined) return;
-      historico[qId] = optIdx;
-      localStorage.setItem('p2p_simulado_historico', JSON.stringify(historico));
+    function reiniciarSimulado() {
       renderizarQuiz();
     }
 
-    function reiniciarSimulado() {
-      if (confirm("Resetar histórico de respostas?")) {
-        localStorage.removeItem('p2p_simulado_historico');
-        renderizarQuiz();
-      }
-    }
-
-    // LÓGICA DA ÁREA ADMIN
+    // LÓGICA DA ÁREA ADMIN CMS (EDIÇÃO DA PÁGINA)
     function abrirModalAdmin() {
       document.getElementById('modal-admin').classList.remove('hidden');
     }
@@ -1194,64 +894,105 @@
       if (pass === 'p2p2026') {
         document.getElementById('admin-auth').classList.add('hidden');
         document.getElementById('admin-panel').classList.remove('hidden');
+
+        document.getElementById('edit-hero-titulo').value = document.getElementById('hero-titulo').innerText;
+        document.getElementById('edit-hero-desc').value = document.getElementById('hero-descricao').innerText;
       } else {
         alert("Senha incorreta!");
       }
     }
 
-    function adicionarNovaQuestao() {
-      const banca = document.getElementById('add-banca').value.trim() || 'Geral';
-      const assunto = document.getElementById('add-assunto').value;
-      const enunciado = document.getElementById('add-enunciado').value.trim();
-      const opcoesStr = document.getElementById('add-opcoes').value.trim();
-      const correta = parseInt(document.getElementById('add-correta').value, 10);
-      const exp = document.getElementById('add-exp').value.trim();
+    function mudarAbaAdmin(aba) {
+      document.getElementById('admin-aba-noticias').classList.add('hidden');
+      document.getElementById('admin-aba-topicos').classList.add('hidden');
+      document.getElementById('admin-aba-hero').classList.add('hidden');
 
-      if (!enunciado || !opcoesStr) {
-        alert("Preencha o enunciado e as opções!");
+      document.getElementById('tab-btn-noticias').className = "px-4 py-2 text-slate-500 hover:text-slate-800";
+      document.getElementById('tab-btn-topicos').className = "px-4 py-2 text-slate-500 hover:text-slate-800";
+      document.getElementById('tab-btn-hero').className = "px-4 py-2 text-slate-500 hover:text-slate-800";
+
+      if (aba === 'noticias') {
+        document.getElementById('admin-aba-noticias').classList.remove('hidden');
+        document.getElementById('tab-btn-noticias').className = "px-4 py-2 border-b-2 border-teal-700 font-bold text-teal-800";
+      } else if (aba === 'topicos') {
+        document.getElementById('admin-aba-topicos').classList.remove('hidden');
+        document.getElementById('tab-btn-topicos').className = "px-4 py-2 border-b-2 border-teal-700 font-bold text-teal-800";
+      } else if (aba === 'hero') {
+        document.getElementById('admin-aba-hero').classList.remove('hidden');
+        document.getElementById('tab-btn-hero').className = "px-4 py-2 border-b-2 border-teal-700 font-bold text-teal-800";
+      }
+    }
+
+    function adicionarNovaNoticia() {
+      const titulo = document.getElementById('add-noticia-titulo').value.trim();
+      const tag = document.getElementById('add-noticia-tag').value.trim() || 'NOTÍCIA';
+      const conteudo = document.getElementById('add-noticia-conteudo').value.trim();
+
+      if (!titulo || !conteudo) {
+        alert("Preencha o título e o resumo da notícia!");
         return;
       }
 
-      const opcoes = opcoesStr.split(',').map(s => s.trim());
-      const novaQ = {
-        id: Date.now(),
-        banca: banca,
-        assunto: assunto,
-        enunciado: enunciado,
-        opcoes: opcoes,
-        correta: correta,
-        exp: exp || 'Sem comentário fornecido.'
-      };
+      const container = document.getElementById('container-noticias');
+      const card = document.createElement('div');
+      card.className = "p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3";
+      card.innerHTML = `
+        <span class="px-2 py-0.5 bg-teal-100 text-teal-800 text-[10px] font-mono font-bold rounded">${tag.toUpperCase()}</span>
+        <h3 class="font-serif font-bold text-slate-900 text-base">${titulo}</h3>
+        <p class="text-xs text-slate-600 leading-relaxed">${conteudo}</p>
+      `;
 
-      const adicionais = JSON.parse(localStorage.getItem('p2p_questoes_custom') || '[]');
-      adicionais.push(novaQ);
-      localStorage.setItem('p2p_questoes_custom', JSON.stringify(adicionais));
-
-      bancoQuestoes.push(novaQ);
-      renderizarQuiz();
-
-      alert("Nova questão adicionada com sucesso no seu navegador!");
-      document.getElementById('add-enunciado').value = '';
-      document.getElementById('add-opcoes').value = '';
-      document.getElementById('add-exp').value = '';
+      container.prepend(card);
+      alert("Notícia publicada com sucesso na página!");
+      document.getElementById('add-noticia-titulo').value = '';
+      document.getElementById('add-noticia-conteudo').value = '';
     }
 
-    function baixarJsonAtualizado() {
-      const jsonStr = JSON.stringify(bancoQuestoes, null, 2);
-      const blob = new Blob([jsonStr], { type: 'application/json' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'questoes.json';
-      a.click();
+    function adicionarNovoTopico() {
+      const titulo = document.getElementById('add-topico-titulo').value.trim();
+      const subtitulo = document.getElementById('add-topico-subtitulo').value.trim();
+      const conteudo = document.getElementById('add-topico-conteudo').value.trim();
+
+      if (!titulo || !conteudo) {
+        alert("Preencha o título e o conteúdo do tópico!");
+        return;
+      }
+
+      const container = document.getElementById('secao-topicos-custom');
+      container.classList.remove('hidden');
+
+      const artigo = document.createElement('div');
+      artigo.className = "bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3";
+      artigo.innerHTML = `
+        <div class="pb-3 border-b border-slate-100">
+          <h2 class="text-xl font-serif font-bold text-slate-900">${titulo}</h2>
+          <p class="text-xs text-slate-500">${subtitulo}</p>
+        </div>
+        <p class="text-xs text-slate-700 leading-relaxed">${conteudo}</p>
+      `;
+
+      container.appendChild(artigo);
+      alert("Novo tópico adicionado à página com sucesso!");
+      document.getElementById('add-topico-titulo').value = '';
+      document.getElementById('add-topico-subtitulo').value = '';
+      document.getElementById('add-topico-conteudo').value = '';
+    }
+
+    function salvarApresentacaoHero() {
+      const t = document.getElementById('edit-hero-titulo').value.trim();
+      const d = document.getElementById('edit-hero-desc').value.trim();
+
+      if (t) document.getElementById('hero-titulo').innerText = t;
+      if (d) document.getElementById('hero-descricao').innerText = d;
+
+      alert("Apresentação atualizada!");
     }
 
     window.addEventListener('DOMContentLoaded', () => {
       obterIPCliente();
       executarCalculoCIDR();
-      gerarDesafioSubrede();
       carregarBancoQuestoes();
     });
   </script>
 </body>
 </html>
-
